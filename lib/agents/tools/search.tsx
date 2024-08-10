@@ -127,7 +127,8 @@ async function tavilySearch(
   const data1 = await res.json()
 
   let ress = []
-  console.log()
+  let thumbnail = []
+  console.log(data1)
   for (let index = 0; index < data1?.searchResult?.results.length; index++) {
     const element = data1?.searchResult?.results[index]
     let obj11 = {
@@ -137,13 +138,20 @@ async function tavilySearch(
       score: element?.score,
       raw_content: null
     }
+    console.log(element)
+    if (element?.thumbnail) {
+      thumbnail.push(element?.thumbnail)
+    }
+    if (element?.thumbnail_src) {
+      thumbnail.push(element?.thumbnail_src)
+    }
     ress.push(obj11)
   }
 
   let obj = {
     ...data1?.searchResult,
     answers: data1?.searchResult?.answer,
-    images: [],
+    images: thumbnail,
     follow_up_questions: null,
     results: ress
   }
@@ -155,7 +163,8 @@ async function tavilySearch(
   // console.log('res:', data.result)
   // console.log('res:', data.results)
   // console.log('res:', data)
-  console.log('obj:', obj)
+  // console.log('obj:', obj)
+
   return obj
   // return data
 }
