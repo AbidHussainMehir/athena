@@ -173,15 +173,8 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('The Learn to Earn Knowledge Platform')
-                  // .typeString('The AI Search Engine that Pays You to Learn ')
+                  .typeString('Privacy-Driven Learn to Earn Knowledge Platform')
                   .pauseFor(400)
-                  // .deleteChars(14)
-                  // .typeString('Learn with AI')
-                  // .pauseFor(400)
-                  // .deleteChars(13)
-                  // .typeString('Grow with AI')
-                  // .pauseFor(400)
                   .start()
               }}
             />
