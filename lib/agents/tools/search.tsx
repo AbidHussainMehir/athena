@@ -61,60 +61,7 @@ export const searchTool = ({ uiStream, fullResponse }: ToolProps) =>
     }
   })
 
-async function tavilySearch(
-  query: string,
-  maxResults: number = 10,
-  searchDepth: 'basic' | 'advanced' = 'basic',
-  includeDomains: string[] = [],
-  excludeDomains: string[] = []
-): Promise<any> {
-  // const apiKey = process.env.TAVILY_API_KEY
-  // const response = await fetch('https://api.tavily.com/search', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify({
-  //     api_key: apiKey,
-  //     query,
-  //     max_results: maxResults < 5 ? 5 : maxResults,
-  //     search_depth: searchDepth,
-  //     include_images: true,
-  //     include_answers: true,
-  //     include_domains: includeDomains,
-  //     exclude_domains: excludeDomains
-  //   })
-  // })
-
-  // {
-  //   query: 'what is AI?',
-  //   follow_up_questions: null,
-  //   answer: null,
-  //   images: [
-  //     'https://sciencenotes.org/wp-content/uploads/2022/07/What-Is-AI-or-Artificial-Intelligence-1024x683.png',
-  //     'https://intellipaat.com/blog/wp-content/uploads/2018/01/AI-work1-01.jpg',
-  //     'https://1reddrop.com/wp-content/uploads/2019/01/what-is-ai.jpg',
-  //     'https://m.foolcdn.com/media/dubs/images/what-is-artificial-intelligence-infographic.width-880.png',
-  //     'https://cdn.hostadvice.com/2023/03/final-what-is-ai-0.png'
-  //   ],
-  //   results: [
-  //     {
-  //       title: 'What is Artificial Intelligence (AI)? | IBM',
-  //       url: 'https://www.ibm.com/topics/artificial-intelligence',
-  //       content: 'But since the advent of electronic computing (and relative to some of the topics discussed in this article) important events and milestones in the evolution of artificial intelligence include the following:\n' +
-  //         'Put AI to work in your business with IBM’s industry-leading AI expertise and portfolio of solutions at your side.\n' +
-  //         ' In it, they delve into four potential goals or definitions of AI, which differentiates computer systems on the basis of rationality and thinking vs. acting:\n' +
-  //         'Human approach:\n' +
-  //         'Ideal approach:\n' +
-  //         'Alan Turing’s definition would have fallen under the category of “systems that act like humans.”\n' +
-  //         ' IBM acquires Manta to complement data and AI governance capabilities\n' +
-  //         'IBM watsonx Orchestrate\n' +
-  //         'IBM watsonx Assistant\n' +
-  //         'Explore Gen AI learning for developers\n' +
-  //         'Weak AI—also called Narrow AI or Artificial Narrow Intelligence (ANI)—is AI trained and focused to perform specific tasks. While a number of definitions of artificial intelligence (AI) have surfaced over the last few decades, John McCarthy offers the following definition in this 2004 paper (link resides outside ibm.com), " It is the science and engineering of making intelligent machines, especially intelligent computer programs. Artificial general intelligence (AGI), or general AI, is a theoretical form of AI where a machine would have an intelligence equaled to humans; it would have a self-aware consciousness that has the ability to solve problems, learn, and plan for the future.',
-  //       score: 0.928668,
-  //       raw_content: null
-  //     },]
+async function tavilySearch(query: string): Promise<any> {
   let res = await fetch('https://ai.joblab.ai/text-only-search/', {
     method: 'POST',
     headers: {
@@ -128,7 +75,6 @@ async function tavilySearch(
 
   let ress = []
   let thumbnail = []
-  console.log(data1)
   for (let index = 0; index < data1?.searchResult?.results.length; index++) {
     const element = data1?.searchResult?.results[index]
     let obj11 = {
@@ -138,13 +84,16 @@ async function tavilySearch(
       score: element?.score,
       raw_content: null
     }
-    console.log(element)
     if (element?.thumbnail) {
       thumbnail.push(element?.thumbnail)
     }
     if (element?.thumbnail_src) {
       thumbnail.push(element?.thumbnail_src)
     }
+    if (element?.img_src) {
+      thumbnail.push(element?.img_src)
+    }
+
     ress.push(obj11)
   }
 
@@ -155,18 +104,8 @@ async function tavilySearch(
     follow_up_questions: null,
     results: ress
   }
-  // if (!response.ok) {
-  //   throw new Error(`Error: ${response.status}`)
-  // }
-
-  // const data = await response.json()
-  // console.log('res:', data.result)
-  // console.log('res:', data.results)
-  // console.log('res:', data)
-  // console.log('obj:', obj)
 
   return obj
-  // return data
 }
 
 async function exaSearch(
