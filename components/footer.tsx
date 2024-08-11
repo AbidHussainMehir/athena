@@ -26,7 +26,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="w-[100%] p-1 md:p-2 fixed bottom-0 right-0">
       {!pathname.includes('search') && !pathname.includes('share') && (
-        <div className="flex mb-4 gap-4 w-[100%] justify-center">
+        <div className="flex flex-wrap mb-4 gap-4 w-full justify-center">
+        <span className='tag-white'>
           <Button variant="ghost" size="md">
             <Link
               onClick={() => linksClick('https://dashboard.theathena.ai')}
@@ -35,6 +36,8 @@ const Footer: React.FC = () => {
               Dashboard
             </Link>
           </Button>
+        </span>
+        <span className='tag-white'>
           <Button variant={'ghost'} size={'md'}>
             <Link
               onClick={() => linksClick('https://docs.theathena.ai')}
@@ -45,6 +48,8 @@ const Footer: React.FC = () => {
               Docs
             </Link>
           </Button>
+        </span>
+        <span className='tag-white'>
           <Button variant={'ghost'} size={'md'}>
             <Link
               onClick={() => linksClick('https://deck.theathena.ai')}
@@ -55,6 +60,8 @@ const Footer: React.FC = () => {
               Deck
             </Link>
           </Button>
+        </span>
+        <span className='tag-white'>
           <Button variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('discord')}
@@ -64,6 +71,8 @@ const Footer: React.FC = () => {
               <SiDiscord color="dark" size={18} />
             </Link>
           </Button>
+        </span>
+        <span className='tag-white'>
           <Button variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('twitter')}
@@ -73,6 +82,8 @@ const Footer: React.FC = () => {
               <SiTwitter size={18} />
             </Link>
           </Button>
+        </span>
+        <span className='tag-white'>
           <Button variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('telegram')}
@@ -82,7 +93,8 @@ const Footer: React.FC = () => {
               <SiTelegram size={18} />
             </Link>
           </Button>
-
+        </span>
+        <span className='tag-white'>
           <Button variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('mail')}
@@ -92,7 +104,9 @@ const Footer: React.FC = () => {
               <SiGmail size={18} />
             </Link>
           </Button>
-        </div>
+        </span>
+      </div>
+      
       )}
     </footer>
   )
