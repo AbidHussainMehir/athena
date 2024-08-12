@@ -26,9 +26,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="w-[100%] p-1 md:p-2 fixed bottom-0 right-0">
       {!pathname.includes('search') && !pathname.includes('share') && (
-        <div className="flex flex-wrap mb-4 gap-4 w-full justify-center">
-        <span className='tag-white'>
-          <Button variant="ghost" size="md">
+        <div className="flex flex-wrap mb-4  gap-1 md:gap-4 w-full justify-center">
+        <span className='tag-white rounded-lg'>
+          <Button className='px-1 md:px-2 h-8'variant={'ghost'} size={'md'}>
             <Link
               onClick={() => linksClick('https://dashboard.theathena.ai')}
               href={'https://dashboard.theathena.ai'}
@@ -37,8 +37,8 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span className='tag-white'>
-          <Button variant={'ghost'} size={'md'}>
+        <span className='tag-white rounded-lg'>
+          <Button  className='px-1 md:px-2 h-8' variant={'ghost'} size={'md'}>
             <Link
               onClick={() => linksClick('https://docs.theathena.ai')}
               href="https://docs.theathena.ai"
@@ -49,8 +49,8 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span className='tag-white'>
-          <Button variant={'ghost'} size={'md'}>
+        <span className='tag-white rounded-lg'>
+          <Button className='px-1 md:px-2 h-8' variant={'ghost'} size={'md'}>
             <Link
               onClick={() => linksClick('https://deck.theathena.ai')}
               href="https://deck.theathena.ai"
@@ -61,8 +61,8 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span className='tag-white'>
-          <Button variant={'ghost'} size={'icon'}>
+        <span className='tag-white rounded-lg'>
+          <Button className='px-1 md:px-2  w-8 h-8 ' variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('discord')}
               href="https://discord.gg/zRxaseCuGq"
@@ -72,8 +72,8 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span className='tag-white'>
-          <Button variant={'ghost'} size={'icon'}>
+        <span className='tag-white rounded-lg'>
+          <Button className='px-1 md:px-2  w-8 h-8' variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('twitter')}
               href="https://twitter.com/theathena"
@@ -83,8 +83,8 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span className='tag-white'>
-          <Button variant={'ghost'} size={'icon'}>
+        <span className='tag-white rounded-lg'>
+          <Button className='px-1 md:px-2  w-8 h-8' variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('telegram')}
               href="https://twitter.com/theathena"
@@ -94,8 +94,8 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span className='tag-white'>
-          <Button variant={'ghost'} size={'icon'}>
+        <span className='tag-white rounded-lg'>
+          <Button className='px-1 md:px-2  w-8 h-8' variant={'ghost'} size={'icon'}>
             <Link
               onClick={() => socialLinksClick('mail')}
               href="mailto:hello@theathena.ai"

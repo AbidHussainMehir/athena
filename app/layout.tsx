@@ -8,7 +8,8 @@ import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
 import Head from 'next/head'
-
+import { useUIState } from 'ai/rsc'
+import { AI } from '@/app/actions'
 const title = 'Athena'
 const description =
   'The AI-powered search engine that rewards you to learn and grow.'
@@ -35,11 +36,13 @@ export const viewport: Viewport = {
   minimumScale: 1,
   maximumScale: 1
 }
+
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>)
+ {
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
@@ -67,7 +70,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <AppStateProvider>
+            <AI >
+     
               <Header />
+    </AI>
               {children}
               {/* <Sidebar /> */}
               <Footer />
