@@ -97,6 +97,11 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     }
     // Clear state or reset layout here
   }, [pathname]);
+  useEffect(() => {
+    if (pathname === '/') {
+      handleClear();
+    }
+  }, [pathname]);
   // useEffect(() => {
   //   const handleRouteChange = () => {
   //     handleClear()
