@@ -74,18 +74,35 @@ export const Header: React.FC = () => {
       'event-action': `${document.title} - ${window.location.href}`
     })
   }
+
   useEffect(() => {
     if (account?.address) {
       localStorage.setItem('uid', account?.address)
+      window._mtm.push({
+        event: 'set_user_id',
+        uid: account?.address
+      })
     } else {
       localStorage.setItem('uid', 'anonymous')
+      window._mtm.push({
+        event: 'set_user_id',
+        uid: 'anonymous'
+      })
     }
   }, [account])
   useEffect(() => {
     if (account?.address) {
       localStorage.setItem('uid', account?.address)
+      window._mtm.push({
+        event: 'set_user_id',
+        uid: account?.address
+      })
     } else {
       localStorage.setItem('uid', 'anonymous')
+      window._mtm.push({
+        event: 'set_user_id',
+        uid: 'anonymous'
+      })
     }
   }, [])
   return (
