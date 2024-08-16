@@ -12,9 +12,12 @@ import Link from 'next/link'
 import { MenuIcon } from './ui/menu-icons'
 import { Button } from './ui/button'
 import { useRouter } from 'next/navigation'
+import { useUIState } from 'ai/rsc'
+import { AI } from '@/app/actions'
 
 export const Header: React.FC = () => {
   const router = useRouter()
+  const [, setMessages] = useUIState<typeof AI>()
 
   const account = useActiveAccount()
   let isConnected = !!account
@@ -26,22 +29,7 @@ export const Header: React.FC = () => {
 
     script.onload = () => {
       // Ensure _paq is initialized only once
-      window._paq = window._paq || []
-
-      // Add Matomo tracking code
-      window._paq.push(['trackPageView'])
-      window._paq.push(['enableLinkTracking'])
-      window._paq.push([
-        'setTrackerUrl',
-        'https://analytics.theathena.ai/matomo.php'
-      ])
-      window._paq.push(['setSiteId', 1])
-      window._paq.push([
-        'trackEvent',
-        'logo-click',
-        'logo-clicked',
-        'Athena - http://localhost:3000/'
-      ])
+      window._mtm = window._mtm || []
     }
 
     return () => {
@@ -49,21 +37,14 @@ export const Header: React.FC = () => {
       // No need to clear _paq array to avoid duplicate entries in subsequent renders
     }
   }, [])
-  const handleSearch = () => {
-    window._paq.push([
-      'trackEvent',
-      'site-search-keywords-tracking',
-      'site-search-keywords',
-      `Athena - http://localhost:3000/`,
-      `${account?.address}`
-    ])
-    // window._paq.push({
-    //   event: 'site-search-keywords-tracking',
-    //   'event-category': 'site-search-keywords',
-    //   'event-value': 'ENTERED-KEYWORD',
-    //   'event-action': 'CURRENT_PAGE_TITLE - CURRENT_PAGE_URL'
-    // })
+  const handleLogoClick = () => {
+    window._mtm.push({
+      event: 'logo-click',
+      'event-category': 'logo-clicked',
+      'event-action': `${document.title} - ${window.location.href}`
+    })
   }
+
   const wallets = [
     createWallet('io.metamask'),
     createWallet('com.coinbase.wallet'),
@@ -77,38 +58,29 @@ export const Header: React.FC = () => {
     createWallet('app.phantom')
   ]
   const handleRedirect = () => {
-    router.push('/')
+      setMessages([])
+    handleLogoClick()
+    router.replace('/')
+    setTimeout(() => {
+      router.refresh();
+    }, 1000);
+    // router.refresh();
+
   }
-  // useEffect(() => {
-  //   const handleLogoClick = () => {
-  //     window._mtm = window._mtm || []
-  //     window._mtm.push({
-  //       event: 'logo-click',
-  //       'event-category': 'logo-clicked',
-  //       'event-action': document.title + ' - ' + window.location.href
-  //     })
-  //   }
-
-  //   const logoElement = document.getElementById('logo')
-  //   if (logoElement) {
-  //     logoElement.addEventListener('click', handleLogoClick)
-  //   }
-
-  //   return () => {
-  //     if (logoElement) {
-  //       logoElement.removeEventListener('click', handleLogoClick)
-  //     }
-  //   }
-  // }, [])
+  const handleConnectWallet = () => {
+    window._mtm.push({
+      event: 'wallet-button-clicked',
+      'event-category': 'connect-wallet-button',
+      'event-value': 'Connect Wallet',
+      'event-action': `${document.title} - ${window.location.href}`
+    })
+  }
   return (
-    <header
-      onClick={handleSearch}
-      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent"
-    >
+    <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent">
       <div>
-        <span className="ml-5 gap-3 flex justify-center align-center">
+        <span className="ml-5 gap-3 flex justify-center align-center ">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}
-          <div style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
+          <div  style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
             <MenuIcon />
           </div>
           {/* </Button> */}
@@ -120,7 +92,10 @@ export const Header: React.FC = () => {
           <ModeToggle />
         </span> */}
         <HistoryContainer location="header" />
-        <div className={`${isConnected ? 'connected' : 'connect'}`}>
+        <div
+          onClick={handleConnectWallet}
+          className={`${isConnected ? 'connected' : 'connect'}`}
+        >
           <ConnectButton
             client={client}
             wallets={wallets}

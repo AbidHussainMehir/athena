@@ -14,9 +14,9 @@ const HistoryContainer: React.FC<HistoryContainerProps> = ({ location }) => {
     <div
       className={location === 'header' ? 'block sm:hidden' : 'hidden sm:block'}
     >
-      <History location={location}>
+      {/* <History location={location}>
         <HistoryList userId={account?.address ?? 'anonymous'} />
-      </History>
+      </History> */}
     </div>
   )
 }

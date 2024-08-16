@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
-import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -9,8 +8,8 @@ import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
 import Head from 'next/head'
-import Script from 'next/script'
-
+import { useUIState } from 'ai/rsc'
+import { AI } from '@/app/actions'
 const title = 'Athena'
 const description =
   'The AI-powered search engine that rewards you to learn and grow.'
@@ -37,29 +36,13 @@ export const viewport: Viewport = {
   minimumScale: 1,
   maximumScale: 1
 }
+
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
-}>) {
-  // useEffect(() => {
-  //   // Ensure the _mtm array exists on the window object
-  //   window._mtm = window._mtm || []
-  //   window._mtm.push({
-  //     'mtm.startTime': new Date().getTime(),
-  //     event: 'mtm.Start'
-  //   })
-  //   const d = document
-  //   const g = d.createElement('script')
-  //   const s = d.getElementsByTagName('script')[0]
-  //   g.async = true
-  //   g.src =
-  //     'https://cdn.matomo.cloud/theathenaai.matomo.cloud/container_XxF5vFEJ.js'
-  //   if (s && s.parentNode) {
-  //     s.parentNode.insertBefore(g, s)
-  //   }
-  // }, [])
-
+}>)
+ {
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
@@ -80,14 +63,6 @@ export default function RootLayout({
           fontFamily: 'Jost, sans-serif'
         }}
       >
-        {/* <noscript>
-          <img
-            referrerPolicy="no-referrer-when-downgrade"
-            src="https://analytics.theathena.ai/matomo.php?idsite=1&amp;rec=1"
-            style={{ border: '0' }}
-            alt=""
-          />
-        </noscript> */}
         <ThirdwebProvider>
           <ThemeProvider
             attribute="class"
@@ -95,11 +70,13 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <AppStateProvider>
+            <AI >
+     
               <Header />
+    </AI>
               {children}
-              <Sidebar />
+              {/* <Sidebar /> */}
               <Footer />
-
               <Toaster />
             </AppStateProvider>
           </ThemeProvider>

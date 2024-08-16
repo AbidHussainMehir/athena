@@ -3,31 +3,27 @@ import { useTheme } from 'next-themes'
 
 function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
   const { theme } = useTheme()
-  console.log({ theme })
 
-  // Determine image source based on theme
   const logoSrc = theme === 'dark' ? '/logo-white.svg' : '/logo.svg'
   return (
-    <>
+    <div 
+     style={{
+      boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px", 
+      padding: '10px', 
+      display: 'flex', 
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden', 
+      backgroundColor: '#fff', 
+    }}
+    >
       <img
         src={logoSrc}
-        height={'250rem'}
-        width={'290rem'}
+        // height={'300rem'}
+        width={'480vw'}
         style={{ marginLeft: '5px' }}
       />
-      {/* // <svg
-    //   fill="currentColor"
-    //   viewBox="0 0 256 256"
-    //   role="img"
-    //   xmlns="http://www.w3.org/2000/svg"
-    //   className={cn('h-4 w-4', className)}
-    //   {...props}
-    // >
-    //   <circle cx="128" cy="128" r="128" fill="black"></circle>
-    //   <circle cx="102" cy="128" r="18" fill="white"></circle>
-    //   <circle cx="154" cy="128" r="18" fill="white"></circle>
-    // </svg> */}
-    </>
+    </div>
   )
 }
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import type { AI, UIState } from '@/app/actions'
 import { useUIState, useActions, useAIState } from 'ai/rsc'
 import { cn } from '@/lib/utils'
@@ -30,7 +30,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const [aiMessage, setAIMessage] = useAIState<typeof AI>()
   const { isGenerating, setIsGenerating } = useAppState()
   const { submit } = useActions()
-  const router = useRouter()
+  const router:any = useRouter()
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const isFirstRender = useRef(true) // For development environment
 
@@ -59,6 +59,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+    handleSearch(input)
     await handleQuerySubmit(input, formData)
   }
 
@@ -77,7 +78,41 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
       setIsGenerating(false)
     }
   }, [aiMessage, setIsGenerating])
+  const pathname = usePathname();
+  const [previousPath, setPreviousPath] = useState<string | null>(null);
 
+  useEffect(() => {
+    // Update the previous path whenever the pathname changes
+    if (pathname !== previousPath) {
+      setPreviousPath(pathname);
+    }
+  }, [pathname]);
+  console.log({previousPath},{pathname})
+
+  useEffect(() => {
+    // Handle side effects when pathname changes
+    console.log({previousPath},{pathname})
+    if(previousPath===null&&pathname==='/' ){
+      handleClear()
+    }
+    // Clear state or reset layout here
+  }, [pathname]);
+  useEffect(() => {
+    if (pathname === '/') {
+      handleClear();
+    }
+  }, [pathname]);
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     handleClear()
+  //       };
+
+  //   router?.events?.on('routeChangeStart', handleRouteChange);
+
+  //   return () => {
+  //     router?.events?.off('routeChangeStart', handleRouteChange);
+  //   };
+  // }, [router?.events]);
   // Clear messages
   const handleClear = () => {
     setIsGenerating(false)
@@ -86,7 +121,14 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     setInput('')
     router.push('/')
   }
-
+  const handleSearch = (inp: any) => {
+    window._mtm.push({
+      event: 'site-search-keywords-tracking',
+      'event-category': 'site-search-keywords',
+      'event-value': inp,
+      'event-action': `${document.title} - ${window.location.href}`
+    })
+  }
   useEffect(() => {
     // focus on input when the page loads
     inputRef.current?.focus()
@@ -127,7 +169,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         className="max-w-2xl mb-[200px] md:mb-[100px] w-full px-6"
       >
         <div
-          className="md:text-sm mb-5 text-lg relative mb-1 w-[100%] flex items-center w-full"
+          className="md:text-sm mb-5 text-lg relative mb-1 w-[100%] flex items-center w-full  "
           style={{
             fontWeight: 500,
             display: 'flex',
@@ -165,15 +207,8 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('The Learn to Earn Knowledge Platform')
-                  // .typeString('The AI Search Engine that Pays You to Learn ')
+                  .typeString('Privacy-Driven Learn to Earn Knowledge Platform')
                   .pauseFor(400)
-                  // .deleteChars(14)
-                  // .typeString('Learn with AI')
-                  // .pauseFor(400)
-                  // .deleteChars(13)
-                  // .typeString('Grow with AI')
-                  // .pauseFor(400)
                   .start()
               }}
             />
