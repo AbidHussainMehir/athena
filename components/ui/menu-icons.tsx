@@ -9,7 +9,7 @@ function MenuIcon() {
     theme === 'dark' ? '/header-icon-dark.svg' : '/header-icon.svg'
   return (
     <>
-      <img src={logoSrc} height={'35rem'} width={'40rem'} />
+      <img src={'/newlogo.svg'} height={'120rem'} width={'120rem'} />
     </>
   )
 }
