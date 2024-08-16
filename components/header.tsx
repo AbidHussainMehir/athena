@@ -58,14 +58,13 @@ export const Header: React.FC = () => {
     createWallet('app.phantom')
   ]
   const handleRedirect = () => {
-      setMessages([])
+    setMessages([])
     handleLogoClick()
     router.replace('/')
     setTimeout(() => {
-      router.refresh();
-    }, 1000);
+      router.refresh()
+    }, 1000)
     // router.refresh();
-
   }
   const handleConnectWallet = () => {
     window._mtm.push({
@@ -75,12 +74,26 @@ export const Header: React.FC = () => {
       'event-action': `${document.title} - ${window.location.href}`
     })
   }
+  useEffect(() => {
+    if (account?.address) {
+      localStorage.setItem('uid', account?.address)
+    } else {
+      localStorage.setItem('uid', 'anonymous')
+    }
+  }, [account])
+  useEffect(() => {
+    if (account?.address) {
+      localStorage.setItem('uid', account?.address)
+    } else {
+      localStorage.setItem('uid', 'anonymous')
+    }
+  }, [])
   return (
     <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent">
       <div>
         <span className="ml-5 gap-3 flex justify-center align-center ">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}
-          <div  style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
+          <div style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
             <MenuIcon />
           </div>
           {/* </Button> */}
