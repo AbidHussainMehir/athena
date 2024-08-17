@@ -5,13 +5,12 @@ import { Button } from './button'
 function MenuIcon() {
   const { theme } = useTheme()
 
-  const logoSrc =
-    theme === 'dark' ? '/header-icon-dark.svg' : '/header-icon.svg'
+  const logoSrc = theme === 'dark' ? '/newlogodark.svg' : '/newlogo.svg'
   return (
     <>
       <img
         className="ml-[-20px]"
-        src={'/newlogo.svg'}
+        src={logoSrc}
         height={'140rem'}
         width={'120rem'}
       />
