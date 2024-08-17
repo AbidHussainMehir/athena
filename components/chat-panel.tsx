@@ -30,7 +30,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const [aiMessage, setAIMessage] = useAIState<typeof AI>()
   const { isGenerating, setIsGenerating } = useAppState()
   const { submit } = useActions()
-  const router:any = useRouter()
+  const router: any = useRouter()
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const isFirstRender = useRef(true) // For development environment
 
@@ -78,30 +78,30 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
       setIsGenerating(false)
     }
   }, [aiMessage, setIsGenerating])
-  const pathname = usePathname();
-  const [previousPath, setPreviousPath] = useState<string | null>(null);
+  const pathname = usePathname()
+  const [previousPath, setPreviousPath] = useState<string | null>(null)
 
   useEffect(() => {
     // Update the previous path whenever the pathname changes
     if (pathname !== previousPath) {
-      setPreviousPath(pathname);
+      setPreviousPath(pathname)
     }
-  }, [pathname]);
-  console.log({previousPath},{pathname})
+  }, [pathname])
+  console.log({ previousPath }, { pathname })
 
   useEffect(() => {
     // Handle side effects when pathname changes
-    console.log({previousPath},{pathname})
-    if(previousPath===null&&pathname==='/' ){
+    console.log({ previousPath }, { pathname })
+    if (previousPath === null && pathname === '/') {
       handleClear()
     }
     // Clear state or reset layout here
-  }, [pathname]);
+  }, [pathname])
   useEffect(() => {
     if (pathname === '/') {
-      handleClear();
+      handleClear()
     }
-  }, [pathname]);
+  }, [pathname])
   // useEffect(() => {
   //   const handleRouteChange = () => {
   //     handleClear()
@@ -207,7 +207,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
               onInit={typewriter => {
                 typewriter
                   .pauseFor(100)
-                  .typeString('Privacy-Driven Learn to Earn Knowledge Platform')
+                  .typeString('Privacy-Driven Learn to Earn Search Platform')
                   .pauseFor(400)
                   .start()
               }}
