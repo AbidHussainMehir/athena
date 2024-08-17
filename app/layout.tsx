@@ -41,8 +41,7 @@ export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
-}>)
- {
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
@@ -70,10 +69,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <AppStateProvider>
-            <AI >
-     
-              <Header />
-    </AI>
+              <AI>
+                <Header />
+              </AI>
               {children}
               {/* <Sidebar /> */}
               <Footer />

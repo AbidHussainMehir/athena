@@ -13,8 +13,8 @@ function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        overflow: 'hidden',
-        backgroundColor: '#fff'
+        overflow: 'hidden'
+        // backgroundColor: '#fff'
       }}
     >
       <img

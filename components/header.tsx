@@ -92,6 +92,7 @@ export const Header: React.FC = () => {
       }
     } catch (error) {}
   }, [account])
+
   useEffect(() => {
     try {
       if (account?.address) {
@@ -109,10 +110,11 @@ export const Header: React.FC = () => {
       }
     } catch (error) {}
   }, [])
+
   return (
     <header
       style={{ position: 'absolute' }}
-      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent"
+      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white dark:bg-dark md:bg-transparent"
     >
       <div>
         <span className="gap-3 flex justify-start align-center">
@@ -129,6 +131,8 @@ export const Header: React.FC = () => {
         <span className="sr-only">Athena</span>
       </div>
       <div className="flex ">
+        <ModeToggle />
+
         {/* <span className="mr-2">
           <ModeToggle />
         </span> */}
