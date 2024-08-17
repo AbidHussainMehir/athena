@@ -76,41 +76,52 @@ export const Header: React.FC = () => {
   }
 
   useEffect(() => {
-    if (account?.address) {
-      localStorage.setItem('uid', account?.address)
-      window._mtm.push({
-        event: 'set_user_id',
-        uid: account?.address
-      })
-    } else {
-      localStorage.setItem('uid', 'anonymous')
-      window._mtm.push({
-        event: 'set_user_id',
-        uid: 'anonymous'
-      })
-    }
+    try {
+      if (account?.address) {
+        localStorage.setItem('uid', account?.address)
+        window._mtm.push({
+          event: 'set_user_id',
+          uid: account?.address
+        })
+      } else {
+        localStorage.setItem('uid', 'anonymous')
+        window._mtm.push({
+          event: 'set_user_id',
+          uid: 'anonymous'
+        })
+      }
+    } catch (error) {}
   }, [account])
   useEffect(() => {
-    if (account?.address) {
-      localStorage.setItem('uid', account?.address)
-      window._mtm.push({
-        event: 'set_user_id',
-        uid: account?.address
-      })
-    } else {
-      localStorage.setItem('uid', 'anonymous')
-      window._mtm.push({
-        event: 'set_user_id',
-        uid: 'anonymous'
-      })
-    }
+    try {
+      if (account?.address) {
+        localStorage.setItem('uid', account?.address)
+        window._mtm.push({
+          event: 'set_user_id',
+          uid: account?.address
+        })
+      } else {
+        localStorage.setItem('uid', 'anonymous')
+        window._mtm.push({
+          event: 'set_user_id',
+          uid: 'anonymous'
+        })
+      }
+    } catch (error) {}
   }, [])
   return (
-    <header className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent">
+    <header
+      style={{ position: 'absolute' }}
+      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none bg-white md:bg-transparent"
+    >
       <div>
-        <span className="ml-5 gap-3 flex justify-center align-center ">
+        <span className="gap-3 flex justify-start align-center">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}
-          <div style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
+          <div
+            style={{ position: 'relative', cursor: 'pointer' }}
+            id="logo"
+            onClick={handleRedirect}
+          >
             <MenuIcon />
           </div>
           {/* </Button> */}
