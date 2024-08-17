@@ -84,7 +84,7 @@
 }
 
 .connect>button {
-  @apply h-[40px];
+  @apply h-[38px];
   /* @apply h-[40px] text-xs font-bold bg-accent tracking-wider md:text-base rounded-[100px] cursor-pointer border-solid border-2 border-white hover:border-solid hover:border-2 hover:border-black; */
 }
 

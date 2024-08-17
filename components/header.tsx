@@ -113,17 +113,13 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      style={{ position: 'absolute' }}
+      style={{ position: 'relative' }}
       className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none  md:bg-transparent"
     >
       <div>
         <span className="gap-3 flex justify-start align-center">
           {/* <Button className="mr-2" variant="ghost" size="icon"> */}
-          <div
-            style={{ position: 'relative', cursor: 'pointer' }}
-            id="logo"
-            onClick={handleRedirect}
-          >
+          <div style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
             <MenuIcon />
           </div>
           {/* </Button> */}
