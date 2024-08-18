@@ -10,9 +10,8 @@ import { ThirdwebProvider } from 'thirdweb/react'
 import Head from 'next/head'
 import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
-const title = 'Athena'
-const description =
-  'The AI-powered search engine that rewards you to learn and grow.'
+const title = 'TheAthena.ai'
+const description = 'Athena SearchGPT: Learn to Earn Search Platform.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.theathena.ai'),
@@ -55,6 +54,18 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <title>TheAthena.ai</title>
+        <meta
+          name="description"
+          content="Athena SearchGPT: Learn to Earn Search Platform."
+        />
+        <meta property="og:title" content="TheAthena.ai" />
+        <meta
+          property="og:description"
+          content="Athena SearchGPT: Learn to Earn Search Platform."
+        />
+        <meta property="og:image" content="https://www.theathena.ai/logo.svg" />
+        <meta property="og:url" content="https://www.theathena.ai" />
       </Head>
 
       <body
