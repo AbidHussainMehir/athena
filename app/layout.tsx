@@ -66,6 +66,7 @@ export default function RootLayout({
         />
         <meta property="og:image" content="https://www.theathena.ai/logo.svg" />
         <meta property="og:url" content="https://www.theathena.ai" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <body
