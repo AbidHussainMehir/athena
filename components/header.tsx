@@ -140,6 +140,7 @@ export const Header: React.FC = () => {
           <ConnectButton
             client={client}
             wallets={wallets}
+            
             theme={lightTheme({
               colors: {
                 accentText: '#02337e',
@@ -159,7 +160,7 @@ export const Header: React.FC = () => {
               },
               showThirdwebBranding: false
             }}
-          />
+          >
         </div>
       </div>
     </header>
