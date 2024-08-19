@@ -160,7 +160,7 @@ export const Header: React.FC = () => {
               },
               showThirdwebBranding: false
             }}
-          >
+          />
         </div>
       </div>
     </header>
