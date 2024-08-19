@@ -140,7 +140,7 @@ export const Header: React.FC = () => {
           <ConnectButton
             client={client}
             wallets={wallets}
-            
+            aria-label="Connect Wallet"
             theme={lightTheme({
               colors: {
                 accentText: '#02337e',
