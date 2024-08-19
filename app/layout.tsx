@@ -13,21 +13,23 @@ import { AI } from '@/app/actions'
 const title = 'TheAthena.ai'
 const description = 'Athena SearchGPT: Learn to Earn Search Platform.'
 
-// export const metadata: Metadata = {
-//   metadataBase: new URL('https://www.theathena.ai'),
-//   title,
-//   description,
-//   openGraph: {
-//     title,
-//     description
-//   },
-//   twitter: {
-//     title,
-//     description,
-//     card: 'summary_large_image',
-//     creator: '@abid'
-//   }
-// }
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.theathena.ai'),
+  title,
+  description,
+  keywords: ['TheAthena', 'searchGPT', 'Athena SearchGPT', 'Search Platform'],
+  openGraph: {
+    title,
+    description
+  },
+  twitter: {
+    title,
+    description,
+    card: 'summary_large_image',
+    creator: '@abid'
+  },
+  icons: ['https://www.theathena.ai/logo.svg']
+}
 
 export const viewport: Viewport = {
   width: 'device-width',
