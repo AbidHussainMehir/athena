@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
     }
   }, [])
   return (
-    <footer className="w-[100%] p-1 md:p-2 fixed bottom-0 right-0">
+    <footer className={`w-[100%] p-1 md:p-2  ${!pathname.includes('search') && !pathname.includes('dashboard')?'fixed bottom-0 right-0':''}`}>
       {!pathname.includes('search') && !pathname.includes('share') && (
         <div className="flex flex-wrap mb-4  gap-1 md:gap-4 w-full justify-center">
           <span
