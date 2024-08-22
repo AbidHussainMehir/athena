@@ -114,7 +114,7 @@ export const Header: React.FC = () => {
   return (
     <header
       style={{ position: 'relative' }}
-      className="fixed w-full p-1 md:p-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none  md:bg-transparent"
+      className="fixed w-full  py-0 px-1 md:px-2 flex justify-between items-center z-10 backdrop-blur md:backdrop-blur-none  md:bg-transparent"
     >
       <div>
         <span className="gap-3 flex justify-start align-center">

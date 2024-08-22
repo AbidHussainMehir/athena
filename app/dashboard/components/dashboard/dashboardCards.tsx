@@ -53,7 +53,32 @@ export function DashboardCards({
     //     </Card>
     //   </div>
     // </div>
-    <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-4 xs:grid-cols-2 sm:grid-cols-2 gap-4 md:gap-2 mb-4">
+    <>
+    <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-2 mb-4'>
+
+    <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-4 md:gap-2 mb-4'>
+    <div className="">
+        <Card className="">
+          <CardHeader className="px-0">
+            <CardTitle className="text-center px-0">Total Visits</CardTitle>
+            <CardDescription className="text-center px-0">
+              {apiData?.nb_visits}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </div>
+      <div className="">
+        <Card>
+          <CardHeader className="px-0">
+            <CardTitle className="text-center">Total Actions</CardTitle>
+            <CardDescription className="text-center">
+              {apiData?.nb_actions}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </div>
+    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2  md:grid-cols-4   gap-4 md:gap-2 mb-4">
       <div className="">
         <Card className="">
           <CardHeader className="px-0">
@@ -95,5 +120,7 @@ export function DashboardCards({
         </Card>
       </div>
     </div>
+    </div>
+    </>
   )
 }
