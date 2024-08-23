@@ -12,8 +12,8 @@ function MenuIcon() {
         className="ml-[-20px]"
         src={logoSrc}
         // style={{ position: 'absolute', top: -5, left: -10 }}
-        height={'140rem'}
-        width={'120rem'}
+        height={'160rem'}
+        width={'160rem'}
       />
     </>
   )
