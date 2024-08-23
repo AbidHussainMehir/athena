@@ -10,6 +10,7 @@ import {
 } from '../ui/card'
 import { Button } from '../ui/button'
 import { useTheme } from 'next-themes'
+import Image from 'next/image'
 
 export function PresaleCard() {
   const theme: any = useTheme()
