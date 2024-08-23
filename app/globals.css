@@ -98,9 +98,9 @@
 .connect>button {
   border-radius: 14px !important;
   min-width: 140px !important;
-height: 38px !important;
+  height: 38px !important;
   min-height: 36px !important;
-  
+
   /* @apply h-[40px] text-xs font-bold bg-accent tracking-wider md:text-base rounded-[100px] cursor-pointer border-solid border-2 border-white hover:border-solid hover:border-2 hover:border-black; */
 }
 
@@ -162,9 +162,3 @@ height: 38px !important;
 .tag-dark button:hover {
   background: #374151 !important;
 }
-
-
-
-
-
-
