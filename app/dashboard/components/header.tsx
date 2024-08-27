@@ -20,7 +20,7 @@ import {
   TooltipContent,
   TooltipTrigger
 } from '@/components/ui/tooltip'
-import { VercelLogo } from '@/components/icons'
+import { VercelLogo } from '../components/icons'
 import Providers from './providers'
 import { NavItem } from './ui/nav-item'
 import { SearchInput } from './ui/search'
