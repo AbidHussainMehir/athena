@@ -162,3 +162,31 @@
 .tag-dark button:hover {
   background: #374151 !important;
 }
+
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+
+}
