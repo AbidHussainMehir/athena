@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from 'next/link'
 import {
   Home,
   LineChart,
@@ -8,27 +8,26 @@ import {
   Settings,
   ShoppingCart,
   Users2
-} from 'lucide-react';
+} from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
-} from '@/components/ui/tooltip';
-import { VercelLogo } from '@/components/icons';
-import Providers from './providers';
-import { NavItem } from './ui/nav-item';
-import { SearchInput } from './ui/search';
-import { User } from './ui/user';
+} from '@/components/ui/tooltip'
+import { VercelLogo } from '../components/icons'
+import Providers from './providers'
+import { NavItem } from './ui/nav-item'
+import { SearchInput } from './ui/search'
+import { User } from './ui/user'
 
 export default async function DashboardLayout({
   children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-
   return (
     <Providers>
       <main className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -37,7 +36,7 @@ export default async function DashboardLayout({
           <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
             <MobileNav />
             <SearchInput />
-            <User/>
+            <User />
           </header>
           <main className="grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 bg-muted/40">
             {children}
@@ -45,7 +44,7 @@ export default async function DashboardLayout({
         </div>
       </main>
     </Providers>
-  );
+  )
 }
 
 function DesktopNav() {
@@ -95,7 +94,7 @@ function DesktopNav() {
         </Tooltip>
       </nav>
     </aside>
-  );
+  )
 }
 
 function MobileNav() {
@@ -154,5 +153,5 @@ function MobileNav() {
         </nav>
       </SheetContent>
     </Sheet>
-  );
+  )
 }
