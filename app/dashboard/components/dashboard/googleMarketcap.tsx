@@ -39,7 +39,7 @@ const chartConfig = {
 
 export function GoogleMarketcapChart() {
   return (
-    <Card>
+    <Card className='rounded-xl border bg-card text-card-foreground shadow'>
       <CardHeader>
         <CardTitle>Google Marketcap</CardTitle>
         {/* <CardDescription>January - June 2024</CardDescription> */}

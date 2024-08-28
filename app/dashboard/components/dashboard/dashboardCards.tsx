@@ -9,13 +9,13 @@ export function DashboardCards({
 }: any) {
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-2 mb-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-4 md:gap-2 mb-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-4 md:gap-4 ">
           <PresaleCard />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2  md:grid-cols-4   gap-4 md:gap-2 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2  md:grid-cols-4   gap-4 md:gap-4 ">
           <div className="">
-            <Card className=" transition duration-300 hover:scale-105">
+            <Card className=" rounded-xl border bg-card text-card-foreground shadow">
               <CardHeader className="px-0">
                 <CardTitle className="text-center px-0">Total Visits</CardTitle>
                 <CardDescription className="text-center px-0">
@@ -54,7 +54,7 @@ export function DashboardCards({
           </div> */}
 
           <div className="">
-            <Card>
+            <Card className='rounded-xl border bg-card text-card-foreground shadow'>
               <CardHeader className="px-0">
                 <CardTitle className="text-center">Total Actions</CardTitle>
                 <CardDescription className="text-center">
@@ -64,7 +64,7 @@ export function DashboardCards({
             </Card>
           </div>
           <div className="">
-            <Card>
+            <Card className='rounded-xl border bg-card text-card-foreground shadow'>
               <CardHeader className="px-0">
                 <CardTitle className="text-center">Total Searches</CardTitle>
                 <CardDescription className="text-center">
@@ -74,7 +74,7 @@ export function DashboardCards({
             </Card>
           </div>
           <div className="">
-            <Card>
+            <Card className='rounded-xl border bg-card text-card-foreground shadow'>
               <CardHeader className="px-0">
                 <CardTitle className="text-center ">Total Time Spent</CardTitle>
                 <CardDescription className="text-center">

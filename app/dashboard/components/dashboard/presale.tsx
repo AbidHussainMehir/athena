@@ -21,7 +21,7 @@ export function PresaleCard() {
   return (
     <>
       <div className="">
-        <Card className="h-full flex flex-col justify-between">
+        <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
           <CardHeader className="px-0">
             <CardTitle className="text-center px-0">Presale</CardTitle>
             <CardDescription className="text-center flex justify-center px-0">
@@ -48,7 +48,7 @@ export function PresaleCard() {
         </Card>
       </div>
       <div className="">
-        <Card className="h-full flex flex-col justify-between">
+        <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
           <CardHeader className="px-0 ">
             <CardTitle className="text-center">Rewards</CardTitle>
             <CardDescription className="text-center"></CardDescription>

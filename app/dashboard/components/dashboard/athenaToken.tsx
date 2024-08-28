@@ -39,7 +39,7 @@ const chartConfig = {
 
 export function AthenaTokenChart() {
   return (
-    <Card>
+    <Card className='rounded-xl border bg-card text-card-foreground shadow'>
       <CardHeader>
         <CardTitle>Athena Token</CardTitle>
         {/* <CardDescription>January - June 2024</CardDescription> */}
