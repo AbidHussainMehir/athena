@@ -74,8 +74,8 @@ const Footer: React.FC = () => {
           >
             <Button className="px-1 md:px-2 h-8" variant={'ghost'} size={'md'}>
               <Link
-                onClick={() => linksClick('https://deck.theathena.ai')}
-                href="https://deck.theathena.ai"
+                onClick={() => linksClick('deck')}
+                href="/deck_doc.pdf"
                 className="mx-2"
                 target="_blank"
               >

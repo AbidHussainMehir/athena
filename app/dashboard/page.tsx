@@ -4,10 +4,13 @@ import * as React from 'react'
 import ChartsIndex from './components/dashboard/chartsIndex'
 import { CardDescription, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
-
+import { useTheme } from 'next-themes'
 // import ChartsIndex from '@/components/dashboard/chartsIndex'
 
 export default function Page() {
+  const { theme } = useTheme()
+
+  const logoSrc = theme === 'dark' ? '/logo_dark.svg' : '/presale.svg'
   return (
     <main className="flex min-h-screen w-full flex-col bg-muted/40">
       <div className="flex flex-col sm:gap-4 sm:py-4 ">
@@ -19,7 +22,7 @@ export default function Page() {
           <div className="container mx-auto p-4 md:p-6 lg:p-8">
             <div className="flex justify-center" style={{ maxWidth: '60vw' }}>
               <Image
-                src="/presale.svg"
+                src={logoSrc}
                 // alt="Your SVG image"
                 // className="w-48 md:w-64 lg:w-80"
                 alt="Your SVG image"
