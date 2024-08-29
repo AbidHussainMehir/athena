@@ -17,7 +17,16 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.theathena.ai'),
   title,
   description,
-  keywords: ['TheAthena', 'searchGPT', 'Athena SearchGPT', 'Search Platform'],
+  keywords: [
+    'TheAthena.ai',
+    'TheAthena',
+    'searchGPT',
+    'Athena SearchGPT',
+    'Search Platform',
+    'ai',
+    'gpt',
+    'rewards'
+  ],
   openGraph: {
     title,
     description
@@ -66,9 +75,50 @@ export default function RootLayout({
           property="og:description"
           content="Athena SearchGPT: Learn to Earn Search Platform."
         />
-        <meta property="og:image" content="https://www.theathena.ai/logo.svg" />
-        <meta property="og:url" content="https://www.theathena.ai" />
+        <meta property="og:image" content="https://theathena.ai/logo.svg" />
+        <meta property="og:url" content="https://theathena.ai" />
         <meta property="og:type" content="website" />
+
+        <meta
+          name="description"
+          content="Athena SearchGPT: Learn to Earn Search Platform."
+        />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="TheAthena.ai" />
+        <meta
+          property="og:description"
+          content="Athena SearchGPT: Learn to Earn Search Platform."
+        />
+        <meta property="og:image" content="https://theathena.ai/logo.svg" />
+        <meta property="og:url" content="https://theathena.ai" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TheAthena.ai" />
+        <meta
+          name="twitter:description"
+          content="Athena SearchGPT: Learn to Earn Search Platform."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.theathena.ai/logo.svg"
+        />
+
+        {/* Canonical Tag */}
+        <link rel="canonical" href="https://theathena.ai" />
+
+        {/* Structured Data (Schema.org) */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://theathena.ai',
+            '@type': 'WebPage',
+            name: 'TheAthena.ai',
+            description: 'Athena SearchGPT: Learn to Earn Search Platform.',
+            url: 'https://theathena.ai'
+          })}
+        </script>
       </Head>
 
       <body
