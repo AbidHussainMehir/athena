@@ -101,10 +101,7 @@ export default function RootLayout({
           name="twitter:description"
           content="Athena SearchGPT: Learn to Earn Search Platform."
         />
-        <meta
-          name="twitter:image"
-          content="https://www.theathena.ai/logo.svg"
-        />
+        <meta name="twitter:image" content="https://theathena.ai/logo.svg" />
 
         {/* Canonical Tag */}
         <link rel="canonical" href="https://theathena.ai" />
