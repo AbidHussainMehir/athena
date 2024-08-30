@@ -150,9 +150,7 @@ export default function ChartIndex() {
   useEffect(() => {
     handleGetSearchChartData()
   }, [account])
-  {
-    console.log('account', account)
-  }
+
   return (
     <div>
       {loading ? (
