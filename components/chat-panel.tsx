@@ -87,11 +87,9 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
       setPreviousPath(pathname)
     }
   }, [pathname])
-  console.log({ previousPath }, { pathname })
 
   useEffect(() => {
     // Handle side effects when pathname changes
-    console.log({ previousPath }, { pathname })
     if (previousPath === null && pathname === '/') {
       handleClear()
     }

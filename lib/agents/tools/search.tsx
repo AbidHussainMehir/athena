@@ -37,8 +37,10 @@ export const searchTool = ({ uiStream, fullResponse }: ToolProps) =>
           searchAPI === 'tavily'
             ? await tavilySearch(filledQuery)
             : await exaSearch(query)
-      } catch (error) {
-        console.error('Search API error:', error)
+        console.error('searchResult API error:', searchResult)
+        console.error('searchAPI error:', searchAPI)
+      } catch (error: any) {
+        console.error('Search API error:', error.message)
         hasError = true
       }
 

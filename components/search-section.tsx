@@ -21,6 +21,7 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
     : ''
   return (
     <div>
+      {<p>{JSON.stringify({ pending, data })}</p>}
       {!pending && data ? (
         <>
           <Section size="sm" className="pt-2 pb-0">
