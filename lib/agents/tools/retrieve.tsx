@@ -13,13 +13,13 @@ export const retrieveTool = ({ uiStream, fullResponse }: ToolProps) =>
       let hasError = false
       // Append the search section
 
-      uiStream.append(
-        <>
-          {<p>uiStream:retrieveTool </p>}
+      // uiStream.append(
+      //   <>
+      //     {<p>uiStream:retrieveTool </p>}
 
-          <SearchSkeleton />
-        </>
-      )
+      //     <SearchSkeleton />
+      //   </>
+      // )
 
       let results: SearchResultsType | undefined
       try {
