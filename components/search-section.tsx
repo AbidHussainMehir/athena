@@ -21,7 +21,7 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
     : ''
   return (
     <div>
-      {/* {<p>{JSON.stringify({ pending, data })}</p>} */}
+      {<p>{JSON.stringify({ pending, data })}</p>}
       {!pending && data ? (
         <>
           <Section size="sm" className="pt-2 pb-0">
@@ -41,6 +41,7 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
         </>
       ) : (
         <Section className="pt-2 pb-0">
+          SearchSection
           <SearchSkeleton />
         </Section>
       )}

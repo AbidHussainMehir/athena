@@ -16,6 +16,8 @@ export function VideoSearchSection({ result }: VideoSearchSectionProps) {
   const searchResults: SerperSearchResults = data ? JSON.parse(data) : undefined
   return (
     <div>
+      {<p>video:{JSON.stringify({ pending, data })}</p>}
+
       {!pending && data ? (
         <>
           <Section size="sm" className="pt-2 pb-0">
@@ -27,6 +29,7 @@ export function VideoSearchSection({ result }: VideoSearchSectionProps) {
         </>
       ) : (
         <Section className="pt-2 pb-0">
+          VideoSearchSection
           <SearchSkeleton />
         </Section>
       )}
