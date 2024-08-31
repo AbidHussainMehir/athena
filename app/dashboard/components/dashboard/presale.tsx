@@ -22,7 +22,9 @@ export function PresaleCard() {
     <>
       <div className="">
         <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
-          <CardHeader className="px-0">
+          <div></div>
+
+          <CardHeader className="py-2 px-6 p-0">
             <CardTitle className="text-center px-0">Presale</CardTitle>
             <CardDescription className="text-center flex justify-center px-0">
               <input
@@ -49,6 +51,7 @@ export function PresaleCard() {
       </div>
       <div className="">
         <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
+          <div></div>
           <CardHeader className="px-0 ">
             <CardTitle className="text-center">Rewards</CardTitle>
             <CardDescription className="text-center"></CardDescription>
