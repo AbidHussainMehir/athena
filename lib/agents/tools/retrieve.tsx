@@ -61,7 +61,7 @@ export const retrieveTool = ({ uiStream, fullResponse }: ToolProps) =>
         return results
       }
 
-      uiStream.update(<RetrieveSection data={results} />)
+      // uiStream.update(<RetrieveSection data={results} />)
 
       return results
     }
