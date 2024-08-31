@@ -13,11 +13,11 @@ export const getTools = ({ uiStream, fullResponse }: ToolProps) => {
     search: searchTool({
       uiStream,
       fullResponse
-    }),
-    retrieve: retrieveTool({
-      uiStream,
-      fullResponse
     })
+    // retrieve: retrieveTool({
+    //   uiStream,
+    //   fullResponse
+    // })
   }
 
   if (process.env.SERPER_API_KEY) {
