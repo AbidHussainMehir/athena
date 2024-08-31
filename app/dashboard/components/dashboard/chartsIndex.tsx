@@ -16,7 +16,7 @@ export default function ChartIndex() {
   const [chartVisitsData, setChartVisitsData] = useState<any>()
   const [searchData, setSearchData] = useState()
   const [chartSearchData, setChartSearchData] = useState<any>()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const account = useActiveAccount()
 
   const handleGetData = async () => {
@@ -167,7 +167,7 @@ export default function ChartIndex() {
               cx="50"
               cy="50"
               fill="none"
-              stroke="#00BFFF"
+              stroke="#000"
               strokeWidth="8"
               r="35"
               strokeDasharray="164.93361431346415 56.97787143782138"
