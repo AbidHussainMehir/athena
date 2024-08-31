@@ -25,11 +25,11 @@ export default function ChartIndex() {
       setLoading(true)
       if (account) {
         response = await fetch(
-          `https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=week&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
+          `https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
         )
       } else {
         response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=week&date=yesterday&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
+          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=yesterday&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
         )
       }
       if (!response.ok) {
@@ -56,7 +56,7 @@ export default function ChartIndex() {
         )
       } else {
         response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=day&date=last7&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
+          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=week&date=last7&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
         )
       }
       if (!response.ok) {
@@ -122,17 +122,18 @@ export default function ChartIndex() {
       setLoading(true)
       if (account) {
         response = await fetch(
-          `https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=week&date=last7&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1&segment=userId==${account?.address}`
+          `https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=month&date=last7&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1&segment=userId==${account?.address}`
         )
       } else {
         response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=week&date=yesterday&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed'
+          'https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=month&date=last7&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed'
         )
       }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
+      console.log({ data })
       if (data && typeof data === 'object') {
         const transformedData = Object.keys(data)?.map((date, index) => ({
           day: `${index + 1}`,

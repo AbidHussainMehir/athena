@@ -24,8 +24,8 @@ export function PresaleCard() {
         <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
           <div></div>
 
-          <CardHeader className="py-2 px-6 p-0">
-            <CardTitle className="text-center px-0">Presale</CardTitle>
+          <CardHeader className="py-6 px-6 ">
+            <CardTitle className="text-center ">Presale</CardTitle>
             <CardDescription className="text-center flex justify-center px-0">
               <input
                 type="number"
