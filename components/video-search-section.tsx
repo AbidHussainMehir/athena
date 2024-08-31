@@ -16,7 +16,7 @@ export function VideoSearchSection({ result }: VideoSearchSectionProps) {
   const searchResults: SerperSearchResults = data ? JSON.parse(data) : undefined
   return (
     <div>
-      {<p>video:{JSON.stringify({ pending, data })}</p>}
+      {/* {<p>video:{JSON.stringify({ pending, data })}</p>} */}
 
       {!pending && data ? (
         <>
