@@ -18,7 +18,7 @@ export default function ChartIndex() {
   const [chartSearchData, setChartSearchData] = useState<any>()
   const [loading, setLoading] = useState(true)
   const account = useActiveAccount()
-
+  console.log({ apiData })
   const handleGetData = async () => {
     try {
       let response

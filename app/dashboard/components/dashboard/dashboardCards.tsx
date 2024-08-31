@@ -187,7 +187,7 @@ export function DashboardCards({
                 <CardTitle className="px-0  text-sm font-medium">
                   <div className="px-6 flex flex-row items-center justify-between ">
                     <p className=" px-0  text-sm font-medium">
-                      Total Time Spent
+                      Average Time Spent
                     </p>
 
                     <svg
@@ -215,7 +215,8 @@ export function DashboardCards({
                 </CardTitle>
                 <CardDescription className="px-0">
                   <p className="px-6 text-2xl font-bold">
-                    {apiData?.avg_time_on_site}
+                    {apiData?.avg_time_on_site}{' '}
+                    <span className="text-sm">(S / Visit)</span>
                   </p>
                 </CardDescription>
               </CardHeader>
