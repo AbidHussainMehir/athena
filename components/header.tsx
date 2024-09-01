@@ -21,6 +21,7 @@ export const Header: React.FC = () => {
 
   const account = useActiveAccount()
   let isConnected = !!account
+
   useEffect(() => {
     const script = document.createElement('script')
     script.async = true
@@ -111,6 +112,14 @@ export const Header: React.FC = () => {
     } catch (error) {}
   }, [])
 
+  const linksClick = (linkText: any) => {
+    window._mtm.push({
+      event: 'menu-clicks-tracking',
+      'event-category': 'menu-clicks',
+      'event-value': linkText,
+      'event-action': `${document.title} - ${window.location.href}`
+    })
+  }
   return (
     <header
       style={{ position: 'relative' }}
@@ -141,9 +150,8 @@ export const Header: React.FC = () => {
             client={client}
             wallets={wallets}
             connectButton={{
-              label: "Connect Wallet",
+              label: 'Connect Wallet'
             }}
-            
             theme={lightTheme({
               colors: {
                 accentText: '#02337e',
@@ -165,6 +173,34 @@ export const Header: React.FC = () => {
             }}
           />
         </div>
+        {isConnected && (
+          <div className="non-mobile ms-3" style={{ cursor: 'pointer' }}>
+            <Link
+              legacyBehavior
+              onClick={() => linksClick('dashboard')}
+              href={'/dashboard'}
+            >
+              <svg
+                fill="none"
+                height="40"
+                viewBox="0 0 24 24"
+                width="40"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  stroke="#4CAF50"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                >
+                  <path d="m12.12 12.78c-.07-.01-.16-.01-.24 0-1.76-.06-3.16003-1.5-3.16003-3.27002 0-1.81 1.46003-3.28 3.28003-3.28 1.81 0 3.28 1.47 3.28 3.28-.01 1.77002-1.4 3.21002-3.16 3.27002z" />
+                  <path d="m18.74 19.3801c-1.78 1.63-4.14 2.62-6.74 2.62-2.59999 0-4.95999-.99-6.73999-2.62.1-.94.7-1.86 1.77-2.58 2.74-1.82 7.21999-1.82 9.93999 0 1.07.72 1.67 1.64 1.77 2.58z" />
+                  <path d="m12 22c5.5228 0 10-4.4772 10-10 0-5.52285-4.4772-10-10-10-5.52285 0-10 4.47715-10 10 0 5.5228 4.47715 10 10 10z" />
+                </g>
+              </svg>
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   )
