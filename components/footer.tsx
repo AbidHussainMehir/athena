@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span>
-        <span
+        {/* <span
           className={`${
             theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
           } rounded-lg`}
@@ -157,7 +157,7 @@ const Footer: React.FC = () => {
               <SiGmail size={18} />
             </Link>
           </Button>
-        </span>
+        </span> */}
       </div>
     </footer>
   )
