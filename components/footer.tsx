@@ -32,57 +32,74 @@ const Footer: React.FC = () => {
     }
   }, [])
   return (
-    <footer
-      className="w-[100%] p-1 md:p-2  pt-2 fixed bottom-0 right-0 "
-      style={{
-        backgroundColor: theme?.theme === 'dark' ? '#0A0A0A' : '#fff'
-      }}
-    >
-      <div className="flex flex-wrap mb-4  gap-1 md:gap-4 w-full justify-center">
-        <span
-          className={`${
-            theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
-          } rounded-lg`}
-        >
-          <Button className="px-1 md:px-2 h-8" variant={'ghost'} size={'md'}>
-            <Link onClick={() => linksClick('dashboard')} href={'/dashboard'}>
-              Dashboard
-            </Link>
-          </Button>
-        </span>
-        <span
-          className={`${
-            theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
-          } rounded-lg`}
-        >
-          <Button className="px-1 md:px-2 h-8" variant={'ghost'} size={'md'}>
-            <Link
-              onClick={() => linksClick('https://docs.theathena.ai')}
-              href="https://docs.theathena.ai"
-              className="mx-2"
-              target="_blank"
+    <>
+      <footer
+        className="w-[100%] p-1 md:p-2  pt-2 fixed bottom-0 right-0 "
+        style={{
+          backgroundColor: theme?.theme === 'dark' ? '#0A0A0A' : '#fff'
+        }}
+      >
+        {!pathname.includes('search') && !pathname.includes('share') && (
+          <div className="flex flex-wrap mb-4  gap-1 md:gap-4 w-full justify-center">
+            <span
+              className={`${
+                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+              } rounded-lg`}
             >
-              Docs
-            </Link>
-          </Button>
-        </span>
-        <span
-          className={`${
-            theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
-          } rounded-lg`}
-        >
-          <Button className="px-1 md:px-2 h-8" variant={'ghost'} size={'md'}>
-            <Link
-              onClick={() => linksClick('deck')}
-              href="/deck_doc.pdf"
-              className="mx-2"
-              target="_blank"
+              <Button
+                className="px-1 md:px-2 h-8"
+                variant={'ghost'}
+                size={'md'}
+              >
+                <Link
+                  onClick={() => linksClick('dashboard')}
+                  href={'/dashboard'}
+                >
+                  Dashboard
+                </Link>
+              </Button>
+            </span>
+            <span
+              className={`${
+                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+              } rounded-lg`}
             >
-              Deck
-            </Link>
-          </Button>
-        </span>
-        {/* <span
+              <Button
+                className="px-1 md:px-2 h-8"
+                variant={'ghost'}
+                size={'md'}
+              >
+                <Link
+                  onClick={() => linksClick('https://docs.theathena.ai')}
+                  href="https://docs.theathena.ai"
+                  className="mx-2"
+                  target="_blank"
+                >
+                  Docs
+                </Link>
+              </Button>
+            </span>
+            <span
+              className={`${
+                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+              } rounded-lg`}
+            >
+              <Button
+                className="px-1 md:px-2 h-8"
+                variant={'ghost'}
+                size={'md'}
+              >
+                <Link
+                  onClick={() => linksClick('deck')}
+                  href="/deck_doc.pdf"
+                  className="mx-2"
+                  target="_blank"
+                >
+                  Deck
+                </Link>
+              </Button>
+            </span>
+            {/* <span
           className={`${
             theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
           } rounded-lg`}
@@ -158,8 +175,10 @@ const Footer: React.FC = () => {
             </Link>
           </Button>
         </span> */}
-      </div>
-    </footer>
+          </div>
+        )}
+      </footer>
+    </>
   )
 }
 
