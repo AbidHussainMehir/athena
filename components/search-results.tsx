@@ -33,7 +33,7 @@ export function SearchResults({ results }: SearchResultsProps) {
     //   'event-value': linkText,
     //   'event-action': `${document.title} - ${window.location.href}`
     // })
-    window._mtm.push(['trackEvent', 'source-click', linkText])
+    window._paq.push(['trackEvent', 'source-click', linkText])
   }
   // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
   // _paq.push(['trackEvent', 'FormSubmission', 'page url','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
