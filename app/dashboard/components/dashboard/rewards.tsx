@@ -28,7 +28,7 @@ const chartConfig = {
 
 export function RewardsChart({ chartSearchData: chartSearchData }: any) {
   return (
-    <Card className='rounded-xl border bg-card text-card-foreground shadow'>
+    <Card className="rounded-xl border bg-card text-card-foreground shadow">
       <CardHeader>
         <CardTitle>Searches Per Day</CardTitle>
         {/* <CardDescription>January - June 2024</CardDescription> */}
@@ -49,12 +49,7 @@ export function RewardsChart({ chartSearchData: chartSearchData }: any) {
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value, index) => {
-                const isFirst = index === 0
-                const isLast = index === chartSearchData&&chartSearchData.length - 1
-                const isEvery8th = index % 5 === 0
-                return isFirst || isLast || isEvery8th ? value : ''
-              }}
+              tickFormatter={value => value && value.slice(0, 5)}
             />
             <ChartTooltip
               cursor={false}

@@ -25,11 +25,11 @@ export default function ChartIndex() {
       setLoading(true)
       if (account) {
         response = await fetch(
-          `https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
+          `https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=today&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
         )
       } else {
         response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=yesterday&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
+          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=today&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
         )
       }
       if (!response.ok) {
@@ -135,11 +135,15 @@ export default function ChartIndex() {
       const data = await response.json()
       console.log({ data })
       if (data && typeof data === 'object') {
+        const currentDate = new Date()
+        const currentMonth = String(currentDate.getMonth() + 1).padStart(2, '0')
         const transformedData = Object.keys(data)?.map((date, index) => ({
-          day: `${index + 1}`,
-          reward: data[date]?.nb_visits
+          day: `${currentMonth}/${date.slice(5, 10).replace('-', '/')}`,
+          reward: data[date]?.reduce(
+            (sum: any, item: any) => sum + item.nb_visits,
+            0
+          )
         }))
-
         setChartSearchData(transformedData)
       }
       setLoading(false)
