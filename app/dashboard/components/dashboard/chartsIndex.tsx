@@ -90,11 +90,11 @@ export default function ChartIndex() {
       setLoading(true)
       if (account) {
         response = await fetch(
-          `https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=yesterday&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1&segment=userId==${account?.address}`
+          `https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=today&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1&segment=userId==${account?.address}`
         )
       } else {
         response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=yesterday&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1'
+          'https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=today&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1'
         )
       }
       if (!response.ok) {
