@@ -181,5 +181,8 @@ const Footer: React.FC = () => {
     </>
   )
 }
+// _paq.push(['trackEvent', 'Menu', 'Freedom']);
+// _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
+// _paq.push(['trackEvent', 'FormSubmission', 'page','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
 
 export default Footer

@@ -26,12 +26,28 @@ export function SearchResults({ results }: SearchResultsProps) {
     const parts = hostname.split('.')
     return parts.length > 2 ? parts.slice(1, -1).join('.') : parts[0]
   }
+  const sourceClick = (linkText: any) => {
+    // window._mtm.push({
+    //   event: 'source-click',
+    //   'event-category': 'menu-clicks',
+    //   'event-value': linkText,
+    //   'event-action': `${document.title} - ${window.location.href}`
+    // })
+    window._mtm.push(['trackEvent', 'source-click', linkText])
+  }
+  // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
+  // _paq.push(['trackEvent', 'FormSubmission', 'page url','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
 
   return (
     <div className="flex flex-wrap">
       {displayedResults.map((result, index) => (
         <div className="w-1/2 md:w-1/4 p-1" key={index}>
-          <Link href={result.url} passHref target="_blank">
+          <Link
+            href={result.url}
+            onClick={() => sourceClick(result.url)}
+            passHref
+            target="_blank"
+          >
             <Card className="flex-1">
               <CardContent className="p-2">
                 <p className="text-xs line-clamp-2">
