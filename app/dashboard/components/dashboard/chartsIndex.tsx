@@ -12,26 +12,47 @@ import { useActiveAccount } from 'thirdweb/react'
 
 export default function ChartIndex() {
   const [apiData, setApiData] = useState()
+  const [apiDataAccount, setApiDataAccount] = useState()
   const [chartActionData, setChartActionsData] = useState<any>()
   const [chartVisitsData, setChartVisitsData] = useState<any>()
   const [searchData, setSearchData] = useState()
+  const [searchDataAccount, setSearchDataAccount] = useState()
   const [chartSearchData, setChartSearchData] = useState<any>()
   const [loading, setLoading] = useState(true)
   const account = useActiveAccount()
+  let isConnected = !!account
+
   console.log({ apiData })
-  const handleGetData = async () => {
+  const handleGetDataAccount = async () => {
     try {
-      let response
+      let response: any = null
       setLoading(true)
       if (account) {
         response = await fetch(
           `https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=today&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
         )
-      } else {
-        response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=today&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
-        )
+        if (!response?.ok) {
+          throw new Error(`HTTP error! status: ${response?.status}`)
+        }
+        const data = await response.json()
+        setApiDataAccount(data)
+        setLoading(false)
       }
+    } catch (error) {
+      console.error('Fetch error:', error)
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+    handleGetDataAccount()
+  }, [account])
+  const handleGetData = async () => {
+    try {
+      let response
+      setLoading(true)
+      response = await fetch(
+        'https://analytics.theathena.ai/index.php?module=API&method=VisitsSummary.get&idSite=1&period=year&date=today&format=JSON&token_auth=022dcce6d7ba7e09da509c42e8c3d43a'
+      )
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -46,6 +67,63 @@ export default function ChartIndex() {
   useEffect(() => {
     handleGetData()
   }, [account])
+
+  const handleGetSearchDataAccount = async () => {
+    try {
+      let response
+      setLoading(true)
+      if (account) {
+        response = await fetch(
+          `https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=today&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1&segment=userId==${account?.address}`
+        )
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        const totalNbVisits = data.reduce(
+          (sum: any, item: any) => sum + item.nb_visits,
+          0
+        )
+        setSearchDataAccount(totalNbVisits)
+      }
+
+      setLoading(false)
+    } catch (error) {
+      console.error('Fetch error:', error)
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+    handleGetSearchDataAccount()
+  }, [account])
+
+  const handleGetSearchData = async () => {
+    try {
+      let response
+      setLoading(true)
+      response = await fetch(
+        'https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=today&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1'
+      )
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      const totalNbVisits = data.reduce(
+        (sum: any, item: any) => sum + item.nb_visits,
+        0
+      )
+      setSearchData(totalNbVisits)
+      setLoading(false)
+    } catch (error) {
+      console.error('Fetch error:', error)
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+    handleGetSearchData()
+  }, [account])
+
   const handleChartGetData = async () => {
     try {
       let response
@@ -84,37 +162,7 @@ export default function ChartIndex() {
   useEffect(() => {
     handleChartGetData()
   }, [account])
-  const handleGetSearchData = async () => {
-    try {
-      let response
-      setLoading(true)
-      if (account) {
-        response = await fetch(
-          `https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=today&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1&segment=userId==${account?.address}`
-        )
-      } else {
-        response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&format=JSON&idSite=1&period=year&date=today&method=Actions.getSiteSearchKeywords&expanded=1&token_auth=9645f77e369daeb422fe1b392695a5ed&filter_limit=-1'
-        )
-      }
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-      const data = await response.json()
-      const totalNbVisits = data.reduce(
-        (sum: any, item: any) => sum + item.nb_visits,
-        0
-      )
-      setSearchData(totalNbVisits)
-      setLoading(false)
-    } catch (error) {
-      console.error('Fetch error:', error)
-      setLoading(false)
-    }
-  }
-  useEffect(() => {
-    handleGetSearchData()
-  }, [account])
+
   //search chart api
   const handleGetSearchChartData = async () => {
     try {
@@ -190,7 +238,13 @@ export default function ChartIndex() {
         </div>
       ) : (
         <>
-          <DashboardCards apiData={apiData} searchData={searchData} />
+          <DashboardCards
+            apiData={apiData}
+            apiDataAccount={apiDataAccount}
+            account={isConnected}
+            searchData={searchData}
+            searchDataAccount={searchDataAccount}
+          />
           <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div className="col-auto">
               <ActionChart apiData={chartVisitsData} />

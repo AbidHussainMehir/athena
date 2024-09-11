@@ -7,7 +7,10 @@ import { useTheme } from 'next-themes'
 
 export function DashboardCards({
   apiData: apiData,
-  searchData: searchData
+  searchData: searchData,
+  apiDataAccount: apiDataAccount,
+  account: account,
+  searchDataAccount: searchDataAccount
 }: any) {
   // import ChartsIndex from '@/components/dashboard/chartsIndex'
 
@@ -53,7 +56,7 @@ export function DashboardCards({
                 </div>
                 <CardDescription className="px-0">
                   <p className="px-6 text-2xl font-bold">
-                    {apiData?.nb_visits}
+                    {account ? apiDataAccount?.nb_visits : apiData?.nb_visits}
                   </p>
                 </CardDescription>
               </CardHeader>
@@ -114,7 +117,7 @@ export function DashboardCards({
                 </CardTitle>
                 <CardDescription className="px-0">
                   <p className="px-6 text-2xl font-bold">
-                    {apiData?.nb_actions}
+                    {account ? apiDataAccount?.nb_actions : apiData?.nb_actions}
                   </p>
                 </CardDescription>
               </CardHeader>
@@ -176,7 +179,9 @@ export function DashboardCards({
                   </div>
                 </CardTitle>
                 <CardDescription className="px-0">
-                  <p className="px-6 text-2xl font-bold">{searchData}</p>
+                  <p className="px-6 text-2xl font-bold">
+                    {account ? searchDataAccount : searchData}
+                  </p>
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -215,7 +220,9 @@ export function DashboardCards({
                 </CardTitle>
                 <CardDescription className="px-0">
                   <p className="px-6 text-2xl font-bold">
-                    {apiData?.avg_time_on_site}{' '}
+                    {account
+                      ? apiDataAccount?.avg_time_on_site
+                      : apiData?.avg_time_on_site}
                     <span className="text-sm">(S / Visit)</span>
                   </p>
                 </CardDescription>
