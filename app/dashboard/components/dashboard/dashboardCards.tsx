@@ -10,7 +10,8 @@ export function DashboardCards({
   searchData: searchData,
   apiDataAccount: apiDataAccount,
   account: account,
-  searchDataAccount: searchDataAccount
+  searchDataAccount: searchDataAccount,
+  customEventsData
 }: any) {
   // import ChartsIndex from '@/components/dashboard/chartsIndex'
 
@@ -224,6 +225,47 @@ export function DashboardCards({
                       ? apiDataAccount?.avg_time_on_site
                       : apiData?.avg_time_on_site}
                     <span className="text-sm">(S / Visit)</span>
+                  </p>
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+          <div className="">
+            <Card className="rounded-xl border bg-card text-card-foreground shadow">
+              <CardHeader className="px-0 py-4">
+                <CardTitle className="px-0  text-sm font-medium">
+                  <div className="px-6 flex flex-row items-center justify-between ">
+                    <p className=" px-0  text-sm font-medium">Source Click</p>
+
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke={theme === 'dark' ? 'white' : 'black'}
+                        stroke-width="2"
+                      />
+                      <path
+                        d="M12 6V12L15 14"
+                        stroke={theme === 'dark' ? 'white' : 'black'}
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                </CardTitle>
+                <CardDescription className="px-0">
+                  <p className="px-6 text-2xl font-bold">
+                    {account
+                      ? customEventsData?.nb_visits
+                      : customEventsData?.nb_visits}
+                    {/* <span className="text-sm">(S / Visit)</span> */}
                   </p>
                 </CardDescription>
               </CardHeader>

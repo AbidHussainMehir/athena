@@ -18,6 +18,7 @@ export default function ChartIndex() {
   const [searchData, setSearchData] = useState()
   const [searchDataAccount, setSearchDataAccount] = useState()
   const [chartSearchData, setChartSearchData] = useState<any>()
+  const [customEventsData, setCustomEventsData] = useState<any>([])
   const [loading, setLoading] = useState(true)
   const account = useActiveAccount()
   let isConnected = !!account
@@ -203,7 +204,32 @@ export default function ChartIndex() {
   useEffect(() => {
     handleGetSearchChartData()
   }, [account])
+  const handleEvents = async () => {
+    try {
+      let response
+      setLoading(true)
+      response = await fetch(
+        'https://analytics.theathena.ai/index.php?module=API&method=Events.getCategory&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1'
+      )
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      let dd = data.filter((n: any) => n.label === 'source-click')
+
+      setCustomEventsData(dd)
+      console.log('data in events', dd)
+      setLoading(false)
+    } catch (error) {
+      console.error('Fetch error:', error)
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+    handleEvents()
+  }, [])
+  console.log('eventsData', customEventsData)
   return (
     <div>
       {loading ? (
@@ -244,6 +270,9 @@ export default function ChartIndex() {
             account={isConnected}
             searchData={searchData}
             searchDataAccount={searchDataAccount}
+            customEventsData={
+              customEventsData?.length > 0 ? customEventsData[0] : []
+            }
           />
           <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div className="col-auto">
