@@ -23,7 +23,6 @@ export default function ChartIndex() {
   const account = useActiveAccount()
   let isConnected = !!account
 
-  console.log({ apiData })
   const handleGetDataAccount = async () => {
     try {
       let response: any = null
@@ -182,7 +181,6 @@ export default function ChartIndex() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      console.log({ data })
       if (data && typeof data === 'object') {
         const currentDate = new Date()
         const currentMonth = String(currentDate.getMonth() + 1).padStart(2, '0')
@@ -219,7 +217,6 @@ export default function ChartIndex() {
       let dd = data.filter((n: any) => n.label === 'source-click')
 
       setCustomEventsData(dd)
-      console.log('data in events', dd)
       setLoading(false)
     } catch (error) {
       console.error('Fetch error:', error)
@@ -229,7 +226,6 @@ export default function ChartIndex() {
   useEffect(() => {
     handleEvents()
   }, [])
-  console.log('eventsData', customEventsData)
   return (
     <div>
       {loading ? (

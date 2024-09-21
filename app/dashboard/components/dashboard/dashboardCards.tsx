@@ -13,8 +13,6 @@ export function DashboardCards({
   searchDataAccount: searchDataAccount,
   customEventsData
 }: any) {
-  // import ChartsIndex from '@/components/dashboard/chartsIndex'
-
   const { theme } = useTheme()
   return (
     <>
