@@ -200,7 +200,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             <Typewriter
               options={{
                 loop: true,
-                delay: 100
+                delay: 80
               }}
               onInit={typewriter => {
                 typewriter
