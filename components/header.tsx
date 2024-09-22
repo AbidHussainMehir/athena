@@ -14,9 +14,12 @@ import { Button } from './ui/button'
 import { useRouter } from 'next/navigation'
 import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
+import { useTheme } from 'next-themes'
 
 export const Header: React.FC = () => {
   const router = useRouter()
+  const theme = useTheme()
+
   const [, setMessages] = useUIState<typeof AI>()
 
   const account = useActiveAccount()
@@ -196,9 +199,13 @@ export const Header: React.FC = () => {
               }}
             >
               <img
-                src="/images/profile_icon.svg"
-                width={'25px'}
-                height={'25px'}
+                src={
+                  theme?.theme === 'dark'
+                    ? '/images/profile_icon_dark.svg'
+                    : '/images/profile_icon.svg'
+                }
+                width={'35px'}
+                height={'35px'}
               />
             </Link>
           </div>
