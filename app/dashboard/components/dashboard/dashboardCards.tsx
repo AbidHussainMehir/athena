@@ -13,7 +13,7 @@ export function DashboardCards({
   searchDataAccount: searchDataAccount,
   customEventsData
 }: any) {
-  const { theme } = useTheme()
+  const theme: any = useTheme()
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">
@@ -27,7 +27,9 @@ export function DashboardCards({
                 <div className="px-6 flex flex-row items-center justify-center ">
                   <p
                     className="px-0 tracking-tight text-sm font-medium"
-                    style={{ color: '#09090B' }}
+                    style={{
+                      color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                    }}
                   >
                     Total Visits
                   </p>
@@ -35,7 +37,9 @@ export function DashboardCards({
                 <CardDescription className="px-0">
                   <p
                     className="px-6 text-2xl font-bold text-center"
-                    style={{ color: '#09090B' }}
+                    style={{
+                      color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                    }}
                   >
                     {account ? apiDataAccount?.nb_visits : apiData?.nb_visits}
                   </p>
@@ -51,7 +55,9 @@ export function DashboardCards({
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
                       className=" px-0 tracking-tight text-sm font-medium"
-                      style={{ color: '#09090B' }}
+                      style={{
+                        color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                      }}
                     >
                       Total Actions
                     </p>
@@ -60,7 +66,9 @@ export function DashboardCards({
                 <CardDescription className="px-0">
                   <p
                     className="px-6 text-2xl font-bold text-center"
-                    style={{ color: '#09090B' }}
+                    style={{
+                      color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                    }}
                   >
                     {account ? apiDataAccount?.nb_actions : apiData?.nb_actions}
                   </p>
@@ -75,7 +83,9 @@ export function DashboardCards({
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
                       className="px-0 tracking-tight text-sm font-medium"
-                      style={{ color: '#09090B' }}
+                      style={{
+                        color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                      }}
                     >
                       Total Searches
                     </p>
@@ -84,7 +94,9 @@ export function DashboardCards({
                 <CardDescription className="px-0">
                   <p
                     className="px-6 text-2xl font-bold text-center"
-                    style={{ color: '#09090B' }}
+                    style={{
+                      color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                    }}
                   >
                     {account ? searchDataAccount : searchData}
                   </p>
@@ -99,7 +111,9 @@ export function DashboardCards({
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
                       className=" px-0 tracking-tight text-sm font-medium "
-                      style={{ color: '#09090B' }}
+                      style={{
+                        color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                      }}
                     >
                       Average Time Spent
                     </p>
@@ -108,7 +122,9 @@ export function DashboardCards({
                 <CardDescription className="px-0">
                   <p
                     className="px-6 text-2xl font-bold text-center"
-                    style={{ color: '#09090B' }}
+                    style={{
+                      color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                    }}
                   >
                     {account
                       ? apiDataAccount?.avg_time_on_site
@@ -126,7 +142,9 @@ export function DashboardCards({
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
                       className=" px-0 tracking-tight text-sm font-medium"
-                      style={{ color: '#09090B' }}
+                      style={{
+                        color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                      }}
                     >
                       Source Click
                     </p>
@@ -135,7 +153,9 @@ export function DashboardCards({
                 <CardDescription className="px-0">
                   <p
                     className="px-6 text-2xl font-bold text-center"
-                    style={{ color: '#09090B' }}
+                    style={{
+                      color: theme?.theme === 'dark' ? '#fff' : '#09090B'
+                    }}
                   >
                     {account
                       ? customEventsData?.nb_visits
