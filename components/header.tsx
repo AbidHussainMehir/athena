@@ -16,14 +16,13 @@ import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'; 
+import { usePathname } from 'next/navigation';
 export const Header: React.FC = () => {
   const router = useRouter()
-  const {theme} = useTheme()
+  const { theme } = useTheme()
   const pathname = usePathname(); //
 
   const isDashboard = pathname === '/dashboard';
-  console.log('isDashboard',isDashboard)
   const [, setMessages] = useUIState<typeof AI>()
 
   const account = useActiveAccount()
@@ -98,7 +97,7 @@ export const Header: React.FC = () => {
           uid: 'anonymous'
         })
       }
-    } catch (error) {}
+    } catch (error) { }
   }, [account])
 
   useEffect(() => {
@@ -116,7 +115,7 @@ export const Header: React.FC = () => {
           uid: 'anonymous'
         })
       }
-    } catch (error) {}
+    } catch (error) { }
   }, [])
 
   const linksClick = (linkText: any) => {
@@ -127,7 +126,7 @@ export const Header: React.FC = () => {
       'event-action': `${document.title} - ${window.location.href}`
     })
   }
- 
+
 
   const logoSrc = theme === 'dark' ? '/logo_dark.svg' : '/presale.svg';
 
@@ -147,17 +146,17 @@ export const Header: React.FC = () => {
         <span className="sr-only">Athena</span>
       </div>
       {
-        isDashboard&&
-      <div className="flex" style={{ maxWidth: '45vw' }}>
-  <img
-    src={logoSrc}
-    alt="Your SVG image"
- 
-    width="180px"
-    height="180px" 
-   
-  />
-</div>
+        isDashboard &&
+        <div className="flex ">
+          <img
+            src={logoSrc}
+            style={{ paddingLeft: '10px' }}
+            alt="Your SVG image"
+            width="180px"
+            height="180px"
+
+          />
+        </div>
       }
 
       <div className="flex ">
