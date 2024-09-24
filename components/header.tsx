@@ -15,11 +15,15 @@ import { useRouter } from 'next/navigation'
 import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
 import { useTheme } from 'next-themes'
-
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'; 
 export const Header: React.FC = () => {
   const router = useRouter()
-  const theme = useTheme()
+  const {theme} = useTheme()
+  const pathname = usePathname(); //
 
+  const isDashboard = pathname === '/dashboard';
+  console.log('isDashboard',isDashboard)
   const [, setMessages] = useUIState<typeof AI>()
 
   const account = useActiveAccount()
@@ -123,6 +127,10 @@ export const Header: React.FC = () => {
       'event-action': `${document.title} - ${window.location.href}`
     })
   }
+ 
+
+  const logoSrc = theme === 'dark' ? '/logo_dark.svg' : '/presale.svg';
+
   return (
     <header
       style={{ position: 'relative' }}
@@ -138,6 +146,20 @@ export const Header: React.FC = () => {
         </span>
         <span className="sr-only">Athena</span>
       </div>
+      {
+        isDashboard&&
+      <div className="flex" style={{ maxWidth: '45vw' }}>
+  <img
+    src={logoSrc}
+    alt="Your SVG image"
+ 
+    width="180px"
+    height="180px" 
+   
+  />
+</div>
+      }
+
       <div className="flex ">
         <ModeToggle />
 
@@ -200,7 +222,7 @@ export const Header: React.FC = () => {
             >
               <img
                 src={
-                  theme?.theme === 'dark'
+                  theme === 'dark'
                     ? '/images/profile_icon_dark.svg'
                     : '/images/profile_icon.svg'
                 }

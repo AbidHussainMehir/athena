@@ -23,7 +23,7 @@ export default function Page() {
             className="container mx-auto p-4 md:p-6 lg:p-8 pt-0"
             style={{ paddingTop: '0px !important' }}
           >
-            <div className="flex justify-center" style={{ maxWidth: '45vw' }}>
+            {/* <div className="flex justify-center" style={{ maxWidth: '45vw' }}>
               <Image
                 src={logoSrc}
                 // alt="Your SVG image"
@@ -34,7 +34,7 @@ export default function Page() {
                 layout="responsive" // Add the layout property
                 className="w-full"
               />
-            </div>
+            </div> */}
           </div>
         </main>
         <main
