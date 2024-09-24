@@ -10,6 +10,7 @@ const Footer: React.FC = () => {
   const theme = useTheme()
 
   const pathname = usePathname()
+  const isDashboard = pathname === '/dashboard';
   const linksClick = (linkText: any) => {
     window._mtm.push({
       event: 'menu-clicks-tracking',
@@ -34,7 +35,7 @@ const Footer: React.FC = () => {
   return (
     <>
       <footer
-        className="w-[100%] p-1 md:p-2  pt-2 fixed bottom-0 right-0 "
+        className={`w-[100%] p-1 md:p-2  pt-2  ${isDashboard?'':'fixed bottom-0 right-0'} `}
         style={{
           backgroundColor: theme?.theme === 'dark' ? '#0A0A0A' : '#fff'
         }}
