@@ -10,6 +10,7 @@ import { ThirdwebProvider } from 'thirdweb/react'
 import Head from 'next/head'
 import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
+
 const title = 'TheAthena.ai'
 const description = 'Athena SearchGPT: Learn to Earn Search Platform.'
 
