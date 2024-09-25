@@ -16,13 +16,13 @@ import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation'
 export const Header: React.FC = () => {
   const router = useRouter()
   const { theme } = useTheme()
-  const pathname = usePathname(); //
+  const pathname = usePathname() //
 
-  const isDashboard = pathname === '/dashboard';
+  const isDashboard = pathname === '/dashboard'
   const [, setMessages] = useUIState<typeof AI>()
 
   const account = useActiveAccount()
@@ -97,7 +97,7 @@ export const Header: React.FC = () => {
           uid: 'anonymous'
         })
       }
-    } catch (error) { }
+    } catch (error) {}
   }, [account])
 
   useEffect(() => {
@@ -115,7 +115,7 @@ export const Header: React.FC = () => {
           uid: 'anonymous'
         })
       }
-    } catch (error) { }
+    } catch (error) {}
   }, [])
 
   const linksClick = (linkText: any) => {
@@ -127,8 +127,7 @@ export const Header: React.FC = () => {
     })
   }
 
-
-  const logoSrc = theme === 'dark' ? '/logo_dark.svg' : '/presale.svg';
+  const logoSrc = theme === 'dark' ? '/logo_dark.svg' : '/presale.svg'
 
   return (
     <header
@@ -145,7 +144,7 @@ export const Header: React.FC = () => {
         </span>
         <span className="sr-only">Athena</span>
       </div>
-      {
+      {/* {
         isDashboard &&
         <div className="flex ">
           <img
@@ -157,7 +156,7 @@ export const Header: React.FC = () => {
 
           />
         </div>
-      }
+      } */}
 
       <div className="flex ">
         <ModeToggle />
