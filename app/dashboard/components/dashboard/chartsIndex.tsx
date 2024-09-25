@@ -273,9 +273,13 @@ export default function ChartIndex() {
           <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
               <VisitsChart
-                chartSearchData={chartSearchData}
-                apiData={chartActionData}
-                chartVisitsData={chartVisitsData}
+                  apiData={apiData}
+                  apiDataAccount={apiDataAccount}
+                  account={isConnected}
+                  searchData={searchData}
+                  searchDataAccount={searchDataAccount}
+                  customEventsData={
+                    customEventsData?.length > 0 ? customEventsData[0] : []}
               />
             </div>
           </div>

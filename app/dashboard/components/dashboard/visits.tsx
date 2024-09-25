@@ -64,141 +64,221 @@ const chartConfig = {
 //     </Card>
 //   )
 // }
+// import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+
+// import React, { useState, useEffect } from 'react'
+// import {
+//   AreaChart,
+//   Area,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   ResponsiveContainer
+// } from 'recharts'
+
+// const data = [
+//   {
+//     name: 'Page A',
+//     uv: 4000,
+//     pv: 2400,
+//     amt: 2400
+//   },
+//   {
+//     name: 'Page B',
+//     uv: 3000,
+//     pv: 1398,
+//     amt: 2210
+//   },
+//   {
+//     name: 'Page C',
+//     uv: 2000,
+//     pv: 9800,
+//     amt: 2290
+//   },
+//   {
+//     name: 'Page D',
+//     uv: 2780,
+//     pv: 3908,
+//     amt: 2000
+//   },
+//   {
+//     name: 'Page E',
+//     uv: 1890,
+//     pv: 4800,
+//     amt: 2181
+//   },
+//   {
+//     name: 'Page F',
+//     uv: 2390,
+//     pv: 3800,
+//     amt: 2500
+//   },
+//   {
+//     name: 'Page G',
+//     uv: 3490,
+//     pv: 4300,
+//     amt: 2100
+//   }
+// ]
+
+// export const VisitsChart = (props: any) => {
+//   console.log({ props })
+//   const [chartData, setChartData] = useState([])
+//   useEffect(() => {
+//     try {
+//       const { chartSearchData, apiData, chartVisitsData }: any = props
+
+//       const mergedData: any = {}
+
+//       // Function to merge data by day
+//       const mergeByDay = (array: any, key: any) => {
+//         array.forEach((item: any) => {
+//           if (!mergedData[item.day]) {
+//             mergedData[item.day] = { day: item.day }
+//           }
+//           mergedData[item.day][key] = item[key]
+//         })
+//       }
+
+//       // Merge the data
+//       mergeByDay(chartSearchData, 'reward')
+//       mergeByDay(apiData, 'actions')
+//       mergeByDay(chartVisitsData, 'visits')
+
+//       // Convert the mergedData object back into an array
+//       const result: any = Object.values(mergedData)
+//       setChartData(result)
+//     } catch (error) {}
+//   }, [props])
+//   console.log({ chartData })
+//   return (
+//     <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow">
+//       {/* <CardHeader>
+//         <CardTitle>Actions Per Day</CardTitle>
+//       </CardHeader> */}
+//       <CardContent>
+//         <ChartContainer config={chartConfig}>
+//           <ResponsiveContainer width="100%" height="200px">
+//             <AreaChart
+//               height={200}
+//               data={chartData}
+//               margin={{
+//                 top: 10,
+//                 right: 30,
+//                 left: 0,
+//                 bottom: 0
+//               }}
+//             >
+//               <CartesianGrid strokeDasharray="3 3" />
+//               <XAxis dataKey="day" />
+//               <YAxis />
+//               <Tooltip />
+//               <Area
+//                 type="monotone"
+//                 dataKey="actions"
+//                 stackId="1"
+//                 stroke="#8884d8"
+//                 fill="#8884d8"
+//               />
+//               <Area
+//                 type="monotone"
+//                 dataKey="visits"
+//                 stackId="1"
+//                 stroke="#82ca9d"
+//                 fill="#82ca9d"
+//               />
+//               <Area
+//                 type="monotone"
+//                 dataKey="reward"
+//                 stackId="1"
+//                 stroke="#ffc658"
+//                 fill="#ffc658"
+//               />
+//             </AreaChart>
+//           </ResponsiveContainer>
+//         </ChartContainer>
+//       </CardContent>
+//     </Card>
+//   )
+// }
+import React from 'react';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+const colors = ['#000', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
-import React, { useState, useEffect } from 'react'
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer
-} from 'recharts'
 
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-]
 
-export const VisitsChart = (props: any) => {
-  console.log({ props })
-  const [chartData, setChartData] = useState([])
-  useEffect(() => {
-    try {
-      const { chartSearchData, apiData, chartVisitsData }: any = props
+const getPath = (x: number, y: number, width: number, height: number): string => {
+  return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+  ${x + width / 2}, ${y}
+  C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
+  Z`;
+};
 
-      const mergedData: any = {}
+const TriangleBar = (props:any) => {
+  const { fill, x, y, width, height } = props;
 
-      // Function to merge data by day
-      const mergeByDay = (array: any, key: any) => {
-        array.forEach((item: any) => {
-          if (!mergedData[item.day]) {
-            mergedData[item.day] = { day: item.day }
-          }
-          mergedData[item.day][key] = item[key]
-        })
-      }
+  return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+};
 
-      // Merge the data
-      mergeByDay(chartSearchData, 'reward')
-      mergeByDay(apiData, 'actions')
-      mergeByDay(chartVisitsData, 'visits')
 
-      // Convert the mergedData object back into an array
-      const result: any = Object.values(mergedData)
-      setChartData(result)
-    } catch (error) {}
-  }, [props])
-  console.log({ chartData })
+export const VisitsChart= ({    apiData: apiData,
+  searchData: searchData,
+  apiDataAccount: apiDataAccount,
+  account: account,
+  searchDataAccount: searchDataAccount,
+  customEventsData}:any) => {
+
+    const data = [
+      { name: 'Total Visits', uv:  account ? apiDataAccount?.nb_visits : apiData?.nb_visits, pv: 2400, amt: 2400 },
+      { name: 'Total Actions', uv:  account ? apiDataAccount?.nb_actions : apiData?.nb_actions, pv: 2400, amt: 2400 },
+      { name: 'Total Searches', uv:  account ? searchDataAccount : searchData, pv: 2400, amt: 2400 },
+      { name: 'Average Time Spent', uv: account ? apiDataAccount?.avg_time_on_site : apiData?.avg_time_on_site, pv: 2400, amt: 2400 },
+      { name: 'Source Click', uv: account? customEventsData?.nb_visits: customEventsData?.nb_visits, pv: 2400, amt: 2400 },
+  
+    
+    ];
   return (
+
+
+
+
+
     <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow">
-      {/* <CardHeader>
-        <CardTitle>Actions Per Day</CardTitle>
-      </CardHeader> */}
-      <CardContent>
-        <ChartContainer config={chartConfig}>
-          <ResponsiveContainer width="100%" height="200px">
-            <AreaChart
-              height={200}
-              data={chartData}
-              margin={{
-                top: 10,
-                right: 30,
-                left: 0,
-                bottom: 0
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="day" />
-              <YAxis />
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="actions"
-                stackId="1"
-                stroke="#8884d8"
-                fill="#8884d8"
-              />
-              <Area
-                type="monotone"
-                dataKey="visits"
-                stackId="1"
-                stroke="#82ca9d"
-                fill="#82ca9d"
-              />
-              <Area
-                type="monotone"
-                dataKey="reward"
-                stackId="1"
-                stroke="#ffc658"
-                fill="#ffc658"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </ChartContainer>
-      </CardContent>
-    </Card>
-  )
-}
+         <CardHeader>
+            {/* <CardTitle></CardTitle> */}
+          </CardHeader> 
+          <CardContent>
+          <ChartContainer config={chartConfig}>
+      <ResponsiveContainer width="100%" height="200px">
+
+<BarChart
+height={200}
+  data={data}
+  margin={{
+    top: 20,
+    right: 30,
+    left: 20,
+    bottom: 5,
+  }}
+>
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis dataKey="name" />
+  <YAxis />
+  <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+  {data.map((entry, index) => (
+      <Cell key={`cell-${index}`} fill={colors[index]} />
+    ))}
+  </Bar>
+</BarChart>
+</ResponsiveContainer>
+            </ChartContainer>
+
+          </CardContent>
+        </Card>
+
+   
+  );
+};
+

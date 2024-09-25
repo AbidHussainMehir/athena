@@ -20,7 +20,7 @@ export default function Page() {
             Invest In the Future of AI, Web3 and Search
           </CardDescription> */}
           <div
-            className="container mx-auto p-4 md:p-6 lg:p-8 pt-0"
+            className="container mx-auto p-4 md:p-6 md:pt-0 lg:p-8 lg:pt-0 pt-0"
             style={{ paddingTop: '0px !important' }}
           >
             <div className="flex justify-center" style={{ maxWidth: '45vw' }}>

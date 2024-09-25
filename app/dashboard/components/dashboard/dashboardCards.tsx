@@ -14,13 +14,14 @@ export function DashboardCards({
   customEventsData
 }: any) {
   const theme: any = useTheme()
+  console.log('customEventsData::',customEventsData)
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-4 md:gap-4 ">
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-1  gap-4 md:gap-4 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-3 md:grid-cols-2  gap-4 md:gap-4 ">
           <PresaleCard />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2  md:grid-cols-4   gap-4 md:gap-4 ">
+        <div className="grid grid-cols-1 lg:grid-cols-1  md:grid-cols-3   gap-4 md:gap-4 ">
           <div className="">
             <Card className="  rounded-xl border bg-card text-card-foreground shadow">
               <CardHeader className="px-0 py-4">
