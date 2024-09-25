@@ -270,16 +270,29 @@ export default function ChartIndex() {
               customEventsData?.length > 0 ? customEventsData[0] : []
             }
           />
+          <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
+            <div>
+              <VisitsChart
+                chartSearchData={chartSearchData}
+                apiData={chartActionData}
+                chartVisitsData={chartVisitsData}
+              />
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
-            <div className="col-auto">
+            {/* <div className="col-auto">
               <ActionChart apiData={chartVisitsData} />
             </div>
             <div>
-              <VisitsChart apiData={chartActionData} />
+              <VisitsChart
+                chartSearchData={chartSearchData}
+                apiData={chartActionData}
+                chartVisitsData={chartVisitsData}
+              />
             </div>
             <div>
               <RewardsChart chartSearchData={chartSearchData} />
-            </div>
+            </div> */}
             <div>
               <GoogleMarketcapChart />
             </div>
