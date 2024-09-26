@@ -243,7 +243,7 @@ export default function ChartIndex() {
               cy="50"
               fill="none"
               stroke="#000"
-              strokeWidth="8"
+              strokeWidth="5"
               r="35"
               strokeDasharray="164.93361431346415 56.97787143782138"
             >
@@ -273,13 +273,14 @@ export default function ChartIndex() {
           <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
               <VisitsChart
-                  apiData={apiData}
-                  apiDataAccount={apiDataAccount}
-                  account={isConnected}
-                  searchData={searchData}
-                  searchDataAccount={searchDataAccount}
-                  customEventsData={
-                    customEventsData?.length > 0 ? customEventsData[0] : []}
+                apiData={apiData}
+                apiDataAccount={apiDataAccount}
+                account={isConnected}
+                searchData={searchData}
+                searchDataAccount={searchDataAccount}
+                customEventsData={
+                  customEventsData?.length > 0 ? customEventsData[0] : []
+                }
               />
             </div>
           </div>
