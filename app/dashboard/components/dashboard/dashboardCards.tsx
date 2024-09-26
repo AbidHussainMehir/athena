@@ -147,7 +147,7 @@ export function DashboardCards({
                         color: theme?.theme === 'dark' ? '#fff' : '#09090B'
                       }}
                     >
-                      Source Click
+                      Sources Clicked
                     </p>
                   </div>
                 </CardTitle>
