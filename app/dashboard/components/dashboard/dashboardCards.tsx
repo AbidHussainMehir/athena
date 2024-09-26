@@ -17,14 +17,15 @@ export function DashboardCards({
   console.log('customEventsData::', customEventsData)
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-1  gap-4 md:gap-4 mb-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-3 md:grid-cols-2  gap-4 md:gap-4 ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-1 md:grid-cols-2  gap-4 md:gap-4 ">
           <PresaleCard />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-1  md:grid-cols-3   gap-4 md:gap-4 ">
-          <div className="">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 md:grid-cols-12   gap-4 md:gap-4  ">
+          <div className="col-span-12 md:col-span-4">
             <Card className="  rounded-xl border bg-card text-card-foreground shadow">
-              <CardHeader className="px-0 py-1">
+              <CardHeader className="px-0 py-4">
                 <div className="px-6 flex flex-row items-center justify-center ">
                   <p
                     className="px-0 tracking-tight text-sm font-medium"
@@ -49,9 +50,9 @@ export function DashboardCards({
             </Card>
           </div>
 
-          <div className="">
+          <div className="col-span-12 md:col-span-4">
             <Card className="rounded-xl border bg-card text-card-foreground shadow">
-              <CardHeader className="px-0 py-1">
+              <CardHeader className="px-0 py-4">
                 <CardTitle className="px-0 tracking-tight text-sm font-medium">
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
@@ -77,9 +78,9 @@ export function DashboardCards({
               </CardHeader>
             </Card>
           </div>
-          <div className="">
+          <div className="col-span-12 md:col-span-4">
             <Card className="rounded-xl border bg-card text-card-foreground shadow">
-              <CardHeader className="px-0 py-1">
+              <CardHeader className="px-0 py-4">
                 <CardTitle className="px-0 tracking-tight text-sm font-medium">
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
@@ -105,9 +106,9 @@ export function DashboardCards({
               </CardHeader>
             </Card>
           </div>
-          <div className="">
+          <div className="col-span-12 md:col-span-6">
             <Card className="rounded-xl border bg-card text-card-foreground shadow">
-              <CardHeader className="px-0 py-1">
+              <CardHeader className="px-0 py-4">
                 <CardTitle className="px-0  text-sm font-medium">
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
@@ -136,9 +137,9 @@ export function DashboardCards({
               </CardHeader>
             </Card>
           </div>
-          <div className="">
+          <div className="col-span-12 md:col-span-6">
             <Card className="rounded-xl border bg-card text-card-foreground shadow">
-              <CardHeader className="px-0 py-1">
+              <CardHeader className="px-0 py-4">
                 <CardTitle className="px-0  text-sm font-medium">
                   <div className="px-6 flex flex-row items-center justify-center ">
                     <p
