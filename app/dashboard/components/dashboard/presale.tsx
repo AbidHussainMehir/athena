@@ -53,6 +53,20 @@ export function PresaleCard() {
         <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
           <div></div>
           <CardHeader className="px-0 ">
+            <div
+              className="mb-[20px]"
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <img
+                src={
+                  theme?.theme === 'light'
+                    ? '/images/presale.svg'
+                    : '/images/presale-dark.svg'
+                }
+                width={'200px'}
+                height={'200px'}
+              />
+            </div>
             <CardTitle className="text-center">Rewards</CardTitle>
             <CardDescription className="text-center"></CardDescription>
           </CardHeader>
