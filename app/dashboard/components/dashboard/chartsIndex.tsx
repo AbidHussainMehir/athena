@@ -9,6 +9,8 @@ import { GoogleMarketcapChart } from './googleMarketcap'
 import { RewardsChart } from './rewards'
 import { VisitsChart } from './visits'
 import { useActiveAccount } from 'thirdweb/react'
+import JobsDistributionChart from './JobsDistributionChart'
+import WorkDistribution from './WorkDistribution'
 
 export default function ChartIndex() {
   const [apiData, setApiData] = useState()
@@ -270,7 +272,7 @@ export default function ChartIndex() {
               customEventsData?.length > 0 ? customEventsData[0] : []
             }
           />
-          <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
+          {/* <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
               <VisitsChart
                 apiData={apiData}
@@ -282,6 +284,30 @@ export default function ChartIndex() {
                   customEventsData?.length > 0 ? customEventsData[0] : []
                 }
               />
+            </div>
+          </div> */}
+          <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
+          
+            
+            <div>
+              <VisitsChart
+                apiData={apiData}
+                apiDataAccount={apiDataAccount}
+                account={isConnected}
+                searchData={searchData}
+                searchDataAccount={searchDataAccount}
+                customEventsData={
+                  customEventsData?.length > 0 ? customEventsData[0] : []
+                }
+              />
+          
+            </div>
+            
+            <div className="col-auto">
+              <JobsDistributionChart />
+            </div>
+            <div>
+              <WorkDistribution />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
