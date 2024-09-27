@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 
 function IconLogo({ className, ...props }: React.ComponentProps<'svg'>) {
   const { theme } = useTheme()
-  const logoSrc = theme === 'dark' ? '/logo-white.svg' : '/logo.svg'
+  const logoSrc = theme === 'light' ? '/logo.svg' : '/logo-white.svg'
   return (
     <>
       <img

@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   const theme = useTheme()
 
   const pathname = usePathname()
-  const isDashboard = pathname === '/dashboard';
+  const isDashboard = pathname === '/dashboard'
   const linksClick = (linkText: any) => {
     window._mtm.push({
       event: 'menu-clicks-tracking',
@@ -29,22 +29,24 @@ const Footer: React.FC = () => {
   }
   React.useEffect(() => {
     return () => {
-      localStorage.setItem('theme', 'light')
+      localStorage.setItem('theme', 'dark')
     }
   }, [])
   return (
     <>
       <footer
-        className={`w-[100%] p-1 md:p-2  pt-2  ${isDashboard?'':'fixed bottom-0 right-0'} `}
+        className={`w-[100%] p-1 md:p-2  pt-2  ${
+          isDashboard ? '' : 'fixed bottom-0 right-0'
+        } `}
         style={{
-          backgroundColor: theme?.theme === 'dark' ? '#0A0A0A' : '#fff'
+          backgroundColor: theme?.theme === 'light' ? '#fff' : '#0A0A0A'
         }}
       >
         {!pathname.includes('search') && !pathname.includes('share') && (
           <div className="flex flex-wrap mb-4  gap-1 md:gap-4 w-full justify-center">
             <span
               className={`${
-                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
               } rounded-lg`}
             >
               <Button
@@ -62,7 +64,7 @@ const Footer: React.FC = () => {
             </span>
             <span
               className={`${
-                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
               } rounded-lg`}
             >
               <Button
@@ -82,7 +84,7 @@ const Footer: React.FC = () => {
             </span>
             <span
               className={`${
-                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
               } rounded-lg`}
             >
               <Button

@@ -225,10 +225,10 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             value={input}
             style={{
               boxShadow:
-                theme === 'dark'
-                  ? '0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19)'
-                  : '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-              border: theme === 'dark' ? '1px solid #fff' : '1px solid #000',
+                theme === 'light'
+                  ? '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+                  : '0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19)',
+              border: theme === 'light' ? '1px solid #000' : '1px solid #fff',
               borderRadius: '28px'
             }}
             className="resize-none w-full min-h-12 rounded-fill bg-muted border border-input pl-4 pr-10 pt-3 pb-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'"
@@ -283,7 +283,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
           >
             <img
               src={
-                theme === 'dark' ? '/search-icon-dark.svg' : '/search-icon.svg'
+                theme === 'light' ? '/search-icon.svg' : '/search-icon-dark.svg'
               }
             />
           </Button>

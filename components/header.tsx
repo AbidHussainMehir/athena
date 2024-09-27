@@ -17,16 +17,11 @@ import { AI } from '@/app/actions'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha
-} from 'react-google-recaptcha-v3'
 
 export const MyComponent: React.FC = () => {
   const router = useRouter()
   const { theme } = useTheme()
   const pathname = usePathname()
-  const { executeRecaptcha } = useGoogleReCaptcha()
 
   const isDashboard = pathname === '/dashboard'
   const [, setMessages] = useUIState<typeof AI>()
@@ -133,33 +128,7 @@ export const MyComponent: React.FC = () => {
     })
   }
 
-  const logoSrc = theme === 'dark' ? '/logo_dark.svg' : '/presale.svg'
-  //site-key= 6LdyqE4qAAAAAFvayJAu8JFg-t8PpwMj4A4c32X2
-  //secret-key= 6LdyqE4qAAAAAEDwYjF5I4y30EP_w6qnjQTuYbDx
-  const handleVerifyReCaptcha = async () => {
-    if (!executeRecaptcha) {
-      console.log('Execute reCAPTCHA not yet available')
-      return
-    }
-
-    // Action name to describe the context (you can customize this based on use case)
-    const token = await executeRecaptcha('homepage')
-    console.log('reCAPTCHA Token: ', token)
-
-    // Send the token to your backend to verify
-    await fetch('/api/verify-recaptcha', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ token })
-    })
-  }
-
-  useEffect(() => {
-    // Automatically execute reCAPTCHA on page load or any specific action
-    handleVerifyReCaptcha()
-  }, [executeRecaptcha])
+  const logoSrc = theme === 'light' ? '/presale.svg' : '/logo_dark.svg'
 
   return (
     <header
@@ -252,9 +221,9 @@ export const MyComponent: React.FC = () => {
             >
               <img
                 src={
-                  theme === 'dark'
-                    ? '/images/profile_icon_dark.svg'
-                    : '/images/profile_icon.svg'
+                  theme === 'light'
+                    ? '/images/profile_icon.svg'
+                    : '/images/profile_icon_dark.svg'
                 }
                 width={'35px'}
                 height={'35px'}
@@ -268,9 +237,5 @@ export const MyComponent: React.FC = () => {
 }
 
 export default function Header() {
-  return (
-    <GoogleReCaptchaProvider reCaptchaKey="6LdyqE4qAAAAAFvayJAu8JFg-t8PpwMj4A4c32X2">
-      <MyComponent />
-    </GoogleReCaptchaProvider>
-  )
+  return <MyComponent />
 }

@@ -39,7 +39,7 @@ export function PresaleCard() {
           <CardFooter className="text-center mb-5 flex justify-center p-0">
             <span
               className={`${
-                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
               } rounded-lg`}
             >
               <Button variant="ghost" size="md">
@@ -59,7 +59,7 @@ export function PresaleCard() {
           <CardFooter className="text-center mb-5   flex justify-center p-0">
             <span
               className={`${
-                theme?.theme === 'dark' ? 'tag-dark' : 'tag-white'
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
               } rounded-lg`}
             >
               <Button variant="ghost" size="md">
