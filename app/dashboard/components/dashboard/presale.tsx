@@ -25,7 +25,20 @@ export function PresaleCard() {
           <div></div>
 
           <CardHeader className="py-6 px-6 ">
-            <CardTitle className="text-center ">Presale</CardTitle>
+          <div
+              className="mb-[20px]"
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <img
+                src={
+                  theme?.theme === 'light'
+                    ? '/images/presale.svg'
+                    : '/images/presale-dark.svg'
+                }
+                width={'200px'}
+                height={'200px'}
+              />
+            </div>
             <CardDescription className="text-center flex justify-center px-0">
               <input
                 type="number"
@@ -60,14 +73,14 @@ export function PresaleCard() {
               <img
                 src={
                   theme?.theme === 'light'
-                    ? '/images/presale.svg'
-                    : '/images/presale-dark.svg'
+                    ? '/images/reward.svg'
+                    : '/images/reward-dark.svg'
                 }
                 width={'200px'}
                 height={'200px'}
               />
             </div>
-            <CardTitle className="text-center">Rewards</CardTitle>
+            {/* <CardTitle className="text-center">Rewards</CardTitle> */}
             <CardDescription className="text-center"></CardDescription>
           </CardHeader>
           <CardFooter className="text-center mb-5   flex justify-center p-0">
