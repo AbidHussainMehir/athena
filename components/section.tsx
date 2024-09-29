@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import React from 'react'
 import { Separator } from './ui/separator'
+import { useTheme } from 'next-themes'
 
 type SectionProps = {
   children: React.ReactNode
@@ -31,6 +32,7 @@ export const Section: React.FC<SectionProps> = ({
   const iconSize = 16
   const iconClassName = 'mr-1.5 text-muted-foreground'
   let icon: React.ReactNode
+  const {theme}=useTheme();
   switch (title) {
     case 'Images':
       // eslint-disable-next-line jsx-a11y/alt-text
@@ -65,7 +67,7 @@ export const Section: React.FC<SectionProps> = ({
         )}
       >
         {title && (
-          <h2 className="flex items-center leading-none py-2">
+          <h2 className="flex items-center leading-none py-2" style={{color:theme==='light'?'#000':'rgb(202,241,222)'}}>
             {icon}
             {title}
           </h2>
