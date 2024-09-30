@@ -16,7 +16,6 @@ export function PresaleCard() {
   const theme: any = useTheme()
 
   const [input, setInput] = useState('')
-
   const inputRef = useRef<HTMLTextAreaElement>(null)
   return (
     <>
@@ -25,7 +24,7 @@ export function PresaleCard() {
           <div></div>
 
           <CardHeader className="py-6 px-6 ">
-          <div
+            <div
               className="mb-[20px]"
               style={{ display: 'flex', justifyContent: 'center' }}
             >
