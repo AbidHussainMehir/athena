@@ -1,5 +1,5 @@
 import { createStreamableUI, createStreamableValue } from 'ai/rsc'
-import { CoreMessage, ToolCallPart, ToolResultPart, streamText } from 'ai'
+import { CoreMessage, ToolCallPart, ToolResultPart, streamText,LanguageModel } from 'ai'
 import { getTools } from './tools'
 import { getModel, transformToolMessages } from '../utils'
 import { AnswerSection } from '@/components/answer-section'
@@ -29,7 +29,7 @@ export async function researcher(
 
   const currentDate = new Date().toLocaleString()
   const result = await streamText({
-    model: getModel(useSubModel),
+    model: getModel(useSubModel) as LanguageModel,
     maxTokens: 2500,
     system: `As a professional search expert, you possess the ability to search for any information on the web.
     or any information on the web.
