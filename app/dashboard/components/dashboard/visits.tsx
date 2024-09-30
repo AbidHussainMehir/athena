@@ -248,35 +248,23 @@ export const VisitsChart = ({
   const data = [
     {
       name: 'Visits',
-      uv: account ? apiDataAccount?.nb_visits : apiData?.nb_visits,
-      pv: 2400,
-      amt: 2400
+      uv: account ? apiDataAccount?.nb_visits : apiData?.nb_visits
     },
     {
       name: 'Actions',
-      uv: account ? apiDataAccount?.nb_actions : apiData?.nb_actions,
-      pv: 2400,
-      amt: 2400
+      uv: account ? apiDataAccount?.nb_actions : apiData?.nb_actions
     },
     {
-      name: 'Searches',
-      uv: account ? searchDataAccount : searchData,
-      pv: 2400,
-      amt: 2400
+      name: 'Search',
+      uv: account ? searchDataAccount : searchData
     },
     {
-      name: 'Average Time Spent',
-      uv: account
-        ? apiDataAccount?.avg_time_on_site
-        : apiData?.avg_time_on_site,
-      pv: 2400,
-      amt: 2400
+      name: 'Time',
+      uv: account ? apiDataAccount?.avg_time_on_site : apiData?.avg_time_on_site
     },
     {
       name: 'Sources',
-      uv: account ? customEventsData?.nb_visits : customEventsData?.nb_visits,
-      pv: 2400,
-      amt: 2400
+      uv: account ? customEventsData?.nb_visits : customEventsData?.nb_visits
     }
   ]
   return (
@@ -289,23 +277,23 @@ export const VisitsChart = ({
               height={200}
               data={data}
               margin={{
-                top: 20,
-                right: 30,
-                left: 20,
+                top: 10,
+                right: 10,
+                left: 10,
                 bottom: 5
               }}
             >
-              <CartesianGrid strokeDasharray="1 1" />
-              <XAxis dataKey="name" />
-              <YAxis />
+              <CartesianGrid strokeDasharray="1 1 1 1" />
+              <XAxis width={5} dataKey="name" />
+              {/* <YAxis /> */}
               <Bar
                 dataKey="uv"
                 fill="#8884d8"
                 shape={<TriangleBar />}
-                label={{ position: 'top' }}
+                label={{ position: 'top', width: 10 }}
               >
                 {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={colors[index]} />
+                  <Cell key={`cell-${index}`} width={20} fill={colors[index]} />
                 ))}
               </Bar>
             </BarChart>
