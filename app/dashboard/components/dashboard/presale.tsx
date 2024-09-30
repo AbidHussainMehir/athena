@@ -12,17 +12,17 @@ import { Button } from '../ui/button'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 
-export function PresaleCard() {
+export function PresaleCard(props: any) {
   const theme: any = useTheme()
 
   const [input, setInput] = useState('')
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  console.log({ props })
+
   return (
     <>
       <div className="">
         <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
-          <div></div>
-
           <CardHeader className="py-6 px-6 ">
             <div
               className="mb-[20px]"
@@ -63,8 +63,7 @@ export function PresaleCard() {
       </div>
       <div className="">
         <Card className="h-full flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
-          <div></div>
-          <CardHeader className="px-0 ">
+          <CardHeader className="py-6 px-6 ">
             <div
               className="mb-[20px]"
               style={{ display: 'flex', justifyContent: 'center' }}
@@ -79,8 +78,20 @@ export function PresaleCard() {
                 height={'200px'}
               />
             </div>
-            {/* <CardTitle className="text-center">Rewards</CardTitle> */}
-            <CardDescription className="text-center"></CardDescription>
+            <CardTitle className="text-center"></CardTitle>
+            <CardDescription className="text-center">
+              {props?.account && (
+                <p
+                  className="px-6 text-2xl font-bold text-center"
+                  style={{
+                    color:
+                      theme?.theme === 'light' ? '#09090B' : 'rgb(202,241,222)'
+                  }}
+                >
+                  {props?.rewardData}
+                </p>
+              )}
+            </CardDescription>
           </CardHeader>
           <CardFooter className="text-center mb-5   flex justify-center p-0">
             <span

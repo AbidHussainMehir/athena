@@ -212,7 +212,13 @@ import {
   CartesianGrid,
   ResponsiveContainer
 } from 'recharts'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '../ui/card'
 const colors = ['green', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink']
 
 const getPath = (
@@ -269,7 +275,10 @@ export const VisitsChart = ({
   ]
   return (
     <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow">
-      <CardHeader>{/* <CardTitle></CardTitle> */}</CardHeader>
+      <CardHeader>
+        {/* <CardTitle>Presale</CardTitle> */}
+        {/* <CardDescription>Presale</CardDescription> */}
+      </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <ResponsiveContainer width="100%" height="200px">

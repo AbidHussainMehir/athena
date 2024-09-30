@@ -14,11 +14,39 @@ export function DashboardCards({
   customEventsData
 }: any) {
   const theme: any = useTheme()
+  // total visits
+  // {account ? apiDataAccount?.nb_visits : apiData?.nb_visits}
+  // Total Actions
+  // {account ? apiDataAccount?.nb_actions : apiData?.nb_actions}
+  // searches
+  // {account ? searchDataAccount : searchData}
+  // sources clicked
+  // {account
+  //   ? customEventsData?.nb_visits
+  //   : customEventsData?.nb_visits}
+  const [rewardData, setRewardData] = useState<any>(0)
+  useEffect(() => {
+    try {
+      // total visits
+      let accAmount = account ? apiDataAccount?.nb_visits : apiData?.nb_visits
+      // Total Actions
+      accAmount =
+        accAmount + (account ? apiDataAccount?.nb_actions : apiData?.nb_actions)
+      // searches
+      accAmount = accAmount + (account ? searchDataAccount : searchData)
+      // sources clicked
+      accAmount =
+        accAmount +
+        (account ? customEventsData?.nb_visits : customEventsData?.nb_visits)
+      setRewardData(accAmount)
+    } catch (error) {}
+  }, [account, customEventsData, searchDataAccount, searchData, apiDataAccount])
+  console.log({ rewardData })
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-1 md:grid-cols-2  gap-4 md:gap-4 ">
-          <PresaleCard />
+          <PresaleCard account={account} rewardData={rewardData} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 md:grid-cols-12   gap-4 md:gap-4  ">

@@ -288,7 +288,11 @@ export default function ChartIndex() {
           </div> */}
           <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
-              <VisitsChart
+              <JobsDistributionChart />
+            </div>
+
+            <div className="col-auto">
+              <WorkDistribution
                 apiData={apiData}
                 apiDataAccount={apiDataAccount}
                 account={isConnected}
@@ -299,12 +303,17 @@ export default function ChartIndex() {
                 }
               />
             </div>
-
-            <div className="col-auto">
-              <JobsDistributionChart />
-            </div>
             <div>
-              <WorkDistribution />
+              <VisitsChart
+                apiData={apiData}
+                apiDataAccount={apiDataAccount}
+                account={isConnected}
+                searchData={searchData}
+                searchDataAccount={searchDataAccount}
+                customEventsData={
+                  customEventsData?.length > 0 ? customEventsData[0] : []
+                }
+              />
             </div>
           </div>
           {/* <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
