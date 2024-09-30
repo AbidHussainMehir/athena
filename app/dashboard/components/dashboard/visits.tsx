@@ -202,83 +202,116 @@ const chartConfig = {
 //     </Card>
 //   )
 // }
-import React from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import React from 'react'
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer
+} from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
-const colors = ['#000', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+const colors = ['green', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink']
 
-
-
-const getPath = (x: number, y: number, width: number, height: number): string => {
-  return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+const getPath = (
+  x: number,
+  y: number,
+  width: number,
+  height: number
+): string => {
+  return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${
+    y + height / 3
+  }
   ${x + width / 2}, ${y}
-  C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
-  Z`;
-};
+  C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${
+    x + width
+  }, ${y + height}
+  Z`
+}
 
-const TriangleBar = (props:any) => {
-  const { fill, x, y, width, height } = props;
+const TriangleBar = (props: any) => {
+  const { fill, x, y, width, height } = props
 
-  return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
-};
+  return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />
+}
 
-
-export const VisitsChart= ({    apiData: apiData,
+export const VisitsChart = ({
+  apiData: apiData,
   searchData: searchData,
   apiDataAccount: apiDataAccount,
   account: account,
   searchDataAccount: searchDataAccount,
-  customEventsData}:any) => {
-
-    const data = [
-      { name: 'Total Visits', uv:  account ? apiDataAccount?.nb_visits : apiData?.nb_visits, pv: 2400, amt: 2400 },
-      { name: 'Total Actions', uv:  account ? apiDataAccount?.nb_actions : apiData?.nb_actions, pv: 2400, amt: 2400 },
-      { name: 'Total Searches', uv:  account ? searchDataAccount : searchData, pv: 2400, amt: 2400 },
-      { name: 'Average Time Spent', uv: account ? apiDataAccount?.avg_time_on_site : apiData?.avg_time_on_site, pv: 2400, amt: 2400 },
-      { name: 'Source Click', uv: account? customEventsData?.nb_visits: customEventsData?.nb_visits, pv: 2400, amt: 2400 },
-  
-    
-    ];
+  customEventsData
+}: any) => {
+  const data = [
+    {
+      name: 'Visits',
+      uv: account ? apiDataAccount?.nb_visits : apiData?.nb_visits,
+      pv: 2400,
+      amt: 2400
+    },
+    {
+      name: 'Actions',
+      uv: account ? apiDataAccount?.nb_actions : apiData?.nb_actions,
+      pv: 2400,
+      amt: 2400
+    },
+    {
+      name: 'Searches',
+      uv: account ? searchDataAccount : searchData,
+      pv: 2400,
+      amt: 2400
+    },
+    {
+      name: 'Average Time Spent',
+      uv: account
+        ? apiDataAccount?.avg_time_on_site
+        : apiData?.avg_time_on_site,
+      pv: 2400,
+      amt: 2400
+    },
+    {
+      name: 'Sources Clicked',
+      uv: account ? customEventsData?.nb_visits : customEventsData?.nb_visits,
+      pv: 2400,
+      amt: 2400
+    }
+  ]
   return (
-
-
-
-
-
     <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow">
-         <CardHeader>
-            {/* <CardTitle></CardTitle> */}
-          </CardHeader> 
-          <CardContent>
-          <ChartContainer config={chartConfig}>
-      <ResponsiveContainer width="100%" height="200px">
-
-<BarChart
-height={200}
-  data={data}
-  margin={{
-    top: 20,
-    right: 30,
-    left: 20,
-    bottom: 5,
-  }}
->
-  <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="name" />
-  <YAxis />
-  <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-  {data.map((entry, index) => (
-      <Cell key={`cell-${index}`} fill={colors[index]} />
-    ))}
-  </Bar>
-</BarChart>
-</ResponsiveContainer>
-            </ChartContainer>
-
-          </CardContent>
-        </Card>
-
-   
-  );
-};
-
+      <CardHeader>{/* <CardTitle></CardTitle> */}</CardHeader>
+      <CardContent>
+        <ChartContainer config={chartConfig}>
+          <ResponsiveContainer width="100%" height="200px">
+            <BarChart
+              height={200}
+              data={data}
+              margin={{
+                top: 20,
+                right: 30,
+                left: 20,
+                bottom: 5
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Bar
+                dataKey="uv"
+                fill="#8884d8"
+                shape={<TriangleBar />}
+                label={{ position: 'top' }}
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={colors[index]} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </ChartContainer>
+      </CardContent>
+    </Card>
+  )
+}
