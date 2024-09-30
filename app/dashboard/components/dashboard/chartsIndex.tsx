@@ -287,8 +287,6 @@ export default function ChartIndex() {
             </div>
           </div> */}
           <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
-          
-            
             <div>
               <VisitsChart
                 apiData={apiData}
@@ -300,9 +298,8 @@ export default function ChartIndex() {
                   customEventsData?.length > 0 ? customEventsData[0] : []
                 }
               />
-          
             </div>
-            
+
             <div className="col-auto">
               <JobsDistributionChart />
             </div>
@@ -310,20 +307,7 @@ export default function ChartIndex() {
               <WorkDistribution />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
-            {/* <div className="col-auto">
-              <ActionChart apiData={chartVisitsData} />
-            </div>
-            <div>
-              <VisitsChart
-                chartSearchData={chartSearchData}
-                apiData={chartActionData}
-                chartVisitsData={chartVisitsData}
-              />
-            </div>
-            <div>
-              <RewardsChart chartSearchData={chartSearchData} />
-            </div> */}
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
               <GoogleMarketcapChart />
             </div>
@@ -333,7 +317,7 @@ export default function ChartIndex() {
             <div>
               <AthenaTokenChart />
             </div>
-          </div>
+          </div> */}
         </>
       )}
     </div>

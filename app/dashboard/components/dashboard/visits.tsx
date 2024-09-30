@@ -273,7 +273,7 @@ export const VisitsChart = ({
       amt: 2400
     },
     {
-      name: 'Sources Clicked',
+      name: 'Sources',
       uv: account ? customEventsData?.nb_visits : customEventsData?.nb_visits,
       pv: 2400,
       amt: 2400
@@ -295,7 +295,7 @@ export const VisitsChart = ({
                 bottom: 5
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
+              <CartesianGrid strokeDasharray="1 1" />
               <XAxis dataKey="name" />
               <YAxis />
               <Bar
