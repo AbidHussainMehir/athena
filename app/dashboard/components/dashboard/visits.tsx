@@ -276,7 +276,7 @@ export const VisitsChart = ({
   return (
     <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow">
       <CardHeader>
-        {/* <CardTitle>Presale</CardTitle> */}
+        <CardTitle className='p-2'></CardTitle>
         {/* <CardDescription>Presale</CardDescription> */}
       </CardHeader>
       <CardContent>

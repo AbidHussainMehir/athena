@@ -141,6 +141,8 @@ const WorkDistribution = ({
   return (
     <Card className="rounded-xl border bg-card text-card-foreground shadow">
       <CardHeader>
+      <CardTitle className="text-center">ATHR Allocation</CardTitle>
+
         {/* <CardDescription>Rewards</CardDescription> */}
       </CardHeader>
       <CardContent>

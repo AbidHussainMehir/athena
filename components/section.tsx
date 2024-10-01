@@ -29,32 +29,33 @@ export const Section: React.FC<SectionProps> = ({
   title,
   separator = false
 }) => {
+  const {theme}=useTheme();
   const iconSize = 16
+  const iconColor = theme==='light'?'#000':'rgb(202,241,222)'
   const iconClassName = 'mr-1.5 text-muted-foreground'
   let icon: React.ReactNode
-  const {theme}=useTheme();
   switch (title) {
     case 'Images':
       // eslint-disable-next-line jsx-a11y/alt-text
-      icon = <Image size={iconSize} className={iconClassName} />
+      icon = <Image size={iconSize} className={iconClassName} color={iconColor} />
       break
     case 'Videos':
-      icon = <Film size={iconSize} className={iconClassName} />
+      icon = <Film size={iconSize} className={iconClassName} color={iconColor} />
       break
     case 'Sources':
-      icon = <Newspaper size={iconSize} className={iconClassName} />
+      icon = <Newspaper size={iconSize} className={iconClassName} color={iconColor} />
       break
     case 'Answer':
-      icon = <BookCheck size={iconSize} className={iconClassName} />
+      icon = <BookCheck size={iconSize} className={iconClassName} color={iconColor}/>
       break
     case 'Related':
-      icon = <Repeat2 size={iconSize} className={iconClassName} />
+      icon = <Repeat2 size={iconSize} className={iconClassName} color={iconColor}/>
       break
     case 'Follow-up':
-      icon = <MessageCircleMore size={iconSize} className={iconClassName} />
+      icon = <MessageCircleMore size={iconSize} className={iconClassName} color={iconColor}/>
       break
     default:
-      icon = <Search size={iconSize} className={iconClassName} />
+      icon = <Search size={iconSize} className={iconClassName} color={iconColor}/>
   }
 
   return (
