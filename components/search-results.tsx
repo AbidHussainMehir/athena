@@ -6,6 +6,7 @@ import { CardContent, Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { SearchResultItem } from '@/lib/types'
+import { useTheme } from 'next-themes'
 
 export interface SearchResultsProps {
   results: SearchResultItem[]
@@ -37,6 +38,7 @@ export function SearchResults({ results }: SearchResultsProps) {
   }
   // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
   // _paq.push(['trackEvent', 'FormSubmission', 'page url','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
+  const {theme}=useTheme();
 
   return (
     <div className="flex flex-wrap">
@@ -78,13 +80,13 @@ export function SearchResults({ results }: SearchResultsProps) {
         <div className="w-1/2 md:w-1/4 p-1">
           <Card className="flex-1 flex h-full items-center justify-center">
             <CardContent className="p-2">
-              <Button
-                variant={'link'}
-                className="text-muted-foreground"
-                onClick={handleViewMore}
-              >
-                View {additionalResultsCount} more
-              </Button>
+            <Button
+  variant="link"
+  style={{ color: theme === 'light' ? '#000' : 'rgb(202, 241, 222)' }} // Apply the color conditionally
+  onClick={handleViewMore}
+>
+  View {additionalResultsCount} more
+</Button>
             </CardContent>
           </Card>
         </div>

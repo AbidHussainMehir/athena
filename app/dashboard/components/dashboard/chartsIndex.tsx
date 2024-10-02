@@ -286,8 +286,8 @@ export default function ChartIndex() {
               />
             </div>
           </div> */}
-          <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4 mb-4">
+            <div >
               <JobsDistributionChart />
             </div>
 

@@ -1,0 +1,5 @@
+# Allow all web crawlers access to everything
+User-agent: *
+Disallow:
+
+Sitemap: https://www.theathena.ai/sitemap.xml

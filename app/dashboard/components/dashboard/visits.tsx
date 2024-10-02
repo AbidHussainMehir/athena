@@ -274,7 +274,7 @@ export const VisitsChart = ({
     }
   ]
   return (
-    <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow">
+    <Card className="rounded-xl  mb-4 border bg-card text-card-foreground shadow " style={{minHeight: '100%'}}>
       <CardHeader>
         <CardTitle className='p-2'></CardTitle>
         {/* <CardDescription>Presale</CardDescription> */}
