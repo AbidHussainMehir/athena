@@ -13,6 +13,7 @@ export function DashboardCards({
   searchDataAccount: searchDataAccount,
   customEventsData
 }: any) {
+ 
   const theme: any = useTheme()
   // total visits
   // {account ? apiDataAccount?.nb_visits : apiData?.nb_visits}

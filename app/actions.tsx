@@ -10,6 +10,7 @@ import { CoreMessage, generateId, ToolResultPart } from 'ai'
 import { Spinner } from '@/components/ui/spinner'
 import { Section } from '@/components/section'
 import { FollowupPanel } from '@/components/followup-panel'
+import { LikeDisLike } from '@/components/like-dislike'
 import { inquire, researcher, taskManager, querySuggestor } from '@/lib/agents'
 import { writer } from '@/lib/agents/writer'
 import { saveChat } from '@/lib/actions/chat'
@@ -26,7 +27,7 @@ import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
 import { use } from 'react'
 import { ConnectButton, useActiveAccount } from 'thirdweb/react'
-
+import { BiDislike, BiLike } from "react-icons/bi";
 async function submit(
   formData?: FormData,
   skip?: boolean,
@@ -225,9 +226,19 @@ async function submit(
       const relatedQueries = await querySuggestor(uiStream, processedMessages)
       // Add follow-up panel
       uiStream.append(
+        
+
+
+<>
+
+        <Section >
+<LikeDisLike/>
+         
+        </Section>
         <Section title="Follow-up">
           <FollowupPanel />
         </Section>
+        </>
       )
 
       aiState.done({

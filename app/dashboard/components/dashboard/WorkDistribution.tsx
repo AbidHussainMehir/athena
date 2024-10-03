@@ -175,12 +175,12 @@ const WorkDistribution = ({
             </PieChart>
           </ResponsiveContainer>
         </ChartContainer>
-        <div className="text-center">
+        {/* <div className="text-center">
           <p>Community Rewards:80%(400M ATHR)</p>
           <p> Team:5%(25M ATHR Token)</p>
           <p>Campaigns:10%(75M ATHR Token)</p>
           <p> Marketing:5%(25M ATHR Tokens)</p>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   )

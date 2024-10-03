@@ -190,13 +190,13 @@ const JobsDistributionChart = () => {
             </PieChart>
           </ResponsiveContainer>
         </ChartContainer>
-        <div className="text-center">
+        {/* <div className="text-center">
           <p>Public Presale:55%(11.5M ATH)</p>
           <p> Team:15%(3.2M ATH Token)</p>
           <p>Advisior:5%(1M ATH Tokens)</p>
           <p> Operations:15%(3.2M Tokens)</p>
           <p> Marketing:10%(2.1M Tokens)</p>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   )
