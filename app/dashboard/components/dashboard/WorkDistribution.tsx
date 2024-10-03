@@ -56,11 +56,12 @@ const WorkDistribution = ({
   customEventsData
 }: any) => {
   const [data] = useState<any>([
-    { name: 'Total Actions', value: 25, color: '#FF98FC' },
-    { name: 'Total Visits', value: 25, color: '#0088FE' },
-    { name: 'Sources Clicked', value: 25, color: '#cc8605' },
-    { name: 'Total Searches', value: 25, color: '#ff0000' }
+    { name: 'Community Rewards', value: 80, color: '#FF98FC' },
+    { name: 'Team', value: 5, color: '#0088FE' },
+    { name: 'Campaigns', value: 10, color: '#cc8605' },
+    { name: 'Marketing', value: 5, color: '#ff0000' }
   ])
+
   const [state, setState] = useState({
     activeIndex: 0
   })
@@ -139,9 +140,12 @@ const WorkDistribution = ({
   }
 
   return (
-    <Card className="rounded-xl border bg-card text-card-foreground shadow "  style={{minHeight: '100%'}} >
+    <Card
+      className="rounded-xl border bg-card text-card-foreground shadow "
+      style={{ minHeight: '100%' }}
+    >
       <CardHeader>
-      <CardTitle className="text-center">ATHR Allocation</CardTitle>
+        <CardTitle className="text-center">ATHR Allocation</CardTitle>
 
         {/* <CardDescription>Rewards</CardDescription> */}
       </CardHeader>
@@ -171,14 +175,12 @@ const WorkDistribution = ({
             </PieChart>
           </ResponsiveContainer>
         </ChartContainer>
-        <div className='text-center'>
-
-        <p>Community Rewards:80%(400M ATHR)</p>
-        <p> Team:5%(25M ATHR Token)</p>
-        <p>Campaigns:10%(75M ATHR Token)</p>
-        <p> Marketing:5%(25M ATHR Tokens)</p>
+        <div className="text-center">
+          <p>Community Rewards:80%(400M ATHR)</p>
+          <p> Team:5%(25M ATHR Token)</p>
+          <p>Campaigns:10%(75M ATHR Token)</p>
+          <p> Marketing:5%(25M ATHR Tokens)</p>
         </div>
-      
       </CardContent>
     </Card>
   )
