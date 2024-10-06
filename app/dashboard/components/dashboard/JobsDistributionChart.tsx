@@ -110,11 +110,11 @@ const JobsDistributionChart = () => {
     } = props
     const sin = Math.sin(-RADIAN * midAngle)
     const cos = Math.cos(-RADIAN * midAngle)
-    const sx = cx + (outerRadius + 10) * cos
-    const sy = cy + (outerRadius + 10) * sin
-    const mx = cx + (outerRadius + 30) * cos
-    const my = cy + (outerRadius + 30) * sin
-    const ex = mx + (cos >= 0 ? 1 : -1) * -2
+    const sx = cx + (outerRadius + 2) * cos
+    const sy = cy + (outerRadius + 2) * sin
+    const mx = cx + (outerRadius + 3) * cos
+    const my = cy + (outerRadius + 3) * sin
+    const ex = mx + (cos >= 0 ? 1 : -1) * 22
     const ey = my
     const textAnchor = cos >= 0 ? 'start' : 'end'
 
@@ -144,17 +144,17 @@ const JobsDistributionChart = () => {
           outerRadius={outerRadius + 10}
           fill={payload.color}
         />
-        <path
+        {/* <path
           d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
           stroke={payload.color}
           fill="none"
         />
-        <circle cx={ex} cy={ey} r={2} fill={payload.color} stroke="none" />
+        <circle cx={ex} cy={ey} r={2} fill={payload.color} stroke="none" /> */}
 
         <text
-          x={ex + (cos >= 0 ? 1 : -1) * 1}
-          y={ey}
-          dy={5}
+          x={ex + (cos >= 0 ? 1 : -1) * 2}
+          y={ey - 8}
+          dy={4}
           textAnchor={textAnchor}
           fill={payload.color}
         >
