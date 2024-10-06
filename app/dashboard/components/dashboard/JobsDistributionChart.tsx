@@ -24,16 +24,21 @@ import {
 interface DataItem {
   name: string
   value: number
-  color: string,
-  allocation:string
+  color: string
+  allocation: string
 }
 
 const data: DataItem[] = [
-  { name: 'Public Presale',allocation:'11.5M ATH', value: 55, color: '#cc8605' },
-  { name: 'Team', value: 15,allocation:'3.2M ATH', color: '#FF98FC' },
-  { name: 'Advisior', value: 5,allocation:'1M ATH', color: '#0088FE' },
-  { name: 'Operations', value: 15,allocation:'3.2M ATH', color: '#237809' },
-  { name: 'Marketing', value: 10,allocation:'2.1M', color: '#ff0000' }
+  {
+    name: 'Public Presale',
+    allocation: '11.5M ATH',
+    value: 55,
+    color: '#cc8605'
+  },
+  { name: 'Team', value: 15, allocation: '3.2M ATH', color: '#FF98FC' },
+  { name: 'Advisior', value: 5, allocation: '1M ATH', color: '#0088FE' },
+  { name: 'Operations', value: 15, allocation: '3.2M ATH', color: '#237809' },
+  { name: 'Marketing', value: 10, allocation: '2.1M', color: '#ff0000' }
 ]
 
 // <p>Public Presale:55%(11.5M ATH)</p>
@@ -115,10 +120,10 @@ const JobsDistributionChart = () => {
 
     return (
       <g>
-        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+        <text x={cx} y={cy} dy={-8} textAnchor="middle" fill={fill}>
           {payload.name}
         </text>
-        <text x={cx} y={cy} dy={30} textAnchor="middle" fill={fill}>
+        <text x={cx} y={cy} dy={14} textAnchor="middle" fill={fill}>
           {`${payload.allocation} Tokens`}
         </text>
         <Sector
@@ -153,7 +158,7 @@ const JobsDistributionChart = () => {
           textAnchor={textAnchor}
           fill={payload.color}
         >
-          {`(${percent * 100}%)`}
+          {`(${(percent * 100).toFixed(0)}%)`}
         </text>
       </g>
     )
