@@ -14,9 +14,8 @@ import { ChartConfig, ChartContainer } from '../ui/chart'
 interface DataItem {
   name: string
   value: number
-  color: string,
-  allocation:string
-
+  color: string
+  allocation: string
 }
 
 interface ActiveShapeProps {
@@ -58,11 +57,15 @@ const WorkDistribution = ({
   customEventsData
 }: any) => {
   const [data] = useState<any>([
-  
-  { name: 'Community Rewards', allocation:'400M ATHR',value: 80, color: '#FF98FC' },
-    { name: 'Team', value: 5, allocation:'25M ATHR' ,color: '#0088FE' },
-    { name: 'Campaigns', value: 10, allocation:'75M ATHR', color: '#cc8605' },
-    { name: 'Marketing', value: 5,  allocation:'25M ATHR',color: '#ff0000' }
+    {
+      name: 'Community Rewards',
+      allocation: '400M ATHR',
+      value: 80,
+      color: '#FF98FC'
+    },
+    { name: 'Team', value: 5, allocation: '25M ATHR', color: '#0088FE' },
+    { name: 'Campaigns', value: 10, allocation: '75M ATHR', color: '#cc8605' },
+    { name: 'Marketing', value: 5, allocation: '25M ATHR', color: '#ff0000' }
   ])
 
   const [state, setState] = useState({
@@ -101,10 +104,10 @@ const WorkDistribution = ({
 
     return (
       <g>
-        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+        <text x={cx} y={cy} dy={-8} textAnchor="middle" fill={fill}>
           {payload.name}
         </text>
-        <text x={cx} y={cy} dy={30} textAnchor="middle" fill={fill}>
+        <text x={cx} y={cy} dy={14} textAnchor="middle" fill={fill}>
           {`${payload.allocation} Tokens`}
         </text>
         <Sector
