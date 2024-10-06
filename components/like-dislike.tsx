@@ -31,14 +31,21 @@ export function LikeDisLike() {
 
   return (
     <div className="flex justify-end mt-2">
-    <button aria-label="Like" className="text-blue-500 hover:text-blue-700 mr-2">
-    <BiLike style={{color:theme==='light'?'#000':'rgb(202,241,222)'}} onClick={()=>{like()}} />
-        
+    <button 
+        aria-label="Like" 
+        className="text-blue-500 hover:text-blue-700 mr-2"
+        onClick={() => { like(); }}
+    >
+        <BiLike color='green' size={24} /> {/* Adjust size as needed */}
     </button>
-    <button aria-label="Unlike" className="text-red-500 hover:text-red-700">
-    <BiDislike style={{color:theme==='light'?'#000':'rgb(202,241,222)'}}  onClick={()=>{unLike()}}/>
-        
+    <button 
+        aria-label="Unlike" 
+        className="text-red-500 hover:text-red-700"
+        onClick={() => { unLike(); }}
+    >
+        <BiDislike color='red' size={24} /> {/* Adjust size as needed */}
     </button>
 </div>
+
   )
 }

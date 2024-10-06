@@ -117,6 +117,9 @@ const JobsDistributionChart = () => {
         <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
           {payload.name}
         </text>
+        {/* <text x={cx} y={cy} dy={30} textAnchor="middle" fill={fill}>
+          dummy
+        </text> */}
         <Sector
           cx={cx}
           cy={cy}
