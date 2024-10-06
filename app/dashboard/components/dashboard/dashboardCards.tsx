@@ -11,7 +11,8 @@ export function DashboardCards({
   apiDataAccount: apiDataAccount,
   account: account,
   searchDataAccount: searchDataAccount,
-  customEventsData
+  customEventsData,
+  customEventsDataAccount
 }: any) {
  
   const theme: any = useTheme()
@@ -25,6 +26,7 @@ export function DashboardCards({
   // {account
   //   ? customEventsData?.nb_visits
   //   : customEventsData?.nb_visits}
+  console.log('child component dashboard',customEventsData)
   const [rewardData, setRewardData] = useState<any>(0)
   useEffect(() => {
     try {
@@ -187,9 +189,12 @@ export function DashboardCards({
                       color: theme?.theme === 'light' ? '#09090B' : '#fff'
                     }}
                   >
+                    {
+                      console.log('account::',account)
+                    }
                     {account
-                      ? customEventsData?.nb_visits
-                      : customEventsData?.nb_visits}
+                      ? 
+                      customEventsDataAccount?.nb_visits??'N/A':customEventsData?.nb_visits??'N/A'}
                   </p>
                 </CardDescription>
               </CardHeader>
