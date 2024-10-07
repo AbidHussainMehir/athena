@@ -21,7 +21,9 @@ export default function ChartIndex() {
   const [searchDataAccount, setSearchDataAccount] = useState()
   const [chartSearchData, setChartSearchData] = useState<any>()
   const [customEventsData, setCustomEventsData] = useState<any>([])
-  const [customEventsDataAccount, setCustomEventsDataAccount] = useState<any>([])
+  const [customEventsDataAccount, setCustomEventsDataAccount] = useState<any>(
+    []
+  )
   const [likeUnlikeData, setLikeUnlikeData] = useState<any>([])
   const [likeUnlikeDataAccount, setLikeUnlikeDataAccount] = useState<any>([])
   const [loading, setLoading] = useState(true)
@@ -211,24 +213,24 @@ export default function ChartIndex() {
     try {
       let response
       setLoading(true)
- 
 
-
-        response = await fetch(
-          'https://analytics.theathena.ai/index.php?module=API&method=Events.getCategory&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1'
-        )
-      
+      response = await fetch(
+        'https://analytics.theathena.ai/index.php?module=API&method=Events.getCategory&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1'
+      )
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
       let dd = data.filter((n: any) => n.label === 'source-click')
-let likes = data.filter((n: any) => n.label === "like");
-let unLikes = data.filter((n: any) => n.label === "unlike");
+      let likes = data.filter((n: any) => n.label === 'like')
+      let unLikes = data.filter((n: any) => n.label === 'unlike')
 
-let likeUnlike = [...likes, ...unLikes];
-setLikeUnlikeData(likeUnlike)
+      let likeUnlike = [
+        likes?.[0]?.nb_visits ?? 0,
+        unLikes?.[0]?.nb_visits ?? 0
+      ]
+      setLikeUnlikeData(likeUnlike)
       setCustomEventsData(dd)
       setLoading(false)
     } catch (error) {
@@ -240,22 +242,23 @@ setLikeUnlikeData(likeUnlike)
     try {
       let response
       setLoading(true)
-    
-        response = await fetch(
-          `https://analytics.theathena.ai/index.php?module=API&method=Events.getCategory&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
-        )
-      
-    
+
+      response = await fetch(
+        `https://analytics.theathena.ai/index.php?module=API&method=Events.getCategory&idSite=1&period=year&date=yesterday&format=JSON&token_auth=9645f77e369daeb422fe1b392695a5ed&force_api_session=1&segment=userId==${account?.address}`
+      )
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
       let dd = data.filter((n: any) => n.label === 'source-click')
-      let likes = data.filter((n: any) => n.label === "like");
-      let unLikes = data.filter((n: any) => n.label === "unlike");
-      
-      let likeUnlike = [...likes, ...unLikes];
+      let likes = data.filter((n: any) => n.label === 'like')
+      let unLikes = data.filter((n: any) => n.label === 'unlike')
+      let likeUnlike = [
+        likes?.[0]?.nb_visits ?? 0,
+        unLikes?.[0]?.nb_visits ?? 0
+      ]
+
       setLikeUnlikeDataAccount(likeUnlike)
 
       setCustomEventsDataAccount(dd)
@@ -266,15 +269,14 @@ setLikeUnlikeData(likeUnlike)
     }
   }
   useEffect(() => {
-    if(account){
+    if (account) {
       handleEventsAccount()
-    }
-    else{
-console.log('inside else')
+    } else {
+      console.log('inside else')
       handleEvents()
     }
   }, [account])
-  console.log('customEventsData',customEventsData)
+  console.log('customEventsData', customEventsData)
   return (
     <div>
       {loading ? (
@@ -309,9 +311,7 @@ console.log('inside else')
         </div>
       ) : (
         <>
-        {
-          console.log('custom event data',customEventsData)
-        }
+          {console.log('custom event data', customEventsData)}
           <DashboardCards
             apiData={apiData}
             apiDataAccount={apiDataAccount}
@@ -322,9 +322,12 @@ console.log('inside else')
               customEventsData?.length > 0 ? customEventsData[0] : []
             }
             customEventsDataAccount={
-              customEventsDataAccount?.length > 0 ? customEventsDataAccount[0] : []
+              customEventsDataAccount?.length > 0
+                ? customEventsDataAccount[0]
+                : []
             }
-
+            likeUnlikeData={likeUnlikeData}
+            likeUnlikeDataAccount={likeUnlikeDataAccount}
           />
           {/* <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
@@ -341,7 +344,7 @@ console.log('inside else')
             </div>
           </div> */}
           <div className="grid grid-cols-1 lg:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4 mb-4">
-            <div >
+            <div>
               <JobsDistributionChart />
             </div>
 

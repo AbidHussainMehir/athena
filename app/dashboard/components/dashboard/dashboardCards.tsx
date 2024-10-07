@@ -12,7 +12,9 @@ export function DashboardCards({
   account: account,
   searchDataAccount: searchDataAccount,
   customEventsData,
-  customEventsDataAccount
+  customEventsDataAccount,
+  likeUnlikeData,
+  likeUnlikeDataAccount
 }: any) {
   const theme: any = useTheme()
   // total visits
@@ -25,7 +27,11 @@ export function DashboardCards({
   // {account
   //   ? customEventsData?.nb_visits
   //   : customEventsData?.nb_visits}
-  console.log('child component dashboard', customEventsData)
+  console.log(
+    'child component dashboard',
+    likeUnlikeData,
+    likeUnlikeDataAccount
+  )
   const [rewardData, setRewardData] = useState<any>(0)
   useEffect(() => {
     try {
@@ -144,7 +150,7 @@ export function DashboardCards({
               </CardHeader>
             </Card>
           </div>
-          <div className="col-span-12 md:col-span-6">
+          <div className="col-span-12 md:col-span-4">
             <Card className="rounded-xl border bg-card text-card-foreground shadow">
               <CardHeader className="px-0 py-4">
                 <CardTitle className="px-0  text-sm font-medium">
@@ -175,7 +181,7 @@ export function DashboardCards({
               </CardHeader>
             </Card>
           </div>
-          <div className="col-span-12 md:col-span-6">
+          <div className="col-span-12 md:col-span-4">
             <Card className="rounded-xl border bg-card text-card-foreground shadow">
               <CardHeader className="px-0 py-4">
                 <CardTitle className="px-0  text-sm font-medium">
@@ -201,6 +207,37 @@ export function DashboardCards({
                     {account
                       ? customEventsDataAccount?.nb_visits ?? 'N/A'
                       : customEventsData?.nb_visits ?? 'N/A'}
+                  </p>
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+          <div className="col-span-12 md:col-span-4">
+            <Card className="rounded-xl border bg-card text-card-foreground shadow">
+              <CardHeader className="px-0 py-4">
+                <CardTitle className="px-0  text-sm font-medium">
+                  <div className="px-6 flex flex-row items-center justify-center ">
+                    <p
+                      className=" px-0 tracking-tight text-sm font-medium"
+                      style={{
+                        color: theme?.theme === 'light' ? '#09090B' : '#fff'
+                      }}
+                    >
+                      Feedbacks
+                    </p>
+                  </div>
+                </CardTitle>
+                <CardDescription className="px-0">
+                  <p
+                    className="px-6 text-2xl font-bold text-center"
+                    style={{
+                      color: theme?.theme === 'light' ? '#09090B' : '#fff'
+                    }}
+                  >
+                    {account
+                      ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1] ??
+                        'N/A'
+                      : likeUnlikeData[0] + likeUnlikeData[1] ?? 'N/A'}
                   </p>
                 </CardDescription>
               </CardHeader>
