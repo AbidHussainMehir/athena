@@ -14,6 +14,7 @@ import { UserMessage } from './user-message'
 import { PartialRelated } from '@/lib/schema/related'
 import { Section } from './section'
 import { Skeleton } from './ui/skeleton'
+import toast from 'react-hot-toast'
 
 export interface SearchRelatedProps {
   relatedQueries: StreamableValue<PartialRelated>
@@ -59,6 +60,8 @@ export const SearchRelated: React.FC<SearchRelatedProps> = ({
   }
   const sourceClick = (linkText: any) => {
     window._paq.push(['trackEvent', 'source-click', linkText])
+    
+    toast.success('Reward Added')
   }
   return related ? (
     <Section title="Related" separator={true}>

@@ -15,6 +15,7 @@ import { useAppState } from '@/lib/utils/app-state'
 import Typewriter from 'typewriter-effect'
 import { IconLogo } from './ui/icons'
 import { useTheme } from 'next-themes'
+import toast from 'react-hot-toast'
 
 interface ChatPanelProps {
   messages: UIState
@@ -61,6 +62,8 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     const formData = new FormData(e.currentTarget)
     handleSearch(input)
     await handleQuerySubmit(input, formData)
+    window._paq.push(['trackEvent', 'source-click', input])
+    toast.success('Reward Added')
   }
 
   // if query is not empty, submit the query

@@ -9,7 +9,7 @@ import { UserMessage } from './user-message'
 import { ArrowRight } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { BiDislike, BiLike } from 'react-icons/bi'
-
+import toast, { Toaster } from 'react-hot-toast';
 export function LikeDisLike() {
   const { theme } = useTheme()
 
@@ -17,16 +17,11 @@ export function LikeDisLike() {
   const { submit } = useActions()
   const [, setMessages] = useUIState<typeof AI>()
   const like=()=>{
-
- 
-
     window._paq.push(['trackEvent', 'like','like-text'])
   
   }
   const unLike=()=>{
- 
   window._paq.push(['trackEvent', 'unLike','unlike-text'])
-  
   }
 
   return (

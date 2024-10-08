@@ -8,6 +8,7 @@ import type { AI } from '@/app/actions'
 import { UserMessage } from './user-message'
 import { ArrowRight } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import toast from 'react-hot-toast'
 
 export function FollowupPanel() {
   const { theme } = useTheme()
@@ -32,7 +33,8 @@ export function FollowupPanel() {
       userMessage,
       responseMessage
     ])
-
+    window._paq.push(['trackEvent', 'source-click', formData])
+    toast.success('Reward Added')
     setInput('')
   }
 

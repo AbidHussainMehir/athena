@@ -5,6 +5,7 @@ import { SiDiscord, SiGmail, SiTelegram, SiTwitter } from 'react-icons/si'
 import { Button } from './ui/button'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
+import toast from 'react-hot-toast'
 
 const Footer: React.FC = () => {
   const theme = useTheme()
@@ -18,6 +19,8 @@ const Footer: React.FC = () => {
       'event-value': linkText,
       'event-action': `${document.title} - ${window.location.href}`
     })
+    toast.success('Reward Added')
+
   }
   const socialLinksClick = (linkText: any) => {
     window._mtm.push({

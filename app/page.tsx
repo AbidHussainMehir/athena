@@ -3,6 +3,7 @@ import { generateId } from 'ai'
 import { AI } from './actions'
 import { useActiveAccount } from 'thirdweb/react'
 import Head from 'next/head'
+import { Toaster } from 'react-hot-toast'
 
 export const maxDuration = 60
 
@@ -28,6 +29,8 @@ export default function Page() {
       </Head>
       <AI initialAIState={{ chatId: id, messages: [], user: account?.address }}>
         <Chat id={id} />
+        <Toaster position="top-right" />
+
       </AI>
     </>
   )

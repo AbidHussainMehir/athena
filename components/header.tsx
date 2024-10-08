@@ -17,6 +17,7 @@ import { AI } from '@/app/actions'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 export const MyComponent: React.FC = () => {
   const router = useRouter()
@@ -51,6 +52,8 @@ export const MyComponent: React.FC = () => {
       'event-category': 'logo-clicked',
       'event-action': `${document.title} - ${window.location.href}`
     })
+    toast.success('Reward Added')
+
   }
 
   const wallets = [

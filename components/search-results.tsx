@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { SearchResultItem } from '@/lib/types'
 import { useTheme } from 'next-themes'
+import toast from 'react-hot-toast'
 
 export interface SearchResultsProps {
   results: SearchResultItem[]
@@ -35,6 +36,7 @@ export function SearchResults({ results }: SearchResultsProps) {
     //   'event-action': `${document.title} - ${window.location.href}`
     // })
     window._paq.push(['trackEvent', 'source-click', linkText])
+    toast.success('Reward Added')
   }
   // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
   // _paq.push(['trackEvent', 'FormSubmission', 'page url','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
