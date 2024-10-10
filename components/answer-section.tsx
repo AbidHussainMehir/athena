@@ -5,6 +5,7 @@ import { Section } from './section'
 import { StreamableValue, useStreamableValue } from 'ai/rsc'
 import { BotMessage } from './message'
 import { useEffect, useState } from 'react'
+import { LikeDisLike } from './like-dislike'
 
 export type AnswerSectionProps = {
   result?: StreamableValue<string>
@@ -26,15 +27,20 @@ export function AnswerSection({
   return (
     <div>
       {content.length > 0 ? (
+        <>
         <Section title={hasHeader ? 'Answer' : undefined}>
           <BotMessage content={content} />
+          <LikeDisLike/>
         </Section>
+       
+        </>
       ) : (
         <div className="flex flex-col gap-2 py-2">
           <Skeleton className="h-6 w-48" />
           <Skeleton className="w-full h-6" />
         </div>
       )}
+    
     </div>
   )
 }

@@ -52,7 +52,15 @@ export const MyComponent: React.FC = () => {
       'event-category': 'logo-clicked',
       'event-action': `${document.title} - ${window.location.href}`
     })
-    toast.success('Reward Added')
+    if (account?.address){
+
+      toast('🤑Reward Earned')
+    }
+    else{
+      toast('🙁Reward Missed - Connect Wallet');
+
+
+    }
 
   }
 

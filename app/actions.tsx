@@ -231,11 +231,11 @@ async function submit(
 
 <>
 
-        <Section >
+        {/* <Section >
 <LikeDisLike/>
 
          
-        </Section>
+        </Section> */}
         <Section title="Follow-up">
           <FollowupPanel />
         </Section>

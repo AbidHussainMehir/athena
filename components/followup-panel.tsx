@@ -9,9 +9,11 @@ import { UserMessage } from './user-message'
 import { ArrowRight } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import toast from 'react-hot-toast'
+import { useActiveAccount } from 'thirdweb/react'
 
 export function FollowupPanel() {
   const { theme } = useTheme()
+  const account = useActiveAccount()
 
   const [input, setInput] = useState('')
   const { submit } = useActions()
@@ -34,7 +36,15 @@ export function FollowupPanel() {
       responseMessage
     ])
     window._paq.push(['trackEvent', 'source-click', formData])
-    toast.success('Reward Added')
+    if (account?.address){
+
+      toast('🤑Reward Earned')
+    }
+    else{
+      toast('🙁Reward Missed - Connect Wallet');
+
+
+    }
     setInput('')
   }
 

@@ -15,6 +15,7 @@ import { PartialRelated } from '@/lib/schema/related'
 import { Section } from './section'
 import { Skeleton } from './ui/skeleton'
 import toast from 'react-hot-toast'
+import { useActiveAccount } from 'thirdweb/react'
 
 export interface SearchRelatedProps {
   relatedQueries: StreamableValue<PartialRelated>
@@ -24,6 +25,8 @@ export const SearchRelated: React.FC<SearchRelatedProps> = ({
   relatedQueries
 }) => {
   const { submit } = useActions()
+  const account = useActiveAccount()
+
   const [, setMessages] = useUIState<typeof AI>()
   const [data, error, pending] = useStreamableValue(relatedQueries)
   const [related, setRelated] = useState<PartialRelated>()
@@ -61,7 +64,15 @@ export const SearchRelated: React.FC<SearchRelatedProps> = ({
   const sourceClick = (linkText: any) => {
     window._paq.push(['trackEvent', 'source-click', linkText])
     
-    toast.success('Reward Added')
+    if (account?.address){
+
+      toast('🤑Reward Earned')
+    }
+    else{
+      toast('🙁Reward Missed - Connect Wallet');
+
+
+    }
   }
   return related ? (
     <Section title="Related" separator={true}>

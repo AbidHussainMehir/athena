@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { SearchResultItem } from '@/lib/types'
 import { useTheme } from 'next-themes'
 import toast from 'react-hot-toast'
+import { useActiveAccount } from 'thirdweb/react'
 
 export interface SearchResultsProps {
   results: SearchResultItem[]
@@ -16,6 +17,8 @@ export interface SearchResultsProps {
 export function SearchResults({ results }: SearchResultsProps) {
   // State to manage whether to display the results
   const [showAllResults, setShowAllResults] = useState(false)
+  const account = useActiveAccount()
+
 
   const handleViewMore = () => {
     setShowAllResults(true)
@@ -36,7 +39,15 @@ export function SearchResults({ results }: SearchResultsProps) {
     //   'event-action': `${document.title} - ${window.location.href}`
     // })
     window._paq.push(['trackEvent', 'source-click', linkText])
-    toast.success('Reward Added')
+    if (account?.address){
+
+      toast('🤑Reward Earned')
+    }
+    else{
+      toast('🙁Reward Missed - Connect Wallet');
+
+
+    }
   }
   // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
   // _paq.push(['trackEvent', 'FormSubmission', 'page url','EVENT_NAME(optional)','EVENT_VALUE(optional)']);

@@ -16,6 +16,7 @@ import Typewriter from 'typewriter-effect'
 import { IconLogo } from './ui/icons'
 import { useTheme } from 'next-themes'
 import toast from 'react-hot-toast'
+import { useActiveAccount } from 'thirdweb/react'
 
 interface ChatPanelProps {
   messages: UIState
@@ -24,6 +25,7 @@ interface ChatPanelProps {
 
 export function ChatPanel({ messages, query }: ChatPanelProps) {
   const { theme } = useTheme()
+  const account = useActiveAccount()
 
   const [input, setInput] = useState('')
   const [showEmptyScreen, setShowEmptyScreen] = useState(false)
@@ -63,7 +65,15 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     handleSearch(input)
     await handleQuerySubmit(input, formData)
     window._paq.push(['trackEvent', 'source-click', input])
-    toast.success('Reward Added')
+    if (account?.address){
+
+      toast('🤑Reward Earned')
+    }
+    else{
+      toast('🙁Reward Missed - Connect Wallet');
+
+
+    }
   }
 
   // if query is not empty, submit the query

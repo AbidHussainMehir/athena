@@ -6,9 +6,11 @@ import { Button } from './ui/button'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import toast from 'react-hot-toast'
+import { useActiveAccount } from 'thirdweb/react'
 
 const Footer: React.FC = () => {
   const theme = useTheme()
+  const account = useActiveAccount()
 
   const pathname = usePathname()
   const isDashboard = pathname === '/dashboard'
@@ -19,7 +21,13 @@ const Footer: React.FC = () => {
       'event-value': linkText,
       'event-action': `${document.title} - ${window.location.href}`
     })
-    toast.success('Reward Added')
+    if (account?.address){
+
+      toast('🤑Reward Earned')
+    }
+    else{
+      toast('🙁Reward Missed - Connect Wallet');
+    }
 
   }
   const socialLinksClick = (linkText: any) => {
