@@ -11,6 +11,7 @@ import {
 import { Button } from '../ui/button'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
+import { FcInfo } from "react-icons/fc";
 
 export function PresaleCard(props: any) {
   const theme: any = useTheme()
@@ -58,6 +59,17 @@ export function PresaleCard(props: any) {
                 Buy ATH Presale
               </Button>
             </span>
+            <span
+              className={`ms-2 ${
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+              } rounded-lg`}
+            >
+              <Button variant="ghost" size="md" >
+              <FcInfo size={20}/>
+
+              </Button>
+             
+            </span>
           </CardFooter>
         </Card>
       </div>
@@ -102,6 +114,17 @@ export function PresaleCard(props: any) {
               <Button variant="ghost" size="md">
                 Claim ATH Rewards
               </Button>
+            </span>
+            <span
+              className={`ms-2 ${
+                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+              } rounded-lg`}
+            >
+              <Button variant="ghost" size="md" >
+              <FcInfo size={20}/>
+
+              </Button>
+             
             </span>
           </CardFooter>
         </Card>
