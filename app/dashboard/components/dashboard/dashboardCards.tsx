@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { PresaleCard } from './presale'
 import { useTheme } from 'next-themes'
-import MoveStuffAround from './ticker'
 
 export function DashboardCards({
   apiData: apiData,
@@ -67,9 +66,6 @@ export function DashboardCards({
   console.log({ rewardData })
   return (
     <>
-      <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
-        <MoveStuffAround />
-      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-1 md:grid-cols-2  gap-4 md:gap-4 ">
           <PresaleCard account={account} rewardData={rewardData} />

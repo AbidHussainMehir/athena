@@ -11,6 +11,7 @@ import { VisitsChart } from './visits'
 import { useActiveAccount } from 'thirdweb/react'
 import JobsDistributionChart from './JobsDistributionChart'
 import WorkDistribution from './WorkDistribution'
+import MoveStuffAround from './ticker'
 
 export default function ChartIndex() {
   const [apiData, setApiData] = useState()
@@ -384,6 +385,9 @@ export default function ChartIndex() {
               <AthenaTokenChart />
             </div>
           </div> */}
+          <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
+            <MoveStuffAround />
+          </div>
         </>
       )}
     </div>
