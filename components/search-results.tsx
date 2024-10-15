@@ -19,7 +19,6 @@ export function SearchResults({ results }: SearchResultsProps) {
   const [showAllResults, setShowAllResults] = useState(false)
   const account = useActiveAccount()
 
-
   const handleViewMore = () => {
     setShowAllResults(true)
   }
@@ -39,19 +38,25 @@ export function SearchResults({ results }: SearchResultsProps) {
     //   'event-action': `${document.title} - ${window.location.href}`
     // })
     window._paq.push(['trackEvent', 'source-click', linkText])
-    if (account?.address){
-
-      toast('🤑Reward Earned')
-    }
-    else{
-      toast('🙁Reward Missed - Connect Wallet');
-
-
+    if (account?.address) {
+      toast('🤑Reward Earned', {
+        style: {
+          background: 'green',
+          color: '#fff'
+        }
+      })
+    } else {
+      toast('🙁Reward Missed - Connect Wallet', {
+        style: {
+          background: 'red',
+          color: '#fff'
+        }
+      })
     }
   }
   // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
   // _paq.push(['trackEvent', 'FormSubmission', 'page url','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
-  const {theme}=useTheme();
+  const { theme } = useTheme()
 
   return (
     <div className="flex flex-wrap">
@@ -93,13 +98,15 @@ export function SearchResults({ results }: SearchResultsProps) {
         <div className="w-1/2 md:w-1/4 p-1">
           <Card className="flex-1 flex h-full items-center justify-center">
             <CardContent className="p-2">
-            <Button
-  variant="link"
-  style={{ color: theme === 'light' ? '#000' : 'rgb(202, 241, 222)' }} // Apply the color conditionally
-  onClick={handleViewMore}
->
-  View {additionalResultsCount} more
-</Button>
+              <Button
+                variant="link"
+                style={{
+                  color: theme === 'light' ? '#000' : 'rgb(202, 241, 222)'
+                }} // Apply the color conditionally
+                onClick={handleViewMore}
+              >
+                View {additionalResultsCount} more
+              </Button>
             </CardContent>
           </Card>
         </div>
