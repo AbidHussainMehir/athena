@@ -9,7 +9,7 @@ import { UserMessage } from './user-message'
 import { ArrowRight } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { BiDislike, BiLike } from 'react-icons/bi'
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast'
 import { useActiveAccount } from 'thirdweb/react'
 
 export function LikeDisLike() {
@@ -29,9 +29,19 @@ export function LikeDisLike() {
     if (!hasLiked && !hasDisliked) {
       if (account?.address) {
         setHasLiked(true)
-        toast('🤑 Reward Earned')
+        toast('🤑 Reward Earned', {
+          style: {
+            background: 'green',
+            color: '#fff'
+          }
+        })
       } else {
-        toast('🙁 Reward Missed - Connect Wallet')
+        toast('🙁 Reward Missed - Connect Wallet', {
+          style: {
+            background: 'red',
+            color: '#fff'
+          }
+        })
       }
     }
   }
@@ -41,9 +51,19 @@ export function LikeDisLike() {
     if (!hasLiked && !hasDisliked) {
       if (account?.address) {
         setHasDisliked(true)
-        toast('🤑 Reward Earned')
+        toast('🤑 Reward Earned', {
+          style: {
+            background: 'green',
+            color: '#fff'
+          }
+        })
       } else {
-        toast('🙁 Reward Missed - Connect Wallet')
+        toast('🙁 Reward Missed - Connect Wallet', {
+          style: {
+            background: 'red',
+            color: '#fff'
+          }
+        })
       }
     }
   }
@@ -56,7 +76,7 @@ export function LikeDisLike() {
         onClick={like}
         disabled={hasLiked || hasDisliked} // Disable if already liked or disliked
       >
-        <BiLike color='green' size={24} />
+        <BiLike color="green" size={24} />
       </button>
       <button
         aria-label="Unlike"
@@ -64,7 +84,7 @@ export function LikeDisLike() {
         onClick={unLike}
         disabled={hasLiked || hasDisliked} // Disable if already liked or disliked
       >
-        <BiDislike color='red' size={24} />
+        <BiDislike color="red" size={24} />
       </button>
     </div>
   )

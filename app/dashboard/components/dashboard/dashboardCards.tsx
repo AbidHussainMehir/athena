@@ -48,10 +48,11 @@ export function DashboardCards({
         (account
           ? customEventsDataAccount?.nb_visits
           : customEventsData?.nb_visits)
-          accAmount =
-          accAmount + (account
-            ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1] 
-            : likeUnlikeData[0] + likeUnlikeData[1] )
+      accAmount =
+        accAmount +
+        (account
+          ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
+          : likeUnlikeData[0] + likeUnlikeData[1])
       setRewardData(accAmount)
     } catch (error) {}
   }, [

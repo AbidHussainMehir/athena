@@ -65,14 +65,20 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
     handleSearch(input)
     await handleQuerySubmit(input, formData)
     window._paq.push(['trackEvent', 'source-click', input])
-    if (account?.address){
-
-      toast('🤑Reward Earned')
-    }
-    else{
-      toast('🙁Reward Missed - Connect Wallet');
-
-
+    if (account?.address) {
+      toast('🤑Reward Earned', {
+        style: {
+          background: 'green',
+          color: '#fff'
+        }
+      })
+    } else {
+      toast('🙁Reward Missed - Connect Wallet', {
+        style: {
+          background: 'red',
+          color: '#fff'
+        }
+      })
     }
   }
 

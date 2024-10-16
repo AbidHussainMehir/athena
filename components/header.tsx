@@ -52,16 +52,21 @@ export const MyComponent: React.FC = () => {
       'event-category': 'logo-clicked',
       'event-action': `${document.title} - ${window.location.href}`
     })
-    if (account?.address){
-
-      toast('🤑Reward Earned')
+    if (account?.address) {
+      toast('🤑Reward Earned', {
+        style: {
+          background: 'green',
+          color: '#fff'
+        }
+      })
+    } else {
+      toast('🙁Reward Missed - Connect Wallet', {
+        style: {
+          background: 'red',
+          color: '#fff'
+        }
+      })
     }
-    else{
-      toast('🙁Reward Missed - Connect Wallet');
-
-
-    }
-
   }
 
   const wallets = [
