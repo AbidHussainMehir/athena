@@ -7,6 +7,7 @@ import { Section } from './section'
 import { ToolBadge } from './tool-badge'
 import type { SearchResults as TypeSearchResults } from '@/lib/types'
 import { StreamableValue, useStreamableValue } from 'ai/rsc'
+import { useTheme } from 'next-themes'
 
 export type SearchSectionProps = {
   result?: StreamableValue<string>
@@ -14,11 +15,15 @@ export type SearchSectionProps = {
 }
 
 export function SearchSection({ result, includeDomains }: SearchSectionProps) {
+  const { theme } = useTheme()
+
   const [data, error, pending] = useStreamableValue(result)
   const searchResults: TypeSearchResults = data ? JSON.parse(data) : undefined
   const includeDomainsString = includeDomains
     ? ` [${includeDomains.join(', ')}]`
     : ''
+    // const logoSrc = theme === 'light' ? '/images/Search.svg' : '/images/Search-dark.svg'
+
   return (
     <div>
       {/* {<p>{JSON.stringify({ pending, data })}</p>} */}
@@ -41,7 +46,24 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
         </>
       ) : (
         <Section className="pt-2 pb-0">
-          <SearchSkeleton />
+              <div
+        className="mb-[20px]"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        <img
+          src={
+            theme === 'light' ? '/images/Search.svg' : '/images/Search-dark.svg'
+          }
+          // src={
+          //   theme?.theme === 'light'
+          //     ? '/images/presale.svg'
+          //     : '/images/presale-dark.svg'
+          // }
+          width={'200px'}
+          height={'200px'}
+        />
+      </div>
+          {/* <SearchSkeleton /> */}
         </Section>
       )}
     </div>
