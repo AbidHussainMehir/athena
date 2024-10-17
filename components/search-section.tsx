@@ -22,7 +22,7 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
   const includeDomainsString = includeDomains
     ? ` [${includeDomains.join(', ')}]`
     : ''
-    // const logoSrc = theme === 'light' ? '/images/Search.svg' : '/images/Search-dark.svg'
+  // const logoSrc = theme === 'light' ? '/images/Search.svg' : '/images/Search-dark.svg'
 
   return (
     <div>
@@ -46,23 +46,21 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
         </>
       ) : (
         <Section className="pt-2 pb-0">
-              <div
-        className="mb-[20px]"
-        style={{ display: 'flex', justifyContent: 'center' }}
-      >
-        <img
-          src={
-            theme === 'light' ? '/images/Search.svg' : '/images/Search-dark.svg'
-          }
-          // src={
-          //   theme?.theme === 'light'
-          //     ? '/images/presale.svg'
-          //     : '/images/presale-dark.svg'
-          // }
-          width={'200px'}
-          height={'200px'}
-        />
-      </div>
+          <div
+            className="mb-[20px]"
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <img
+              src={'/images/loader_animated.svg'}
+              // src={
+              //   theme?.theme === 'light'
+              //     ? '/images/presale.svg'
+              //     : '/images/presale-dark.svg'
+              // }
+              width={'200px'}
+              height={'200px'}
+            />
+          </div>
           {/* <SearchSkeleton /> */}
         </Section>
       )}
