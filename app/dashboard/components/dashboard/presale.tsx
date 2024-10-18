@@ -72,6 +72,13 @@ export function PresaleCard(props: any) {
                 width={'200px'}
                 height={'200px'}
               />
+              <span
+                className={`ms-2 ${
+                  theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                } rounded-lg`}
+              >
+                <FcInfo size={20} />
+              </span>
             </div>
             <CardDescription className="text-center flex justify-center px-0">
               <input
@@ -96,6 +103,7 @@ export function PresaleCard(props: any) {
               </Button> */}
 
               <TransactionButton
+                style={{ height: '2.5rem' }}
                 className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"
                 transaction={async () => {
                   const transaction = claimTo({
@@ -103,7 +111,6 @@ export function PresaleCard(props: any) {
                     to: props?.account,
                     quantity: '0.001'
                   })
-
                   // await sendTransaction({ transaction, account });
                   return transaction
                   // const tx = prepareContractCall({
@@ -129,15 +136,6 @@ export function PresaleCard(props: any) {
                 Buy ATH Presale
               </TransactionButton>
             </span>
-            <span
-              className={`ms-2 ${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
-              } rounded-lg`}
-            >
-              <Button variant="ghost" size="md">
-                <FcInfo size={20} />
-              </Button>
-            </span>
           </CardFooter>
         </Card>
       </div>
@@ -157,6 +155,13 @@ export function PresaleCard(props: any) {
                 width={'200px'}
                 height={'200px'}
               />
+              <span
+                className={`ms-2 ${
+                  theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                } rounded-lg`}
+              >
+                <FcInfo size={20} />
+              </span>
             </div>
             <CardTitle className="text-center"></CardTitle>
             <CardDescription className="text-center">
@@ -181,15 +186,6 @@ export function PresaleCard(props: any) {
             >
               <Button variant="ghost" size="md">
                 Claim ATH Rewards
-              </Button>
-            </span>
-            <span
-              className={`ms-2 ${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
-              } rounded-lg`}
-            >
-              <Button variant="ghost" size="md">
-                <FcInfo size={20} />
               </Button>
             </span>
           </CardFooter>
