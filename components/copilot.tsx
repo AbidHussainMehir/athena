@@ -125,7 +125,9 @@ export const Copilot: React.FC<CopilotProps> = ({ inquiry }: CopilotProps) => {
     )
   } else {
     return (
-      <Card className="p-4 rounded-lg w-full mx-auto">
+      <Card className="p-4 rounded-lg w-full mx-auto"    style={{
+        boxShadow: "rgba(255, 255, 255, 0.5) 0px 4px 8px 0px, rgba(255, 255, 255, 0.3) 0px 6px 20px 0px"
+      }}>
         <div className="mb-4">
           <p className="text-lg text-foreground text-semibold ml-2">
             {object?.question}

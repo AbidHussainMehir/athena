@@ -40,7 +40,7 @@ export function SearchSection({ result, includeDomains }: SearchSectionProps) {
               />
             </Section>
           )}
-          <Section title="Sources">
+          <Section title="Sources Analyzed">
             <SearchResults results={searchResults.results} />
           </Section>
         </>

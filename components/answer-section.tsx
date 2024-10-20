@@ -30,7 +30,7 @@ export function AnswerSection({
     <div>
       {content.length > 0 ? (
         <>
-          <Section title={hasHeader ? 'Answer' : undefined}>
+          <Section title={hasHeader ? "Athena's Answer" : undefined}>
             <BotMessage content={content} />
             <LikeDisLike />
           </Section>
