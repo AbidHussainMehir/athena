@@ -7,7 +7,6 @@ const CLIENT_ID = 'bd17c7b6b06b460e770dbbb4edd673cf'
 export const PresSaleContractAddress =
   // '0x64612e57da8EF97C57886EAEC8c70BA0C584eC6D'
   '0xdD4cCf374dea422D984f6676195A484FffA1FE37'
-
 const PresSaleContractABI = [
   { inputs: [], stateMutability: 'nonpayable', type: 'constructor' },
   {
