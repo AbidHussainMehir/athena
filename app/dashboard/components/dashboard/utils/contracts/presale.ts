@@ -1,7 +1,9 @@
 import { createThirdwebClient, defineChain, getContract } from 'thirdweb'
 import { polygonAmoy, sepolia } from 'thirdweb/chains'
 
-const CLIENT_ID = 'c8002c96c081491631b8c79d0a64f164'
+const CLIENT_ID = 'bd17c7b6b06b460e770dbbb4edd673cf'
+// const CLIENT_ID = 'c8002c96c081491631b8c79d0a64f164'
+
 export const PresSaleContractAddress =
   // '0x64612e57da8EF97C57886EAEC8c70BA0C584eC6D'
   '0xdD4cCf374dea422D984f6676195A484FffA1FE37'

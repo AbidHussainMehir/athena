@@ -19,11 +19,13 @@ import {
   PresSaleContractAddress
 } from './utils/contracts/presale'
 import { ClaimButton, TransactionButton } from 'thirdweb/react'
-import { prepareContractCall } from 'thirdweb'
+import { prepareContractCall, toWei } from 'thirdweb'
 import toast from 'react-hot-toast'
 // import { claim } from "thirdweb/extensions/erc20";
 import { claimTo } from 'thirdweb/extensions/erc20'
 import { sendTransaction } from 'thirdweb'
+import { bigint } from 'zod'
+import { useActiveAccount } from 'thirdweb/react'
 
 export function PresaleCard(props: any) {
   const theme: any = useTheme()
@@ -53,6 +55,7 @@ export function PresaleCard(props: any) {
   //       throw new Error(error.message); // Propagate error for TransactionButton to handle
   //     }
   //   };
+  const account = useActiveAccount()
 
   return (
     <>
@@ -106,10 +109,11 @@ export function PresaleCard(props: any) {
                 style={{ height: '2.5rem' }}
                 className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"
                 transaction={async () => {
+                  console.log('account', account?.address)
                   const transaction = claimTo({
                     contract: PreSaleContract,
-                    to: props?.account,
-                    quantity: '0.001'
+                    to: account?.address as any,
+                    quantity: BigInt(10) as any
                   })
                   // await sendTransaction({ transaction, account });
                   return transaction
