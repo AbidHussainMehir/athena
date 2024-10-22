@@ -14,12 +14,9 @@ import Image from 'next/image'
 import { FcInfo } from 'react-icons/fc'
 // import { PreSaleContract } from './utils/contracts/presale'
 import { ClaimButton, TransactionButton } from 'thirdweb/react'
-import { prepareContractCall, toWei } from 'thirdweb'
 import toast from 'react-hot-toast'
 // import { claim } from "thirdweb/extensions/erc20";
 import { claimTo } from 'thirdweb/extensions/erc20'
-import { sendTransaction } from 'thirdweb'
-import { bigint } from 'zod'
 import { useActiveAccount } from 'thirdweb/react'
 import { TokenDropContract } from '../../../../lib/utils/constants'
 export function PresaleCard(props: any) {
