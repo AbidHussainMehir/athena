@@ -23,7 +23,7 @@ export function PresaleCard(props: any) {
   const theme: any = useTheme()
 
   const [input, setInput] = useState('')
-  const [preSaleValue, setPreSaleValue] = useState()
+  const [preSaleValue, setPreSaleValue] = useState<any>('1')
   const inputRef = useRef<HTMLTextAreaElement>(null)
   console.log({ props })
 
@@ -102,7 +102,7 @@ export function PresaleCard(props: any) {
                 transaction={() => {
                   const tx = claimTo({
                     contract: TokenDropContract,
-                    quantity: BigInt('1').toString(),
+                    quantity: BigInt(preSaleValue.toString()).toString(),
                     to: account?.address as any
                   })
                   return tx
