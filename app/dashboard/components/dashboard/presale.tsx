@@ -12,12 +12,7 @@ import { Button } from '../ui/button'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { FcInfo } from 'react-icons/fc'
-import {
-  chain,
-  client,
-  PreSaleContract,
-  PresSaleContractAddress
-} from './utils/contracts/presale'
+// import { PreSaleContract } from './utils/contracts/presale'
 import { ClaimButton, TransactionButton } from 'thirdweb/react'
 import { prepareContractCall, toWei } from 'thirdweb'
 import toast from 'react-hot-toast'
@@ -26,7 +21,7 @@ import { claimTo } from 'thirdweb/extensions/erc20'
 import { sendTransaction } from 'thirdweb'
 import { bigint } from 'zod'
 import { useActiveAccount } from 'thirdweb/react'
-
+import { TokenDropContract } from '../../../../lib/utils/constants'
 export function PresaleCard(props: any) {
   const theme: any = useTheme()
 
@@ -34,7 +29,6 @@ export function PresaleCard(props: any) {
   const [preSaleValue, setPreSaleValue] = useState()
   const inputRef = useRef<HTMLTextAreaElement>(null)
   console.log({ props })
-  console.log('PreSaleContract', PreSaleContract)
 
   //   const handlepreSale = async () => {
   //     try {
@@ -108,22 +102,13 @@ export function PresaleCard(props: any) {
               <TransactionButton
                 style={{ height: '2.5rem' }}
                 className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"
-                transaction={async () => {
-                  console.log('account', account?.address)
-                  const transaction = claimTo({
-                    contract: PreSaleContract,
-                    to: account?.address as any,
-                    quantity: BigInt(10) as any
+                transaction={() => {
+                  const tx = claimTo({
+                    contract: TokenDropContract,
+                    quantity: BigInt('1').toString(),
+                    to: account?.address as any
                   })
-                  // await sendTransaction({ transaction, account });
-                  return transaction
-                  // const tx = prepareContractCall({
-                  //   contract: PreSaleContract,
-                  //   method: 'claim',
-                  //   params: ['0.01'] as any
-                  // })
-
-                  // return tx
+                  return tx
                 }}
                 onTransactionSent={result => {
                   console.log('Transaction submitted', result.transactionHash)

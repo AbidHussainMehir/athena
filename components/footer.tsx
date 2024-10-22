@@ -1,80 +1,80 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-import { SiDiscord, SiGmail, SiTelegram, SiTwitter } from 'react-icons/si'
-import { Button } from './ui/button'
-import { usePathname } from 'next/navigation'
-import { useTheme } from 'next-themes'
-import toast from 'react-hot-toast'
-import { useActiveAccount } from 'thirdweb/react'
+"use client";
+import React from "react";
+import Link from "next/link";
+import { SiDiscord, SiGmail, SiTelegram } from "react-icons/si";
+import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import toast from "react-hot-toast";
+import { useActiveAccount } from "thirdweb/react";
 
 const Footer: React.FC = () => {
-  const theme = useTheme()
-  const account = useActiveAccount()
+  const theme = useTheme();
+  const account = useActiveAccount();
 
-  const pathname = usePathname()
-  const isDashboard = pathname === '/dashboard'
+  const pathname = usePathname();
+  const isDashboard = pathname === "/dashboard";
   const linksClick = (linkText: any) => {
     window._mtm.push({
-      event: 'menu-clicks-tracking',
-      'event-category': 'menu-clicks',
-      'event-value': linkText,
-      'event-action': `${document.title} - ${window.location.href}`
-    })
+      event: "menu-clicks-tracking",
+      "event-category": "menu-clicks",
+      "event-value": linkText,
+      "event-action": `${document.title} - ${window.location.href}`,
+    });
     if (account?.address) {
-      toast('🤑Reward Earned', {
+      toast("🤑Reward Earned", {
         style: {
-          background: 'green',
-          color: '#fff'
-        }
-      })
+          background: "green",
+          color: "#fff",
+        },
+      });
     } else {
-      toast('🙁Reward Missed - Connect Wallet', {
+      toast("🙁Reward Missed - Connect Wallet", {
         style: {
-          background: 'red',
-          color: '#fff'
-        }
-      })
+          background: "red",
+          color: "#fff",
+        },
+      });
     }
-  }
+  };
   const socialLinksClick = (linkText: any) => {
     window._mtm.push({
-      event: 'social-media-icons-tracking',
-      'event-category': 'social-media-icons',
-      'event-value': linkText,
-      'event-action': `${document.title} - ${window.location.href}`
-    })
-  }
+      event: "social-media-icons-tracking",
+      "event-category": "social-media-icons",
+      "event-value": linkText,
+      "event-action": `${document.title} - ${window.location.href}`,
+    });
+  };
   React.useEffect(() => {
     return () => {
-      localStorage.setItem('theme', 'dark')
-    }
-  }, [])
+      localStorage.setItem("theme", "dark");
+    };
+  }, []);
   return (
     <>
       <footer
         className={`w-[100%] p-1 md:p-2  pt-2  ${
-          isDashboard ? '' : 'fixed bottom-0 right-0'
+          isDashboard ? "" : "fixed bottom-0 right-0"
         } `}
         style={{
-          backgroundColor: theme?.theme === 'light' ? '#fff' : '#0A0A0A'
+          backgroundColor: theme?.theme === "light" ? "#fff" : "#0A0A0A",
         }}
       >
-        {!pathname.includes('search') && !pathname.includes('share') && (
+        {!pathname.includes("search") && !pathname.includes("share") && (
           <div className="flex flex-wrap mb-4  gap-1 md:gap-4 w-full justify-center">
             <span
               className={`${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                theme?.theme === "light" ? "tag-white" : "tag-dark"
               } rounded-lg`}
             >
               <Button
                 className="px-1 md:px-2 h-8"
-                variant={'ghost'}
-                size={'md'}
+                variant={"ghost"}
+                size={"md"}
               >
                 <Link
-                  onClick={() => linksClick('dashboard')}
-                  href={'/dashboard'}
+                  onClick={() => linksClick("dashboard")}
+                  href={"/dashboard"}
                 >
                   Dashboard
                 </Link>
@@ -82,16 +82,16 @@ const Footer: React.FC = () => {
             </span>
             <span
               className={`${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                theme?.theme === "light" ? "tag-white" : "tag-dark"
               } rounded-lg`}
             >
               <Button
                 className="px-1 md:px-2 h-8"
-                variant={'ghost'}
-                size={'md'}
+                variant={"ghost"}
+                size={"md"}
               >
                 <Link
-                  onClick={() => linksClick('https://docs.theathena.ai')}
+                  onClick={() => linksClick("https://docs.theathena.ai")}
                   href="https://docs.theathena.ai"
                   className="mx-2"
                   target="_blank"
@@ -102,16 +102,16 @@ const Footer: React.FC = () => {
             </span>
             <span
               className={`${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                theme?.theme === "light" ? "tag-white" : "tag-dark"
               } rounded-lg`}
             >
               <Button
                 className="px-1 md:px-2 h-8"
-                variant={'ghost'}
-                size={'md'}
+                variant={"ghost"}
+                size={"md"}
               >
                 <Link
-                  onClick={() => linksClick('deck')}
+                  onClick={() => linksClick("deck")}
                   href="/deck_doc.pdf"
                   className="mx-2"
                   target="_blank"
@@ -200,10 +200,10 @@ const Footer: React.FC = () => {
         )}
       </footer>
     </>
-  )
-}
+  );
+};
 // _paq.push(['trackEvent', 'Menu', 'Freedom']);
 // _paq.push(['trackEvent', 'CATEGORY', 'ACTION','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
 // _paq.push(['trackEvent', 'FormSubmission', 'page','EVENT_NAME(optional)','EVENT_VALUE(optional)']);
 
-export default Footer
+export default Footer;

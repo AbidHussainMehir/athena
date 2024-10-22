@@ -1,21 +1,21 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-import { SiDiscord, SiGmail, SiTelegram, SiTwitter } from 'react-icons/si'
-import { Button } from './ui/button'
-import { usePathname } from 'next/navigation'
+"use client";
+import React from "react";
+import Link from "next/link";
+import { SiDiscord, SiGmail, SiTelegram } from "react-icons/si";
+import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
 
 const Footer: React.FC = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <footer className="w-[100%] p-1 md:p-2 fixed bottom-0 right-0">
-      {!pathname.includes('search') && !pathname.includes('share') && (
+      {!pathname.includes("search") && !pathname.includes("share") && (
         <div className="flex mb-4 gap-4 w-[100%] justify-center">
           <Button variant="ghost" size="md">
-            <Link href={'/'}>Dashboard</Link>
+            <Link href={"/"}>Dashboard</Link>
           </Button>
-          <Button variant={'ghost'} size={'md'}>
+          <Button variant={"ghost"} size={"md"}>
             <Link
               href="https://git.new/theathena"
               className="mx-2"
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
               Docs
             </Link>
           </Button>
-          <Button variant={'ghost'} size={'md'}>
+          <Button variant={"ghost"} size={"md"}>
             <Link
               href="https://git.new/theathena"
               className="mx-2"
@@ -33,23 +33,23 @@ const Footer: React.FC = () => {
               Deck
             </Link>
           </Button>
-          <Button variant={'ghost'} size={'icon'}>
+          <Button variant={"ghost"} size={"icon"}>
             <Link href="https://discord.gg/zRxaseCuGq" target="_blank">
               <SiDiscord color="dark" size={18} />
             </Link>
           </Button>
-          <Button variant={'ghost'} size={'icon'}>
+          <Button variant={"ghost"} size={"icon"}>
             <Link href="https://twitter.com/theathena" target="_blank">
-              <SiTwitter size={18} />
+              {/* <SiTwitter size={18} /> */}
             </Link>
           </Button>
-          <Button variant={'ghost'} size={'icon'}>
+          <Button variant={"ghost"} size={"icon"}>
             <Link href="https://twitter.com/theathena" target="_blank">
               <SiTelegram size={18} />
             </Link>
           </Button>
 
-          <Button variant={'ghost'} size={'icon'}>
+          <Button variant={"ghost"} size={"icon"}>
             <Link href="https://git.new/theathena" target="_blank">
               <SiGmail size={18} />
             </Link>
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
         </div>
       )}
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

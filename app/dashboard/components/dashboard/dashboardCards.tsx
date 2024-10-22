@@ -233,17 +233,16 @@ export function DashboardCards({
                   </div>
                 </CardTitle>
                 <CardDescription className="px-0">
-                  <p
+                  {/* <p
                     className="px-6 text-2xl font-bold text-center"
                     style={{
                       color: theme?.theme === 'light' ? '#09090B' : '#fff'
                     }}
                   >
                     {account
-                      ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1] ??
-                        'N/A'
+                      ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
                       : likeUnlikeData[0] + likeUnlikeData[1] ?? 'N/A'}
-                  </p>
+                  </p> */}
                 </CardDescription>
               </CardHeader>
             </Card>
