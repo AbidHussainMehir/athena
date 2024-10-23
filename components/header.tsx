@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { MenuIcon } from './ui/menu-icons'
 import { Button } from './ui/button'
 import { useRouter } from 'next/navigation'
-import { useUIState } from 'ai/rsc'
+// import { useUIState } from 'ai/rsc'
 import { AI } from '@/app/actions'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
@@ -25,7 +25,7 @@ export const MyComponent: React.FC = () => {
   const pathname = usePathname()
 
   const isDashboard = pathname === '/dashboard'
-  const [, setMessages] = useUIState<typeof AI>()
+  // const [, setMessages] = useUIState<typeof AI>()
 
   const account = useActiveAccount()
   let isConnected = !!account
@@ -82,7 +82,7 @@ export const MyComponent: React.FC = () => {
     createWallet('app.phantom')
   ]
   const handleRedirect = () => {
-    setMessages([])
+    // setMessages([])
     handleLogoClick()
     router.replace('/')
     setTimeout(() => {
@@ -188,28 +188,9 @@ export const MyComponent: React.FC = () => {
         >
           <ConnectButton
             client={client}
-            wallets={wallets}
-            connectButton={{
-              label: 'Connect Wallet'
-            }}
-            theme={lightTheme({
-              colors: {
-                accentText: '#02337e',
-                accentButtonBg: '#02337e',
-                borderColor: '#363536',
-                primaryButtonBg: '#090e95',
-                primaryButtonText: '#f9f5f9',
-                secondaryIconColor: '#544f72'
-              }
-            })}
-            connectModal={{
-              size: 'wide',
-              title: ' Athena AI',
-              welcomeScreen: {
-                title: 'The Future of Search with AI and Web3',
-                subtitle: 'Create or Connect to Your Wallet to Get Started '
-              },
-              showThirdwebBranding: false
+            appMetadata={{
+              name: 'Example App',
+              url: 'https://example.com'
             }}
           />
         </div>

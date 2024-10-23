@@ -1,3 +1,4 @@
+'use client'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -5,7 +6,6 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
-import { AppStateProvider } from '@/lib/utils/app-state'
 import { ThirdwebProvider } from 'thirdweb/react'
 import Head from 'next/head'
 import { useUIState } from 'ai/rsc'
@@ -13,84 +13,6 @@ import { AI } from '@/app/actions'
 
 const title = 'Athena SearchGPT'
 const description = 'Athena SearchGPT: Learn to Earn Search Platform.'
-
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.theathena.ai'),
-  title,
-  description,
-  keywords: [
-    'TheAthena.ai',
-    'TheAthena',
-    'searchGPT',
-    'Athena SearchGPT',
-    'Search Platform',
-    'ai',
-    'gpt',
-    'rewards',
-    'AI-powered search engine',
-    'AI search engine',
-    'Decentralized search engine',
-    'Privacy-focused search engine',
-    'AI-driven search engine',
-    'GPT-powered search engine',
-    'Learn and Earn search engine',
-    'Web3 search engine',
-    'Search engine for crypto users',
-    'Search and Earn rewards',
-    'Blockchain-based search engine',
-    'AI Google alternative',
-    'AI search rewards',
-    'Secure AI search platform',
-    'Privacy-first AI search',
-    'Decentralized web search',
-    'AI search with data privacy',
-    'AI search with tokenomics',
-    'Search engine for blockchain users',
-    'SearchGPT by Athena',
-    'Athena AI-powered search',
-    'AI search engine rewards',
-    'ChatGPT alternative search',
-    'Best AI search engine',
-    'Secure AI search engine',
-    'AI-powered decentralized search',
-    'Tokenized search rewards',
-    'Privacy and rewards search engine',
-    'AI and Web3 search',
-    'Athena AI SearchGPT',
-    'theathena.ai search engine',
-    'Athena AI Learn and Earn',
-    'Athena AI privacy search',
-    'Athena AI rewards search',
-    'Athena AI vs Google Search',
-    'SearchGPT by Athena AI',
-    'Athena Learn-to-Earn platform',
-    'Athena AI rewards engine',
-    'AI-powered Athena search',
-    'Athena AI Web3 search platform',
-    'Athena search tokenomics',
-    'Athena AI blockchain search',
-    'Athena AI decentralized search',
-    'Athena AI privacy-focused search'
-  ],
-  openGraph: {
-    title,
-    description
-  },
-  twitter: {
-    title,
-    description,
-    card: 'summary_large_image',
-    creator: '@abid'
-  },
-  icons: ['https://www.theathena.ai/logo.svg']
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1
-}
 
 export default function RootLayout({
   children
@@ -199,15 +121,11 @@ export default function RootLayout({
             defaultTheme="light"
             disableTransitionOnChange
           >
-            <AppStateProvider>
-              <AI>
-                <Header />
-              </AI>
-              {children}
-              {/* <Sidebar /> */}
-              <Footer />
-              <Toaster />
-            </AppStateProvider>
+            <Header />
+            {children}
+            {/* <Sidebar /> */}
+            <Footer />
+            <Toaster />
           </ThemeProvider>
         </ThirdwebProvider>
       </body>

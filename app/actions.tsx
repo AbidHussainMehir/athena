@@ -27,7 +27,7 @@ import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
 import { use } from 'react'
 import { ConnectButton, useActiveAccount } from 'thirdweb/react'
-import { BiDislike, BiLike } from "react-icons/bi";
+import { BiDislike, BiLike } from 'react-icons/bi'
 async function submit(
   formData?: FormData,
   skip?: boolean,
@@ -226,19 +226,15 @@ async function submit(
       const relatedQueries = await querySuggestor(uiStream, processedMessages)
       // Add follow-up panel
       uiStream.append(
-        
-
-
-<>
-
-        {/* <Section >
+        <>
+          {/* <Section >
 <LikeDisLike/>
 
          
         </Section> */}
-        <Section title="Follow-up">
-          <FollowupPanel />
-        </Section>
+          <Section title="Follow-up">
+            <FollowupPanel />
+          </Section>
         </>
       )
 
