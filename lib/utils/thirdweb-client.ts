@@ -1,7 +1,9 @@
 import { createThirdwebClient, defineChain, getContract } from 'thirdweb'
 import { sepolia } from 'thirdweb/chains'
 
-const CLIENT_ID = 'c8002c96c081491631b8c79d0a64f164'
+// const CLIENT_ID = 'c8002c96c081491631b8c79d0a64f164'
+const CLIENT_ID = 'bd17c7b6b06b460e770dbbb4edd673cf'
+
 export const client = createThirdwebClient({ clientId: CLIENT_ID })
 export const TokenDropContractAddress =
   '0xdD4cCf374dea422D984f6676195A484FffA1FE37'
