@@ -55,7 +55,7 @@ export const Section: React.FC<SectionProps> = ({
         />
       )
       break
-    case 'Answer':
+    case `Athena's Answer`:
       icon = (
         <BookCheck
           size={iconSize}
