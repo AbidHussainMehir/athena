@@ -29,33 +29,59 @@ export const Section: React.FC<SectionProps> = ({
   title,
   separator = false
 }) => {
-  const {theme}=useTheme();
+  const { theme } = useTheme()
   const iconSize = 16
-  const iconColor = theme==='light'?'#000':'rgb(202,241,222)'
+  const iconColor = theme === 'light' ? '#000' : 'rgb(202,241,222)'
   const iconClassName = 'mr-1.5 text-muted-foreground'
   let icon: React.ReactNode
   switch (title) {
     case 'Images':
       // eslint-disable-next-line jsx-a11y/alt-text
-      icon = <Image size={iconSize} className={iconClassName} color={iconColor} />
+      icon = (
+        <Image size={iconSize} className={iconClassName} color={iconColor} />
+      )
       break
     case 'Videos':
-      icon = <Film size={iconSize} className={iconClassName} color={iconColor} />
+      icon = (
+        <Film size={iconSize} className={iconClassName} color={iconColor} />
+      )
       break
-    case 'Sources':
-      icon = <Newspaper size={iconSize} className={iconClassName} color={iconColor} />
+    case 'Sources Analyzed':
+      icon = (
+        <Newspaper
+          size={iconSize}
+          className={iconClassName}
+          color={iconColor}
+        />
+      )
       break
     case 'Answer':
-      icon = <BookCheck size={iconSize} className={iconClassName} color={iconColor}/>
+      icon = (
+        <BookCheck
+          size={iconSize}
+          className={iconClassName}
+          color={iconColor}
+        />
+      )
       break
     case 'Related':
-      icon = <Repeat2 size={iconSize} className={iconClassName} color={iconColor}/>
+      icon = (
+        <Repeat2 size={iconSize} className={iconClassName} color={iconColor} />
+      )
       break
     case 'Follow-up':
-      icon = <MessageCircleMore size={iconSize} className={iconClassName} color={iconColor}/>
+      icon = (
+        <MessageCircleMore
+          size={iconSize}
+          className={iconClassName}
+          color={iconColor}
+        />
+      )
       break
     default:
-      icon = <Search size={iconSize} className={iconClassName} color={iconColor}/>
+      icon = (
+        <Search size={iconSize} className={iconClassName} color={iconColor} />
+      )
   }
 
   return (
@@ -68,7 +94,10 @@ export const Section: React.FC<SectionProps> = ({
         )}
       >
         {title && (
-          <h2 className="flex items-center leading-none py-2" style={{color:theme==='light'?'#000':'rgb(202,241,222)'}}>
+          <h2
+            className="flex items-center leading-none py-2"
+            style={{ color: theme === 'light' ? '#000' : 'rgb(202,241,222)' }}
+          >
             {icon}
             {title}
           </h2>

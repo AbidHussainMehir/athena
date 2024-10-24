@@ -17,16 +17,7 @@ export function DashboardCards({
   likeUnlikeDataAccount
 }: any) {
   const theme: any = useTheme()
-  // total visits
-  // {account ? apiDataAccount?.nb_visits : apiData?.nb_visits}
-  // Total Actions
-  // {account ? apiDataAccount?.nb_actions : apiData?.nb_actions}
-  // searches
-  // {account ? searchDataAccount : searchData}
-  // sources clicked
-  // {account
-  //   ? customEventsData?.nb_visits
-  //   : customEventsData?.nb_visits}
+
   console.log(
     'child component dashboard',
     likeUnlikeData,
@@ -240,9 +231,12 @@ export function DashboardCards({
                     }}
                   >
                     {account
-                      ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1] ??
-                        'N/A'
-                      : likeUnlikeData[0] + likeUnlikeData[1] ?? 'N/A'}
+                      ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
+                        ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
+                        : 'N/A'
+                      : likeUnlikeData[0] + likeUnlikeData[1]
+                      ? likeUnlikeData[0] + likeUnlikeData[1]
+                      : 'N/A'}
                   </p>
                 </CardDescription>
               </CardHeader>
