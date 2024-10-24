@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "dev": " DEBUG=next:* next dev --turbo",
-    "dev2": "next dev --turbo",
+    "dev2": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

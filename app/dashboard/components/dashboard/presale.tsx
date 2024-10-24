@@ -26,35 +26,14 @@ import { claimTo } from 'thirdweb/extensions/erc20'
 import { sendTransaction } from 'thirdweb'
 import { bigint } from 'zod'
 import { useActiveAccount } from 'thirdweb/react'
-
+import { TokenDropContract } from '../../../../lib/utils/thirdweb-client'
 export function PresaleCard(props: any) {
   const theme: any = useTheme()
 
   const [input, setInput] = useState('')
-  const [preSaleValue, setPreSaleValue] = useState()
+  const [preSaleValue, setPreSaleValue] = useState<any>(1)
   const inputRef = useRef<HTMLTextAreaElement>(null)
-  console.log({ props })
-  console.log('PreSaleContract', PreSaleContract)
 
-  //   const handlepreSale = async () => {
-  //     try {
-  //       // Assuming your claim function requires a quantity parameter
-  //       const contract = await sdk.getContract("{{contract_address}}");
-  // await contract.erc20.transfer(walletAddress, amount);
-  // // await PreSaleContract.erc720.claim(walletAddress, amount);
-  //       const tx = await PreSaleContract.call("claim", BigInt(1));
-  //       const transaction = claim({
-  //         contract:PreSaleContract,
-  //         to: "0x...",
-  //         // tokenId: BigInt(id as any),
-  //         quantity: BigInt(1),
-  //       });
-  //       return transaction;
-  //     } catch (error:any) {
-  //       console.error("Error during claim transaction:", error);
-  //       throw new Error(error.message); // Propagate error for TransactionButton to handle
-  //     }
-  //   };
   const account = useActiveAccount()
 
   return (
@@ -109,32 +88,21 @@ export function PresaleCard(props: any) {
                 style={{ height: '2.5rem' }}
                 className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"
                 transaction={async () => {
-                  console.log('account', account?.address)
-                  const transaction = claimTo({
-                    contract: PreSaleContract,
-                    to: account?.address as any,
-                    quantity: BigInt(10) as any
+                  const tx = claimTo({
+                    contract: TokenDropContract,
+                    quantity: BigInt(preSaleValue.toString()).toString(),
+                    to: account?.address as any
                   })
-                  // await sendTransaction({ transaction, account });
-                  return transaction
-                  // const tx = prepareContractCall({
-                  //   contract: PreSaleContract,
-                  //   method: 'claim',
-                  //   params: ['0.01'] as any
-                  // })
-
-                  // return tx
+                  return tx
                 }}
                 onTransactionSent={result => {
                   console.log('Transaction submitted', result.transactionHash)
                 }}
                 onTransactionConfirmed={receipt => {
                   toast.success('Claimed Successfully')
-                  console.log('Transaction confirmed', receipt.transactionHash)
                 }}
                 onError={(error: any) => {
-                  toast('error')
-                  console.error('Transaction error', error)
+                  toast.error(error.message)
                 }}
               >
                 Buy ATH Presale
