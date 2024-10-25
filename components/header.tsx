@@ -18,7 +18,7 @@ import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import toast from 'react-hot-toast'
-
+import WalletConnectThirdweb from './walletConnect'
 export const MyComponent: React.FC = () => {
   const router = useRouter()
   const { theme } = useTheme()
@@ -153,46 +153,22 @@ export const MyComponent: React.FC = () => {
     >
       <div>
         <span className="gap-3 flex justify-start align-center">
-          {/* <Button className="mr-2" variant="ghost" size="icon"> */}
           <div style={{ cursor: 'pointer' }} id="logo" onClick={handleRedirect}>
             <MenuIcon />
           </div>
-          {/* </Button> */}
         </span>
         <span className="sr-only">Athena</span>
       </div>
-      {/* {
-        isDashboard &&
-        <div className="flex ">
-          <img
-            src={logoSrc}
-            style={{ paddingLeft: '10px' }}
-            alt="Your SVG image"
-            width="180px"
-            height="180px"
-
-          />
-        </div>
-      } */}
 
       <div className="flex ">
         <ModeToggle />
 
-        {/* <span className="mr-2">
-          <ModeToggle />
-        </span> */}
         <HistoryContainer location="header" />
         <div
           onClick={handleConnectWallet}
           className={`${isConnected ? 'connected' : 'connect'}`}
         >
-          <ConnectButton
-            client={client}
-            appMetadata={{
-              name: 'Example App',
-              url: 'https://example.com'
-            }}
-          />
+          <WalletConnectThirdweb />
         </div>
         {isConnected && (
           <div

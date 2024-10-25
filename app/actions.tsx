@@ -26,7 +26,6 @@ import { transformToolMessages } from '@/lib/utils'
 import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
 import { use } from 'react'
-import { ConnectButton, useActiveAccount } from 'thirdweb/react'
 import { BiDislike, BiLike } from 'react-icons/bi'
 async function submit(
   formData?: FormData,

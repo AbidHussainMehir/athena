@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 // import { auth, signOut } from '@/lib/auth';
-import Image from 'next/image';
+import Image from 'next/image'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,12 +8,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import Link from 'next/link';
-import WalletConnectThirdweb from './walletConnect';
+} from '@/components/ui/dropdown-menu'
+import Link from 'next/link'
+import WalletConnectThirdweb from '../../../../components/walletConnect'
 
-export  function User() {
-let user='dummy';
+export function User() {
+  let user = 'dummy'
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +25,6 @@ let user='dummy';
           <Image
             // src={user?.image ?? '/placeholder-user.jpg'}
             src={'/placeholder-user.jpg'}
-
             width={36}
             height={36}
             alt="Avatar"
@@ -59,5 +58,5 @@ let user='dummy';
         )}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
