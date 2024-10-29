@@ -31,7 +31,7 @@ export function PresaleCard(props: any) {
   const theme: any = useTheme()
 
   const [input, setInput] = useState('')
-  const [preSaleValue, setPreSaleValue] = useState<any>(1)
+  const [preSaleValue, setPreSaleValue] = useState<any>('')
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
   const account = useActiveAccount()
