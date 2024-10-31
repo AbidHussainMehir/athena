@@ -45,7 +45,7 @@ export function DashboardCards({
           ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
           : likeUnlikeData[0] + likeUnlikeData[1])
       setRewardData(accAmount)
-    } catch (error) {}
+    } catch (error) { }
   }, [
     account,
     customEventsData,
@@ -73,7 +73,7 @@ export function DashboardCards({
                       color: theme?.theme === 'light' ? '#09090B' : '#fff'
                     }}
                   >
-                    Total Visits
+                    {account ? 'My Total Visits' : 'Total Visits'}
                   </p>
                 </div>
                 <CardDescription className="px-0">
@@ -101,7 +101,7 @@ export function DashboardCards({
                         color: theme?.theme === 'light' ? '#09090B' : '#fff'
                       }}
                     >
-                      Total Actions
+                      {account ? 'My Total Actions' : 'Total Actions'}
                     </p>
                   </div>
                 </CardTitle>
@@ -129,7 +129,7 @@ export function DashboardCards({
                         color: theme?.theme === 'light' ? '#09090B' : '#fff'
                       }}
                     >
-                      Total Searches
+                      {account ? 'My Total Searches' : "Total Searches"}
                     </p>
                   </div>
                 </CardTitle>
@@ -157,7 +157,7 @@ export function DashboardCards({
                         color: theme?.theme === 'light' ? '#09090B' : '#fff'
                       }}
                     >
-                      Average Time Spent
+                      {account ? 'My Average Time Spent' : 'Average Time Spent'}
                     </p>
                   </div>
                 </CardTitle>
@@ -188,7 +188,7 @@ export function DashboardCards({
                         color: theme?.theme === 'light' ? '#09090B' : '#fff'
                       }}
                     >
-                      Sources Clicked
+                      {account ? 'My Sources Clicked' : "Sources Clicked"}
                     </p>
                   </div>
                 </CardTitle>
@@ -219,7 +219,7 @@ export function DashboardCards({
                         color: theme?.theme === 'light' ? '#09090B' : '#fff'
                       }}
                     >
-                      Feedbacks
+                      {account ? 'My Feedbacks' : 'Feedbacks'}
                     </p>
                   </div>
                 </CardTitle>
@@ -235,8 +235,8 @@ export function DashboardCards({
                         ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
                         : 'N/A'
                       : likeUnlikeData[0] + likeUnlikeData[1]
-                      ? likeUnlikeData[0] + likeUnlikeData[1]
-                      : 'N/A'}
+                        ? likeUnlikeData[0] + likeUnlikeData[1]
+                        : 'N/A'}
                   </p>
                 </CardDescription>
               </CardHeader>
