@@ -350,6 +350,13 @@ export default function ChartIndex() {
                 customEventsData={
                   customEventsData?.length > 0 ? customEventsData[0] : []
                 }
+                likeUnlikeData={likeUnlikeData}
+                likeUnlikeDataAccount={likeUnlikeDataAccount}
+                customEventsDataAccount={
+                  customEventsDataAccount?.length > 0
+                    ? customEventsDataAccount[0]
+                    : []
+                }
               />
             </div>
           </div>

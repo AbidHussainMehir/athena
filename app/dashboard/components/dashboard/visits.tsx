@@ -249,17 +249,20 @@ export const VisitsChart = ({
   apiDataAccount: apiDataAccount,
   account: account,
   searchDataAccount: searchDataAccount,
-  customEventsData
+  customEventsData,
+  likeUnlikeData,
+  likeUnlikeDataAccount,
+  customEventsDataAccount
 }: any) => {
   const data = [
     {
       name: 'Visits',
       uv: account ? apiDataAccount?.nb_visits : apiData?.nb_visits
     },
-    {
-      name: 'Actions',
-      uv: account ? apiDataAccount?.nb_actions : apiData?.nb_actions
-    },
+    // {
+    //   name: 'Actions',
+    //   uv: account ? apiDataAccount?.nb_actions : apiData?.nb_actions
+    // },
     {
       name: 'Search',
       uv: account ? searchDataAccount : searchData
@@ -270,7 +273,14 @@ export const VisitsChart = ({
     },
     {
       name: 'Sources',
-      uv: account ? customEventsData?.nb_visits : customEventsData?.nb_visits
+      uv: account ? customEventsDataAccount?.nb_visits : customEventsData?.nb_visits
+    },
+    {
+      name: 'Feedbacks',
+      uv:
+        account
+          ? likeUnlikeDataAccount[0] + likeUnlikeDataAccount[1]
+          : likeUnlikeData[0] + likeUnlikeData[1]
     }
   ]
   return (
