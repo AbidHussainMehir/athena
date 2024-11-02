@@ -13,8 +13,11 @@ import JobsDistributionChart from './JobsDistributionChart'
 import WorkDistribution from './WorkDistribution'
 import MoveStuffAround from './ticker'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { useTheme } from 'next-themes'
 
 export default function ChartIndex() {
+  const { theme } = useTheme()
+
   const [apiData, setApiData] = useState()
   const [apiDataAccount, setApiDataAccount] = useState()
   const [chartActionData, setChartActionsData] = useState<any>()
@@ -280,36 +283,42 @@ export default function ChartIndex() {
   }, [account])
   console.log('customEventsData', customEventsData)
   return (
-    <div>
-      {loading ? (
-        <div className="flex justify-center items-center pt-[100px]">
-          <img
-            src={'/images/loader_animated_dash.svg'}
-            width={'200px'}
-            height={'200px'}
-          />
-        </div>
-      ) : (
-        <>
-          {console.log('custom event data', customEventsData)}
-          <DashboardCards
-            apiData={apiData}
-            apiDataAccount={apiDataAccount}
-            account={isConnected}
-            searchData={searchData}
-            searchDataAccount={searchDataAccount}
-            customEventsData={
-              customEventsData?.length > 0 ? customEventsData[0] : []
-            }
-            customEventsDataAccount={
-              customEventsDataAccount?.length > 0
-                ? customEventsDataAccount[0]
-                : []
-            }
-            likeUnlikeData={likeUnlikeData}
-            likeUnlikeDataAccount={likeUnlikeDataAccount}
-          />
-          {/* <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
+    <main
+      className={`grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 ${theme == 'light' ? 'bg-[#F4f7fc]' : loading ? 'bg-[#000]' : 'bg-muted/40'
+        }`}
+    >
+      <div>
+
+        {loading ? (
+
+          <div className="flex justify-center items-center pt-[100px]">
+            <img
+              src={'/images/loader_animated_dash.svg'}
+              width={'200px'}
+              height={'200px'}
+            />
+          </div>
+        ) : (
+          <>
+            {console.log('custom event data', customEventsData)}
+            <DashboardCards
+              apiData={apiData}
+              apiDataAccount={apiDataAccount}
+              account={isConnected}
+              searchData={searchData}
+              searchDataAccount={searchDataAccount}
+              customEventsData={
+                customEventsData?.length > 0 ? customEventsData[0] : []
+              }
+              customEventsDataAccount={
+                customEventsDataAccount?.length > 0
+                  ? customEventsDataAccount[0]
+                  : []
+              }
+              likeUnlikeData={likeUnlikeData}
+              likeUnlikeDataAccount={likeUnlikeDataAccount}
+            />
+            {/* <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
               <VisitsChart
                 apiData={apiData}
@@ -323,44 +332,44 @@ export default function ChartIndex() {
               />
             </div>
           </div> */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4 mb-4">
-            <div>
-              <JobsDistributionChart />
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4 mb-4">
+              <div>
+                <JobsDistributionChart />
+              </div>
 
-            <div className="col-auto">
-              <WorkDistribution
-                apiData={apiData}
-                apiDataAccount={apiDataAccount}
-                account={isConnected}
-                searchData={searchData}
-                searchDataAccount={searchDataAccount}
-                customEventsData={
-                  customEventsData?.length > 0 ? customEventsData[0] : []
-                }
-              />
+              <div className="col-auto">
+                <WorkDistribution
+                  apiData={apiData}
+                  apiDataAccount={apiDataAccount}
+                  account={isConnected}
+                  searchData={searchData}
+                  searchDataAccount={searchDataAccount}
+                  customEventsData={
+                    customEventsData?.length > 0 ? customEventsData[0] : []
+                  }
+                />
+              </div>
+              <div>
+                <VisitsChart
+                  apiData={apiData}
+                  apiDataAccount={apiDataAccount}
+                  account={isConnected}
+                  searchData={searchData}
+                  searchDataAccount={searchDataAccount}
+                  customEventsData={
+                    customEventsData?.length > 0 ? customEventsData[0] : []
+                  }
+                  likeUnlikeData={likeUnlikeData}
+                  likeUnlikeDataAccount={likeUnlikeDataAccount}
+                  customEventsDataAccount={
+                    customEventsDataAccount?.length > 0
+                      ? customEventsDataAccount[0]
+                      : []
+                  }
+                />
+              </div>
             </div>
-            <div>
-              <VisitsChart
-                apiData={apiData}
-                apiDataAccount={apiDataAccount}
-                account={isConnected}
-                searchData={searchData}
-                searchDataAccount={searchDataAccount}
-                customEventsData={
-                  customEventsData?.length > 0 ? customEventsData[0] : []
-                }
-                likeUnlikeData={likeUnlikeData}
-                likeUnlikeDataAccount={likeUnlikeDataAccount}
-                customEventsDataAccount={
-                  customEventsDataAccount?.length > 0
-                    ? customEventsDataAccount[0]
-                    : []
-                }
-              />
-            </div>
-          </div>
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
             <div>
               <GoogleMarketcapChart />
             </div>
@@ -371,34 +380,35 @@ export default function ChartIndex() {
               <AthenaTokenChart />
             </div>
           </div> */}
-          <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
-            
-          <div className="col-span-12 ">
-            <Card className="rounded-xl border bg-card text-card-foreground shadow py-6">
-           
-            <div> {/* Adjust the width here */}
-            <div className="lg:max-w-[600px] h-[450px] mx-auto w-full" style={{ aspectRatio: "4 / 3" }}>
-  <video
-    className="w-full h-full object-contain"
-    controls
-    src="athena-video.mp4" 
-    title="Video title"
-  >
-    Your browser does not support the video tag.
-  </video>
-</div>
+            <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
 
-</div>
+              <div className="col-span-12 ">
+                <Card className="rounded-xl border bg-card text-card-foreground shadow py-6">
 
-    
-            </Card>
-          </div>
-          </div>
-          <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
-            <MoveStuffAround />
-          </div>
-        </>
-      )}
-    </div>
+                  <div> {/* Adjust the width here */}
+                    <div className="lg:max-w-[600px] h-[450px] mx-auto w-full" style={{ aspectRatio: "4 / 3" }}>
+                      <video
+                        className="w-full h-full object-contain"
+                        controls
+                        src="athena-video.mp4"
+                        title="Video title"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+
+                  </div>
+
+
+                </Card>
+              </div>
+            </div>
+            <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
+              <MoveStuffAround />
+            </div>
+          </>
+        )}
+      </div>
+    </main>
   )
 }
