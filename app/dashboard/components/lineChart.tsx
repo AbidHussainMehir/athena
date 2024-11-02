@@ -4,12 +4,14 @@ import { Chart } from './hChart';
 import Highcharts3D from 'highcharts/highcharts-3d';
 import * as Highcharts from 'highcharts';
 import { CreditCard } from 'lucide-react';
+import { useTheme } from 'next-themes'
 
 if (typeof Highcharts === 'object') {
     Highcharts3D(Highcharts);
 }
 const LineChart = ({ data }: any) => {
 
+    const theme: any = useTheme()
     const chartRef = useRef<any>(null);
 
     useLayoutEffect(() => {
@@ -85,16 +87,27 @@ const LineChart = ({ data }: any) => {
         },
 
         xAxis: {
+            labels: {
+                enabled: true, // Hides the labels
+
+                style: {
+                    color: theme?.theme === 'light' ? '#09090B' : '#fff',
+                    // fontSize: '12px', // Optional: set font size
+                    // fontWeight: 'bold' // Optional: set font weight
+                }
+            },
             gridLineWidth: 0,
             lineWidth: 0,    // Removes the axis line
             tickLength: 0,   // Removes the ticks
-            labels: {
-                enabled: true, // Hides the labels
-            },
             type: 'category'
         },
         yAxis: {
-
+            labels: {
+                enabled: true, // Hides the labels
+                style: {
+                    color: theme?.theme === 'light' ? '#09090B' : '#fff',
+                }
+            },
             title: {
                 enabled: false
             }

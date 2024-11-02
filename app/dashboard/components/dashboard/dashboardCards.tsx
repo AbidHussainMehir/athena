@@ -18,11 +18,6 @@ export function DashboardCards({
 }: any) {
   const theme: any = useTheme()
 
-  console.log(
-    'child component dashboard',
-    likeUnlikeData,
-    likeUnlikeDataAccount
-  )
   const [rewardData, setRewardData] = useState<any>(0)
   useEffect(() => {
     try {
@@ -54,7 +49,6 @@ export function DashboardCards({
     searchData,
     apiDataAccount
   ])
-  console.log({ rewardData })
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-4 md:gap-4 mb-4">

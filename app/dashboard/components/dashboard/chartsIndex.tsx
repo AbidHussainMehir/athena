@@ -14,7 +14,7 @@ import WorkDistribution from './WorkDistribution'
 import MoveStuffAround from './ticker'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { useTheme } from 'next-themes'
-
+import { VideoCard } from "./VideoCard"
 export default function ChartIndex() {
   const { theme } = useTheme()
 
@@ -380,29 +380,7 @@ export default function ChartIndex() {
               <AthenaTokenChart />
             </div>
           </div> */}
-            <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
-
-              <div className="col-span-12 ">
-                <Card className="rounded-xl border bg-card text-card-foreground shadow py-6">
-
-                  <div> {/* Adjust the width here */}
-                    <div className="lg:max-w-[600px] h-[450px] mx-auto w-full" style={{ aspectRatio: "4 / 3" }}>
-                      <video
-                        className="w-full h-full object-contain"
-                        controls
-                        src="athena-video.mp4"
-                        title="Video title"
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-
-                  </div>
-
-
-                </Card>
-              </div>
-            </div>
+            <VideoCard />
             <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
               <MoveStuffAround />
             </div>

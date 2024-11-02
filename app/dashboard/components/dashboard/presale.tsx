@@ -55,9 +55,8 @@ export function PresaleCard(props: any) {
                 height={'200px'}
               />
               <span
-                className={`ms-2 ${
-                  theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
-                } rounded-lg`}
+                className={`ms-2 ${theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                  } rounded-lg`}
               >
                 <FcInfo size={20} />
               </span>
@@ -68,6 +67,10 @@ export function PresaleCard(props: any) {
                 id="Price"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:dark focus:border-gray-300 block  maw-[200px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder=""
+                style={{
+                  color: theme?.theme === 'light' ? '#09090B' : 'rgb(202,241,222)'
+
+                }}
                 required
                 onChange={(e: any) => setPreSaleValue(e.target.value)}
                 value={preSaleValue}
@@ -76,9 +79,8 @@ export function PresaleCard(props: any) {
           </CardHeader>
           <CardFooter className="text-center mb-5 flex justify-center p-0">
             <span
-              className={`${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
-              } rounded-lg`}
+              className={`${theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                } rounded-lg`}
             >
               {/* <Button variant="ghost" size="md">
                 Buy ATH Presale
@@ -128,9 +130,8 @@ export function PresaleCard(props: any) {
                 height={'200px'}
               />
               <span
-                className={`ms-2 ${
-                  theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
-                } rounded-lg`}
+                className={`ms-2 ${theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                  } rounded-lg`}
               >
                 <FcInfo size={20} />
               </span>
@@ -152,9 +153,8 @@ export function PresaleCard(props: any) {
           </CardHeader>
           <CardFooter className="text-center mb-5   flex justify-center p-0">
             <span
-              className={`${
-                theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
-              } rounded-lg`}
+              className={`${theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
+                } rounded-lg`}
             >
               <Button variant="ghost" size="md">
                 Claim ATH Rewards
