@@ -62,36 +62,38 @@ export function PresaleCard(props: any) {
               className={`${theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
                 } rounded-lg`}
             >
-              <Button variant="ghost" size="md" className=" px-0"  >
-                <TransactionButton
-                  style={{
-                    height: '2.5rem',
-                    fontSize: '0.875rem',
-                    lineHeight: '1.25rem'
+              <TransactionButton
 
-                  }}
-                  // className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"
-                  transaction={async () => {
-                    const tx = claimTo({
-                      contract: TokenDropContract,
-                      quantity: BigInt(preSaleValue.toString()).toString(),
-                      to: account?.address as any
-                    })
-                    return tx
-                  }}
-                  onTransactionSent={result => {
-                    console.log('Transaction submitted', result.transactionHash)
-                  }}
-                  onTransactionConfirmed={receipt => {
-                    toast.success('Claimed Successfully')
-                  }}
-                  onError={(error: any) => {
-                    toast.error(error.message)
-                  }}
-                >
-                  Buy ATH Presale
-                </TransactionButton>
-              </Button>
+                style={{
+                  height: '2.5rem',
+                  fontSize: '0.875rem',
+                  lineHeight: '1.25rem',
+                  minWidth: 'auto',
+                  padding: '0px',
+                  paddingLeft: '0.5rem',
+                  paddingRight: '0.5rem',
+                }}
+                // className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"
+                transaction={async () => {
+                  const tx = claimTo({
+                    contract: TokenDropContract,
+                    quantity: BigInt(preSaleValue.toString()).toString(),
+                    to: account?.address as any
+                  })
+                  return tx
+                }}
+                onTransactionSent={result => {
+                  console.log('Transaction submitted', result.transactionHash)
+                }}
+                onTransactionConfirmed={receipt => {
+                  toast.success('Claimed Successfully')
+                }}
+                onError={(error: any) => {
+                  toast.error(error.message)
+                }}
+              >
+                Buy ATH Presale
+              </TransactionButton>
 
             </span>
           </CardFooter>
