@@ -1,65 +1,64 @@
-import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
-import { useRef, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export const VideoCard = () => {
-    const videoRef = useRef<any>(null);
-    const [isPiPSupported, setIsPiPSupported] = useState(false);
+export const VideoCard = ({ loading }: any) => {
+    const [isOpen, setIsOpen] = useState(false);
 
+    // Open the modal automatically when the component mounts
     useEffect(() => {
-        if (typeof window !== 'undefined' && 'pictureInPictureEnabled' in document) {
-            setIsPiPSupported(true);
-        }
+        setIsOpen(true);
     }, []);
 
-    const handlePiP = async () => {
-        if (!document.pictureInPictureEnabled) {
-            alert('Picture-in-Picture is not supported by your browser.');
-            return;
-        }
-
-        try {
-            if (document.pictureInPictureElement) {
-                await document.exitPictureInPicture();
-            } else {
-                await videoRef.current.requestPictureInPicture();
-            }
-        } catch (error) {
-            console.error('Failed to toggle Picture-in-Picture:', error);
-        }
-    };
-
-    return (<div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
-
-        <div className="col-span-12 ">
-            <Card className="rounded-xl border bg-card text-card-foreground shadow py-6">
-
-                <div> {/* Adjust the width here */}
-                    <div className="lg:max-w-[600px] h-[450px] mx-auto w-full" style={{ aspectRatio: "4 / 3" }}>
-                        <video
-                            className="w-full h-full object-contain"
-                            controls
-                            src="athena-video.mp4"
-                            title="Video title"
-                            ref={videoRef}
-
+    return (
+        <div className="grid grid-cols-1 gap-4 md:gap-4 my-3">
+            {/* Modal */}
+            {isOpen && !loading && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+                    onClick={() => setIsOpen(false)}
+                >
+                    <div
+                        className="relative bg-white rounded-lg overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Close button */}
+                        <button
+                            className="absolute top-2 right-2 text-gray-700 hover:text-gray-900 z-10"
+                            onClick={() => setIsOpen(false)}
+                            style={{ cursor: 'pointer' }}
                         >
-                            Your browser does not support the video tag.
-                        </video>
-                        {/* {isPiPSupported && (
-                            <button
-                                onClick={handlePiP}
-                                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                             >
-                                Toggle Picture-in-Picture
-                            </button>
-                        )} */}
-
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                        {/* Video Player */}
+                        <div
+                            className="lg:max-w-[300px] h-[450px] mx-auto max-w-[290px]"
+                            style={{ aspectRatio: '4 / 3' }}
+                        >
+                            <video
+                                className="w-full h-full object-cover"
+                                controls
+                                controlsList="nodownload nopictureinpicture nofullscreen noremoteplayback noplaybackrate"
+                                src="athena-video.mp4" // Replace with your video path
+                                title="Video title"
+                                autoPlay
+                            >
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
-
                 </div>
-
-
-            </Card>
+            )}
         </div>
-    </div>)
-}
+    );
+};

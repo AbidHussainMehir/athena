@@ -1,18 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ActionChart } from './actions'
-import { AthenaMarketCapChart } from './athenaMarketcap'
-import { AthenaTokenChart } from './athenaToken'
 import { DashboardCards } from './dashboardCards'
-import { GoogleMarketcapChart } from './googleMarketcap'
-import { RewardsChart } from './rewards'
 import { VisitsChart } from './visits'
 import { useActiveAccount } from 'thirdweb/react'
 import JobsDistributionChart from './JobsDistributionChart'
 import WorkDistribution from './WorkDistribution'
 import MoveStuffAround from './ticker'
-import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { useTheme } from 'next-themes'
 import { VideoCard } from "./VideoCard"
 export default function ChartIndex() {
@@ -281,7 +275,6 @@ export default function ChartIndex() {
       handleEvents()
     }
   }, [account])
-  console.log('customEventsData', customEventsData)
   return (
     <main
       className={`grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 ${theme == 'light' ? 'bg-[#F4f7fc]' : loading ? 'bg-[#000]' : 'bg-muted/40'
@@ -300,7 +293,6 @@ export default function ChartIndex() {
           </div>
         ) : (
           <>
-            {console.log('custom event data', customEventsData)}
             <DashboardCards
               apiData={apiData}
               apiDataAccount={apiDataAccount}
@@ -318,20 +310,7 @@ export default function ChartIndex() {
               likeUnlikeData={likeUnlikeData}
               likeUnlikeDataAccount={likeUnlikeDataAccount}
             />
-            {/* <div className="grid grid-cols-1 md:grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 gap-4">
-            <div>
-              <VisitsChart
-                apiData={apiData}
-                apiDataAccount={apiDataAccount}
-                account={isConnected}
-                searchData={searchData}
-                searchDataAccount={searchDataAccount}
-                customEventsData={
-                  customEventsData?.length > 0 ? customEventsData[0] : []
-                }
-              />
-            </div>
-          </div> */}
+
             <div className="grid grid-cols-1 lg:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4 mb-4">
               <div>
                 <JobsDistributionChart />
@@ -369,23 +348,13 @@ export default function ChartIndex() {
                 />
               </div>
             </div>
-            {/* <div className="grid grid-cols-1 md:grid-cols-3 xs:grid-cols-1 sm:grid-cols-1 gap-4">
-            <div>
-              <GoogleMarketcapChart />
-            </div>
-            <div className="col-auto">
-              <AthenaMarketCapChart />
-            </div>
-            <div>
-              <AthenaTokenChart />
-            </div>
-          </div> */}
-            <VideoCard />
+
             <div className="grid grid-cols-1  gap-4 md:gap-4  my-3">
               <MoveStuffAround />
             </div>
           </>
         )}
+        <VideoCard loading={loading} />
       </div>
     </main>
   )
