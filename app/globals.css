@@ -164,7 +164,9 @@
 .tag-dark button:hover {
   background: #374151 !important;
 }
-
+.follow-up-text{
+  color:#45b8dd !important
+}
 
 .card {
   background-color: #fff;
