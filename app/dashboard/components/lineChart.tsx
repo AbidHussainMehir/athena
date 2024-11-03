@@ -3,7 +3,6 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { Chart } from './hChart';
 import Highcharts3D from 'highcharts/highcharts-3d';
 import * as Highcharts from 'highcharts';
-import { CreditCard } from 'lucide-react';
 import { useTheme } from 'next-themes'
 
 if (typeof Highcharts === 'object') {
@@ -46,27 +45,7 @@ const LineChart = ({ data }: any) => {
 
         }
     }, [])
-    //   const getName = (color: string, name: string, value: number): string => {
-    //     return (
-    //       '<div style="font-family:' +
-    //       theme.typography.fontFamily +
-    //       '; color:' +
-    //       theme.typography.subtitle1.color +
-    //       ';font-size: 2.125rem;  margin-bottom: 1rem; font-weight: 600; line-height: 2.125rem; letter-spacing: -0.02em;text-align: left; " >' +
-    //       value +
-    //       '</div > <div style="display:flex;align-items:center; margin-bottom: 1rem;"><div style="font-family:' +
-    //       theme.typography.fontFamily +
-    //       ';background-color:' +
-    //       color +
-    //       ';padding:0;height:0.5rem;width:0.75rem;border-radius:0.25rem;margin-right:0.313rem;"></div> <p style="font-family:' +
-    //       theme.typography.fontFamily +
-    //       ';font-weight:600;font-size:0.875rem;line-height:1.375rem;padding:0;color:' +
-    //       theme.typography.h2.color +
-    //       '">' +
-    //       name +
-    //       '</p></div>'
-    //     );
-    //   };
+
     const options: Options = {
         chart: {
             renderTo: 'container',
@@ -76,7 +55,6 @@ const LineChart = ({ data }: any) => {
                 alpha: 0,
                 beta: -1,
                 depth: 20,
-                // viewDistance: 25
             },
             backgroundColor: 'transparent'
         },
@@ -89,12 +67,7 @@ const LineChart = ({ data }: any) => {
         xAxis: {
             labels: {
                 enabled: true, // Hides the labels
-
-                style: {
-                    color: theme?.theme === 'light' ? '#09090B' : '#fff',
-                    // fontSize: '12px', // Optional: set font size
-                    // fontWeight: 'bold' // Optional: set font weight
-                }
+                style: { color: theme?.theme === 'light' ? '#09090B' : '#fff' }
             },
             gridLineWidth: 0,
             lineWidth: 0,    // Removes the axis line
@@ -104,13 +77,14 @@ const LineChart = ({ data }: any) => {
         yAxis: {
             labels: {
                 enabled: true, // Hides the labels
-                style: {
-                    color: theme?.theme === 'light' ? '#09090B' : '#fff',
-                }
+                style: { color: theme?.theme === 'light' ? '#09090B' : '#fff' }
             },
             title: {
                 enabled: false
-            }
+            },
+            gridLineWidth: 0,
+            lineWidth: 0,    // Removes the axis line
+            tickLength: 0,
 
         },
         credits: {

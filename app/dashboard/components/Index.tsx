@@ -317,16 +317,7 @@ export default function ChartIndex() {
               </div>
 
               <div className="col-auto">
-                <WorkDistribution
-                  apiData={apiData}
-                  apiDataAccount={apiDataAccount}
-                  account={isConnected}
-                  searchData={searchData}
-                  searchDataAccount={searchDataAccount}
-                  customEventsData={
-                    customEventsData?.length > 0 ? customEventsData[0] : []
-                  }
-                />
+                <WorkDistribution />
               </div>
               <div>
                 <VisitsChart

@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import ChartsIndex from './components/dashboard/chartsIndex'
+import ChartsIndex from './components/Index'
 export default function Page() {
 
   return (

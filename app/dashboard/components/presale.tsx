@@ -1,39 +1,19 @@
 'use client'
-
-import { useEffect, useState, useRef } from 'react'
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter
-} from '../ui/card'
-import { Button } from '../ui/button'
+import { useState } from 'react'
+import { Card, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
-import Image from 'next/image'
 import { FcInfo } from 'react-icons/fc'
-import {
-  chain,
-  client,
-  PreSaleContract,
-  PresSaleContractAddress
-} from './utils/contracts/presale'
-import { ClaimButton, TransactionButton } from 'thirdweb/react'
-import { prepareContractCall, toWei } from 'thirdweb'
+import { TransactionButton } from 'thirdweb/react'
 import toast from 'react-hot-toast'
-// import { claim } from "thirdweb/extensions/erc20";
 import { claimTo } from 'thirdweb/extensions/erc20'
-import { sendTransaction } from 'thirdweb'
-import { bigint } from 'zod'
 import { useActiveAccount } from 'thirdweb/react'
-import { TokenDropContract } from '../../../../lib/utils/thirdweb-client'
+import { TokenDropContract } from '../../../lib/utils/thirdweb-client'
+
 export function PresaleCard(props: any) {
+
   const theme: any = useTheme()
-
-  const [input, setInput] = useState('')
   const [preSaleValue, setPreSaleValue] = useState<any>('')
-  const inputRef = useRef<HTMLTextAreaElement>(null)
-
   const account = useActiveAccount()
 
   return (
@@ -82,10 +62,6 @@ export function PresaleCard(props: any) {
               className={`${theme?.theme === 'light' ? 'tag-white' : 'tag-dark'
                 } rounded-lg`}
             >
-              {/* <Button variant="ghost" size="md">
-                Buy ATH Presale
-              </Button> */}
-
               <TransactionButton
                 style={{ height: '2.5rem' }}
                 className="text-center items-center w-[120px] md:w-[150px] p-2 rounded-[100px] cursor-pointer gradient-btn border-2 border-white hover:border-black"

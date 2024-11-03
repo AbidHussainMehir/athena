@@ -1,26 +1,8 @@
-import React, {
-  PureComponent,
-  MouseEvent,
-  ReactNode,
-  ReactElement,
-  JSXElementConstructor,
-  useState
-} from 'react'
+import React, { MouseEvent, ReactElement, useState } from 'react'
 import { PieChart, Cell, Pie, Sector, ResponsiveContainer } from 'recharts'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '../ui/card'
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent
-} from '../ui/chart'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { ChartConfig, ChartContainer } from '@/components/ui/chart'
+
 interface DataItem {
   name: string
   value: number
@@ -29,26 +11,15 @@ interface DataItem {
 }
 
 const data: DataItem[] = [
-  {
-    name: 'Public Presale',
-    allocation: '11.5M ATH',
-    value: 55,
-    color: '#cc8605'
-  },
+  { name: 'Public Presale', allocation: '11.5M ATH', value: 55, color: '#cc8605' },
   { name: 'Team', value: 15, allocation: '3.2M ATH', color: '#FF98FC' },
   { name: 'Advisior', value: 5, allocation: '1M ATH', color: '#0088FE' },
   { name: 'Operations', value: 15, allocation: '3.2M ATH', color: '#237809' },
   { name: 'Marketing', value: 10, allocation: '2.1M', color: '#ff0000' }
 ]
 
-// <p>Public Presale:55%(11.5M ATH)</p>
-//       <p> Team:15%(3.2M ATH Token)</p>
-//       <p>Advisior:5%(1M ATH Tokens)</p>
-//       <p> Operations:15%(3.2M Tokens)</p>
-//       <p> Marketing:10%(2.1M Tokens)</p></div>
 const COLORS = [
   '#cc8605',
-  // "#00C49F",
   '#FF98FC',
   '#0088FE',
   '#237809',
@@ -144,12 +115,6 @@ const JobsDistributionChart = () => {
           outerRadius={outerRadius + 10}
           fill={payload.color}
         />
-        {/* <path
-          d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
-          stroke={payload.color}
-          fill="none"
-        />
-        <circle cx={ex} cy={ey} r={2} fill={payload.color} stroke="none" /> */}
 
         <text
           x={ex + (cos >= 0 ? 1 : -1) * 2}
@@ -171,7 +136,6 @@ const JobsDistributionChart = () => {
       <CardHeader>
         <CardTitle className="text-center ">ATH Allocation</CardTitle>
 
-        {/* <CardDescription>January - June 2024</CardDescription> */}
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -199,13 +163,6 @@ const JobsDistributionChart = () => {
             </PieChart>
           </ResponsiveContainer>
         </ChartContainer>
-        {/* <div className="text-center">
-          <p>Public Presale:55%(11.5M ATH)</p>
-          <p> Team:15%(3.2M ATH Token)</p>
-          <p>Advisior:5%(1M ATH Tokens)</p>
-          <p> Operations:15%(3.2M Tokens)</p>
-          <p> Marketing:10%(2.1M Tokens)</p>
-        </div> */}
       </CardContent>
     </Card>
   )

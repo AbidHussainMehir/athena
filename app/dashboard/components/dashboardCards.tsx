@@ -1,7 +1,6 @@
 'use client'
-
 import { useEffect, useState } from 'react'
-import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { PresaleCard } from './presale'
 import { useTheme } from 'next-themes'
 
