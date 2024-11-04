@@ -9,7 +9,7 @@ export const VideoCard = ({ loading }: any) => {
     }, []);
 
     return (
-        <div className="grid grid-cols-1 gap-4 md:gap-4 my-3">
+        <div className="grid grid-cols-1 gap-4 md:gap-4">
             {/* Modal */}
             {isOpen && !loading && (
                 <div
