@@ -13,7 +13,7 @@ export const VideoCard = ({ loading }: any) => {
             {/* Modal */}
             {isOpen && !loading && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+                    className="fixed inset-0 z-50 flex items-end justify-end bg-black bg-opacity-75"
                     onClick={() => setIsOpen(false)}
                 >
                     <div
@@ -22,7 +22,7 @@ export const VideoCard = ({ loading }: any) => {
                     >
                         {/* Close button */}
                         <button
-                            className="absolute top-2 right-2 text-gray-700 hover:text-gray-900 z-10"
+                            className="absolute top-2 right-2 text-black hover:text-gray-900 z-10"
                             onClick={() => setIsOpen(false)}
                             style={{ cursor: 'pointer' }}
                         >
@@ -51,7 +51,7 @@ export const VideoCard = ({ loading }: any) => {
                                 controlsList="nodownload nopictureinpicture nofullscreen noremoteplayback noplaybackrate"
                                 src="athena-video.mp4" // Replace with your video path
                                 title="Video title"
-                                autoPlay
+                            // autoPlay
                             >
                                 Your browser does not support the video tag.
                             </video>
