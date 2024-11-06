@@ -5,7 +5,7 @@ import ChartsIndex from './components/Index'
 export default function Page() {
 
   return (
-    <main className="flex min-h-screen w-full flex-col bg-muted/40">
+    <main className="flex min-h-screen  lg:min-h-[90%] w-full flex-col bg-muted/40">
       <ChartsIndex />
     </main>
   )
