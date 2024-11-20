@@ -221,39 +221,27 @@ async function searxngSearch(
 
   try {
     console.log('here 2')
-    // Construct the URL with query parameters
     const url = new URL(`${apiUrl}/search`)
     url.searchParams.append('q', query)
     url.searchParams.append('format', 'json')
     url.searchParams.append('categories', 'general,images')
 
-    // Apply search depth settings
-    // if (searchDepth === 'advanced') {
-    //   url.searchParams.append('time_range', '')
-    //   url.searchParams.append('safesearch', '0')
-    //   url.searchParams.append('engines', 'google,bing,duckduckgo,wikipedia')
-    // } else {
-    //   url.searchParams.append('time_range', 'year')
-    //   url.searchParams.append('safesearch', '1')
-    //   url.searchParams.append('engines', 'google,bing')
-    // }
-
-    // Fetch results from SearXNG
-    console.log(url.toString())
+    console.log(url)
     const response = await fetch(url.toString(), {
       method: 'GET',
       headers: {
         Accept: 'application/json'
       }
     })
+    console.log("respose", response)
 
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error(`SearXNG API error (${response.status}):`, errorText)
-      throw new Error(
-        `SearXNG API error: ${response.status} ${response.statusText} - ${errorText}`
-      )
-    }
+    // if (!response.ok) {
+    //   const errorText = await response.text()
+    //   console.error(`SearXNG API error (${response.status}):`, errorText)
+    //   throw new Error(
+    //     `SearXNG API error: ${response.status} ${response.statusText} - ${errorText}`
+    //   )
+    // }
 
     const data: SearXNGResponse = await response.json()
     console.log({ data })
