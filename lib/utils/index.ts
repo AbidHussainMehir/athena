@@ -80,3 +80,7 @@ export function transformToolMessages(messages: CoreMessage[]): CoreMessage[] {
       : message
   ) as CoreMessage[]
 }
+
+export function sanitizeUrl(url: string): string {
+  return url.replace(/\s+/g, '%20')
+}
